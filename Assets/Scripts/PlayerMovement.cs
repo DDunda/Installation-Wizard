@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float normVar = 0.70922f;
     //I had trouble with normalization in the dash and found that multiplying Vector2 dash z or y component by this number 'normalizes' it. 
     //Not the best solution, but it works 
-    //-- Robin
+    //-- Robin 
 
     //movement
     [SerializeField] private float moveSpeed;
