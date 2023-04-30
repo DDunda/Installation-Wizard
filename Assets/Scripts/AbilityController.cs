@@ -26,9 +26,9 @@ public class AbilityController : MonoBehaviour
             get { return button; }
 		}
 
-        public bool Activate()
+        public bool Activate(Transform entity)
 		{
-            return ability.Activate();
+            return ability.Activate(entity);
 		}
 
         public void RestartCooldown()
@@ -44,6 +44,8 @@ public class AbilityController : MonoBehaviour
 
     [SerializeField]
     private AbilityHolder[] abilities;
+    [SerializeField]
+    private Transform entity; // the entity that these abilities originate from
 
     // Update is called once per frame
     void Update()
@@ -60,7 +62,7 @@ public class AbilityController : MonoBehaviour
                 if (Input.GetButtonDown(holder.Button) && holder.Cooldown < 0)
 				{
                     // activate the ability and, if successful, restart the cooldown
-                    if (holder.Activate())
+                    if (holder.Activate(entity))
 					{
                         holder.RestartCooldown();
 					}
@@ -74,7 +76,7 @@ public class AbilityController : MonoBehaviour
 	{
         if (abilityIndex > 0 && abilityIndex < abilities.Length)
 		{
-            return abilities[abilityIndex].Activate();
+            return abilities[abilityIndex].Activate(entity);
 		}
 
         return false;
