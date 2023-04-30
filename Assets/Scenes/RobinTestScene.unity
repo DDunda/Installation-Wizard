@@ -255,12 +255,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normVar: 0.70922
   moveSpeed: 5
-  dashingPower: 24
+  dashingPower: 12
   dashingTime: 0.2
   dashingCooldown: 1
-  dashSpeed: 20
-  dashLength: 0.2
-  dashCooldown: 1
 --- !u!50 &1230140786
 Rigidbody2D:
   serializedVersion: 4
