@@ -39,7 +39,7 @@ public class SpawnEnemy : MonoBehaviour
     {
         spawnInterval = Random.Range(minSpawnInterval, maxSpawnInterval);
         var spawnLocation = new Vector3(Random.Range(-0.5f * width, 0.5f * width), Random.Range(-0.5f * height, 0.5f * height));
-        Instantiate(enemy, spawnLocation, enemy.transform.rotation);
+        Instantiate(enemy, spawnLocation, Quaternion.identity);
         canSpawn = false;
         activeSpawns++;
         yield return new WaitForSeconds(spawnInterval);
@@ -49,7 +49,7 @@ public class SpawnEnemy : MonoBehaviour
     private IEnumerator StaticSpawn(GameObject enemy)
     {
         var spawnLocation = new Vector3(Random.Range(-0.5f * width, 0.5f * width), Random.Range(-0.5f * height, 0.5f * height));
-        Instantiate(enemy, spawnLocation, enemy.transform.rotation);
+        Instantiate(enemy, spawnLocation, Quaternion.identity);
         canSpawn = false;
         activeSpawns++;
         yield return new WaitForSeconds(spawnInterval);
