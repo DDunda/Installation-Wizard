@@ -28,7 +28,11 @@ public class AbilityController : MonoBehaviour
 
         public bool Activate(Transform entity)
 		{
-            return ability.Activate(entity);
+            if (cooldown > 0) return false;
+            if (!ability.Activate(entity)) return false;
+
+            RestartCooldown();
+            return true;
 		}
 
         public void RestartCooldown()
@@ -57,16 +61,10 @@ public class AbilityController : MonoBehaviour
 
             // if this ability's button is currently being pressed and the cooldown is over,
             // use this ability and restart the cooldown
-            if (holder.Button != null)
+            if (holder.Button != null && Input.GetButtonDown(holder.Button))
 			{
-                if (Input.GetButtonDown(holder.Button) && holder.Cooldown < 0)
-				{
-                    // activate the ability and, if successful, restart the cooldown
-                    if (holder.Activate(entity))
-					{
-                        holder.RestartCooldown();
-					}
-				}
+                // activate the ability and, if successful, restart the cooldown
+                holder.Activate(entity);
 			}
 		}
     }
@@ -74,7 +72,7 @@ public class AbilityController : MonoBehaviour
     // manually activate an ability
     public bool ActivateAbility(int abilityIndex)
 	{
-        if (abilityIndex > 0 && abilityIndex < abilities.Length)
+        if (abilityIndex >= 0 && abilityIndex < abilities.Length)
 		{
             return abilities[abilityIndex].Activate(entity);
 		}

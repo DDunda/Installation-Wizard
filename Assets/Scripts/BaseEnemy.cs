@@ -12,7 +12,7 @@ public class BaseEnemy : MonoBehaviour
     //Player Information
     private Transform player;
     private Vector3 playerPosition;
-    private Vector3 directionToPlayer;
+    private Vector2 directionToPlayer;
     private Vector3 lastSeenPosition;
 
     //Object States Declaration
@@ -23,6 +23,8 @@ public class BaseEnemy : MonoBehaviour
     //Enemy Values
     [SerializeField] private float fireRate;
     [SerializeField] private float moveSpeed;
+
+    [SerializeField] private LayerMask barrierLayer;
 
     //Pathfinding Variables
     private Path currentPath;
@@ -37,6 +39,8 @@ public class BaseEnemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         seeker = GetComponent<Seeker>();
+
+        lastSeenPosition = transform.position;
 
         InvokeRepeating("UpdatePath", 0f, 0.5f);
     }
@@ -68,20 +72,14 @@ public class BaseEnemy : MonoBehaviour
 
     public void CanSeePlayer()
     {
-        RaycastHit2D hitObject = Physics2D.Raycast(transform.position, directionToPlayer);
+        RaycastHit2D hitObject = Physics2D.Raycast(transform.position, directionToPlayer.normalized, directionToPlayer.magnitude, barrierLayer);
+
+        playerInLOS = hitObject.collider == null;
 
         // If the player is detected, the corresponding object state is updated.
-        if (hitObject.collider != null)
+        if (playerInLOS)
         {
-            if (hitObject.collider.gameObject.CompareTag("Player"))
-            {
-                playerInLOS = true;
-                lastSeenPosition = playerPosition;
-            }
-            else
-            {
-                playerInLOS = false;
-            }
+            lastSeenPosition = playerPosition;
         }
     }
 

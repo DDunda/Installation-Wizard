@@ -17,6 +17,8 @@ public class SpawnEnemy : MonoBehaviour
     [SerializeField] private float height;
     [SerializeField] private List<Transform> fixedSpawnLocations;
     [SerializeField] private bool randomLocation;
+    [SerializeField, Min(1)] private uint maxRandomAttempts = 1;
+    [SerializeField] private Vector3 defaultLocation;
     [SerializeField] private float minDistanceFromPlayer;
 
 
@@ -32,18 +34,11 @@ public class SpawnEnemy : MonoBehaviour
         //Only Spawn an enemy if not on cooldown
         if (canSpawn && enemiesSpawned < maximumEnemies)
         {
-            //Checks if the list has reached the end and restarts it
-            if (currentIndex == indexToSpawn.Count)
-            {
-                currentIndex = 0;
-            }
             //Spawn the enemy
             StartCoroutine(Spawn(enemies[currentIndex]));
 
-            enemiesSpawned++;
-
             //Move to the next enemy in the list
-            currentIndex++;
+            currentIndex = (currentIndex + 1) % indexToSpawn.Count;
         }
     }
 
@@ -53,20 +48,31 @@ public class SpawnEnemy : MonoBehaviour
         var randDelay = Random.Range(minSpawnDelay, maxSpawnDelay);
         //Checks if randomSpawnIntervals are required
         var spawnDelay = randomInterval ? randDelay : fixedSpawnDelay;
+        Vector3 spawnLocation = defaultLocation;
 
-        //Create a random spawn position
-        var randLocation = GenerateRandomPosition();
-
-        var playerLocation = GameObject.FindWithTag("Player").transform.position;
-
-        //Checks if the location is currently occupied and chooses a new location if the chose location has an object present
-        while (Physics2D.OverlapCircle(randLocation, 0.5f) != null || Mathf.Abs(Vector2.Distance(playerLocation, randLocation)) < minDistanceFromPlayer)
+        if (randomLocation)
         {
-            randLocation = GenerateRandomPosition();
+            for(int attempts = 0; attempts < maxRandomAttempts; attempts++)
+            {
+                Vector3 loc = GenerateRandomPosition();
+
+                //Chooses a new location if the chose location has an object present
+                if (Physics2D.OverlapCircle(loc, 1.3f) == null)
+                {
+                    spawnLocation = loc;
+                    break;
+                }
+            }
+        } else
+        {
+            if (fixedSpawnLocations.Count > 0)
+            {
+                int i = Random.Range(0, fixedSpawnLocations.Count);
+                spawnLocation = fixedSpawnLocations[i].position;
+            }
         }
 
-        var spawnLocation = randomLocation ? randLocation : fixedSpawnLocations[0].position;
-
+        enemiesSpawned++;
         //Spawn the enemy
         Instantiate(enemy, spawnLocation, Quaternion.identity);
 
