@@ -17,6 +17,7 @@ public class SpawnEnemy : MonoBehaviour
     [SerializeField] private float height;
     [SerializeField] private List<Transform> fixedSpawnLocations;
     [SerializeField] private bool randomLocation;
+    [SerializeField] private float minDistanceFromPlayer;
 
 
     //Spawn Time Variables
@@ -25,7 +26,6 @@ public class SpawnEnemy : MonoBehaviour
     [SerializeField] private float maxSpawnDelay;
     private bool canSpawn = true;
     [SerializeField] private bool randomInterval;
-
 
     private void Update()
     {
@@ -54,20 +54,15 @@ public class SpawnEnemy : MonoBehaviour
         //Checks if randomSpawnIntervals are required
         var spawnDelay = randomInterval ? randDelay : fixedSpawnDelay;
 
-        var randX = Random.Range(-0.5f * width, 0.5f * width);
-        var randY = Random.Range(-0.5f * height, 0.5f * height);
-        var randLocation = new Vector3 (randX, randY);
+        //Create a random spawn position
+        var randLocation = GenerateRandomPosition();
 
-        //Checks if the location is currently occupied
-        var objectsAtLocation = Physics2D.OverlapCircle(randLocation, 1.3f);
+        var playerLocation = GameObject.FindWithTag("Player").transform.position;
 
-        //Chooses a new location if the chose location has an object present
-        while (objectsAtLocation != null)
+        //Checks if the location is currently occupied and chooses a new location if the chose location has an object present
+        while (Physics2D.OverlapCircle(randLocation, 0.5f) != null || Mathf.Abs(Vector2.Distance(playerLocation, randLocation)) < minDistanceFromPlayer)
         {
-            randX = Random.Range(-0.5f * width, 0.5f * width);
-            randY = Random.Range(-0.5f * height, 0.5f * height);
-            randLocation = new Vector3(randX, randY);
-            objectsAtLocation = Physics2D.OverlapCircle(randLocation, 1.3f);
+            randLocation = GenerateRandomPosition();
         }
 
         var spawnLocation = randomLocation ? randLocation : fixedSpawnLocations[0].position;
@@ -79,5 +74,13 @@ public class SpawnEnemy : MonoBehaviour
         yield return new WaitForSeconds(spawnDelay);
 
         canSpawn = true;
+    }
+
+    public Vector3 GenerateRandomPosition()
+    {
+        var randX = Random.Range(-0.5f * width, 0.5f * width);
+        var randY = Random.Range(-0.5f * height, 0.5f * height);
+
+        return new Vector3(randX, randY);
     }
 }
