@@ -18,7 +18,7 @@ public class BaseEnemy : MonoBehaviour
     //Object States Declaration
     private bool playerInLOS = false;
     private bool canAttack = true;
-    private bool canMove = true;
+    private bool canMove = false;
 
     //Enemy Values
     [SerializeField] private float fireRate;
@@ -54,8 +54,9 @@ public class BaseEnemy : MonoBehaviour
             {
                 StartCoroutine(Attack());
             }
-            Move();
+            canMove = true;
         }
+        Move();
     }
 
     //Updates the player's location and direction from the enemy.
@@ -100,7 +101,7 @@ public class BaseEnemy : MonoBehaviour
     {
         if (canMove)
         {
-            seeker.StartPath(rb.position, playerPosition, OnPathComplete);
+            seeker.StartPath(rb.position, lastSeenPosition, OnPathComplete);
         }
     }
 
