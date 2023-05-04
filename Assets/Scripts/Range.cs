@@ -31,6 +31,11 @@ public static class RangeExtension
 		return Color.Lerp(r.min, r.max, t);
 	}
 
+	public static float Random(this Range<float> r)
+	{
+		return UnityEngine.Random.Range(r.min, r.max);
+	}
+
 	public static float InverseLerp(this Range<float> r, float value)
 	{
 		return Mathf.InverseLerp(r.min, r.max, value);

@@ -13,4 +13,15 @@ public static class Extensions
 		return new(v.x * v2.x - v.y * v2.y, v.x * v2.y + v.y * v2.x);
 	}
 	public static Vector2 RotateDeg(this Vector2 v, float angle) => RotateRad(v, angle * Mathf.Deg2Rad);
+
+    public static Vector2 Clamp(this Vector2 v, float size)
+    {
+        if (v.magnitude > size) return v.normalized * size;
+        else return v;
+    }
+    public static Vector3 Clamp(this Vector3 v, float size)
+    {
+        if (v.magnitude > size) return v.normalized * size;
+        else return v;
+    }
 }
