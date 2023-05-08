@@ -222,8 +222,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   netVelocity: {x: 0, y: 0}
   speed:
-    min: 9
-    max: 11
+    min: 0
+    max: 0
   team: 1
   arcAngle: 60
   directionAngle: -90
@@ -246,8 +246,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   netVelocity: {x: 0, y: 0}
   speed:
-    min: 5
-    max: 10
+    min: 0
+    max: 0
   team: 1
   directionRotation:
     min: 0
@@ -256,18 +256,16 @@ MonoBehaviour:
     min: 0
     max: 0
   directionRandomness:
-    min: 1
-    max: 1
+    min: 0
+    max: 0
   n:
-    min: 1
-    max: 1
+    min: 5
+    max: 5
   radius:
     min: 0
     max: 0
   projectilePrefab:
-    entries:
-    - weight: 1
-      item: {fileID: 3607278727637472301, guid: b7a3294d6ab851e418c079990ddb8158, type: 3}
+    entries: []
   button: 51
 --- !u!114 &507408935
 MonoBehaviour:
@@ -294,6 +292,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bcd2af89f1e11149865abbf0ec5b102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cooldownMax: 3
+  button: 323
   style: {fileID: 11400000, guid: dc9afb573d5895f4aa2961a150afbe3a, type: 2}
   deadzone: 0.1
   speed:
@@ -328,10 +328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilities:
-  - ability: {fileID: 507408936}
-    cooldownMax: 0.5
-    button: Fire1
-  entity: {fileID: 507408932}
+  - {fileID: 507408936}
 --- !u!114 &507408938
 MonoBehaviour:
   m_ObjectHideFlags: 0
