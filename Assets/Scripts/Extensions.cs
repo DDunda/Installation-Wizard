@@ -7,6 +7,8 @@ public static class Extensions
 	public static Vector2 Rad2Vec(float angle, float magnitude = 1) => new(Mathf.Cos(angle) * magnitude, Mathf.Sin(angle) * magnitude);
 	public static Vector2 Deg2Vec(float angle, float magnitude = 1) => Rad2Vec(angle * Mathf.Deg2Rad, magnitude);
 
+	public static float Angle(this Vector2 v) => Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
+
 	public static Vector2 RotateRad(this Vector2 v, float angle)
 	{
 		Vector2 v2 = Rad2Vec(angle);
@@ -36,4 +38,10 @@ public static class Extensions
 		p.UnregisterListener(l);
 	}
 	public static T Random<T>(this T[] arr) => arr[UnityEngine.Random.Range(0,arr.Length)];
+
+	public static Vector2 GetMouseWorldPosition(Camera cam)
+	{
+		Vector3 p = cam.ScreenToWorldPoint(Input.mousePosition);
+		return new(p.x, p.y);
+	}
 }
