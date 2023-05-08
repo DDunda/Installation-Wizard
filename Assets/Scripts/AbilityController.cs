@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-public class AbilityController : MonoBehaviour
+public class AbilityController : MonoBehaviour, IPausable
 {
     [Serializable]
     public class AbilityHolder
@@ -50,6 +50,26 @@ public class AbilityController : MonoBehaviour
     private AbilityHolder[] abilities;
     [SerializeField]
     private Transform entity; // the entity that these abilities originate from
+
+	private void Awake()
+	{
+        this.RegisterPause();
+	}
+
+	private void OnDestroy()
+	{
+		this.UnregisterPause();
+	}
+
+    public void OnPause()
+    {
+        enabled = false;
+    }
+
+    public void OnResume()
+    {
+        enabled = true;
+    }
 
     // Update is called once per frame
     void Update()

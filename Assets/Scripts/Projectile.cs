@@ -11,6 +11,8 @@ public class Projectile : MonoBehaviour
 	[EnumMask]
 	public Team team;
 
+	public float? lifetime = null;
+
 	public uint Collisions { get; private set; } = 0;
 
 	private void Awake()
@@ -18,7 +20,7 @@ public class Projectile : MonoBehaviour
 		rigidbody = GetComponent<Rigidbody2D>();
 		if (type.lifetime > 0)
 		{
-			Destroy(gameObject, type.lifetime);
+			lifetime = type.lifetime;
 		}
 		ProjectileManager.AddProjectile(this);
 	}

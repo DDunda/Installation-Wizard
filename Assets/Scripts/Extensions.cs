@@ -24,4 +24,15 @@ public static class Extensions
         if (v.magnitude > size) return v.normalized * size;
         else return v;
     }
+
+    public static void RegisterPause(this IPausable l, Pauser p = null)
+    {
+        if (p == null) p = Pauser.instance;
+        p.RegisterListener(l);
+	}
+	public static void UnregisterPause(this IPausable l, Pauser p = null)
+	{
+		if (p == null) p = Pauser.instance;
+		p.UnregisterListener(l);
+	}
 }

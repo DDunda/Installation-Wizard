@@ -2,7 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class ProjectileManager : MonoBehaviour
+[RequireComponent(typeof(PhysicsPauser))]
+public class ProjectileManager : MonoBehaviour, IPausable
 {
 	public static ProjectileManager instance { get; private set; } = null;
 
@@ -25,11 +26,27 @@ public class ProjectileManager : MonoBehaviour
 			projectileLayerFilter.SetLayerMask(projectileLayer);
 			entityLayerFilter.SetLayerMask(entityLayer);
 			projectiles = new();
+			this.RegisterPause();
 		}
 		else if(instance != this)
 		{
 			Destroy(this);
 		}
+	}
+
+	private void OnDestroy()
+	{
+		this.UnregisterPause();
+	}
+
+	public void OnPause()
+	{
+		enabled = false;
+	}
+
+	public void OnResume()
+	{
+		enabled = true;
 	}
 
 	private static void CheckProjectileCollisions()
@@ -114,7 +131,23 @@ public class ProjectileManager : MonoBehaviour
 
 	private static void CheckEnvironmentCollisions()
 	{
-		foreach (Projectile p in instance.projectiles.Where(x => x.rigidbody.IsTouchingLayers(instance.environmentLayer)))
+		var toDelete = (from p in instance.projectiles where p.rigidbody.IsTouchingLayers(instance.environmentLayer) select p).ToArray();
+		foreach (Projectile p in toDelete)
+		{
+			Destroy(p.root != null ? p.root : p.gameObject);
+		}
+	}
+
+	private static void CheckLifetime()
+	{
+		List<Projectile> toDelete = new();
+		foreach (Projectile p in instance.projectiles.Where(x => x.lifetime != null))
+		{
+			p.lifetime -= Time.fixedDeltaTime;
+			if (p.lifetime <= 0) toDelete.Add(p);
+		}
+
+		foreach(Projectile p in toDelete)
 		{
 			Destroy(p.root != null ? p.root : p.gameObject);
 		}
@@ -125,6 +158,7 @@ public class ProjectileManager : MonoBehaviour
 		CheckProjectileCollisions();
 		CheckEntityCollisions();
 		CheckEnvironmentCollisions();
+		CheckLifetime();
 	}
 
 	public static void AddProjectile(Projectile p)

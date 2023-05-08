@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class iFrameHealth : EntityHealth
+public class iFrameHealth : EntityHealth, IPausable
 {
 	[Min(0),SerializeField] private float iTime = 0;
 	[Min(0),SerializeField,Tooltip("i-frames applied when damaged")] private float iDamageTime;
@@ -12,6 +12,20 @@ public class iFrameHealth : EntityHealth
 	private void Awake()
 	{
 		iTime = 0;
+		this.RegisterPause();
+	}
+
+	private void OnDestroy()
+	{
+		this.UnregisterPause();
+	}
+
+	public void OnPause() {
+		enabled = false;
+	}
+
+	public void OnResume() {
+		enabled = true;
 	}
 
 	private void FixedUpdate()
