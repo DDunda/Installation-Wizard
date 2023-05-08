@@ -110,7 +110,7 @@ public class ProjectileManager : MonoBehaviour, IPausable
 				mask = t != null ? t.Teams : 0;
 
 				if (!p.type.entityRelationship.GetRelationship(mask)) continue;
-				if (!(o.TryGetComponent(out h) && h.ChangeHealth(-p.type.damage))) continue;
+				if (!(o.TryGetComponent(out h) && h.ChangeHealth(-p.type.damage.Random()))) continue;
 
 				p.OnCollide();
 
@@ -175,9 +175,9 @@ public class ProjectileManager : MonoBehaviour, IPausable
 		instance.projectiles.Remove(p);
 	}
 
-	public static Projectile SpawnProjectile(Vector2 position, Vector2 velocity, Team team, ProjectileType type = null, Sprite sprite = null, float scale = 1)
+	public static Projectile SpawnProjectile(Vector2 position, float rotation, Vector2 velocity, float angularSpeed, Team team, ProjectileType type = null, Sprite sprite = null, float scale = 1)
 	{
-		Projectile p = SpawnProjectile(position, velocity, team, instance.projectilePrefab, scale);
+		Projectile p = SpawnProjectile(position, rotation, velocity, angularSpeed, team, instance.projectilePrefab, scale);
 		SpriteRenderer sr;
 
 		if (p == null) return null;
@@ -188,12 +188,12 @@ public class ProjectileManager : MonoBehaviour, IPausable
 		return p;
 	}
 
-	public static Projectile SpawnProjectile(Vector2 position, Vector2 velocity, Team team, GameObject projectilePrefab, float scale = 1)
+	public static Projectile SpawnProjectile(Vector2 position, float rotation, Vector2 velocity, float angularSpeed, Team team, GameObject projectilePrefab, float scale = 1)
 	{
 		if (projectilePrefab == null) return null;
 
 		float angle = velocity.magnitude > 0 ? Mathf.Atan2(velocity.y, velocity.x) * Mathf.Rad2Deg : 0;
-		Quaternion rot = projectilePrefab.transform.rotation * Quaternion.Euler(0, 0, angle);
+		Quaternion rot = projectilePrefab.transform.rotation * Quaternion.Euler(0, 0, angle + rotation);
 
 		GameObject projectile = Instantiate(projectilePrefab, position, rot, instance != null ? instance.projectileContainer : null);
 
@@ -207,6 +207,7 @@ public class ProjectileManager : MonoBehaviour, IPausable
 
 		projectile.transform.localScale *= scale;
 		p.rigidbody.velocity = velocity;
+		p.rigidbody.angularVelocity = angularSpeed;
 		p.team = team;
 
 		AddProjectile(p);
@@ -214,12 +215,41 @@ public class ProjectileManager : MonoBehaviour, IPausable
 		return p;
 	}
 
-	public static int SpawnProjectileBurst(Vector2 position, Vector2 netVelocity, float speed, Team team, GameObject projectilePrefab, uint n, float directionRot = 0, float velocityRot = 0, float radius = 0, float scale = 1)
+	public static Projectile SpawnProjectileRandom(Vector2 position, Range<float> rotation, Vector2 velocity, Range<float> angularSpeed, Team team, WeightedArray<GameObject> projectilePrefabs, Range<float> scale)
 	{
-		if (n == 0) return 0;
-		if (instance == null) return 0;
+		GameObject prefab = projectilePrefabs.GetRandom();
 
-		int c = 0;
+		if (prefab == null) return null;
+
+		float angle = velocity.magnitude > 0 ? Mathf.Atan2(velocity.y, velocity.x) * Mathf.Rad2Deg : 0;
+		Quaternion rot = prefab.transform.rotation * Quaternion.Euler(0, 0, angle + rotation.Random());
+
+		GameObject projectile = Instantiate(prefab, position, rot, instance != null ? instance.projectileContainer : null);
+
+		Projectile p;
+
+		if (!projectile.TryGetComponent(out p))
+		{
+			Destroy(projectile);
+			return null;
+		}
+
+		projectile.transform.localScale *= scale.Random();
+		p.rigidbody.velocity = velocity;
+		p.rigidbody.angularVelocity = angularSpeed.Random();
+		p.team = team;
+
+		AddProjectile(p);
+
+		return p;
+	}
+
+	public static Projectile[] SpawnProjectileBurst(Vector2 position, float rotation, Vector2 netVelocity, float speed, float angularSpeed, Team team, GameObject projectilePrefab, uint n, float directionRot = 0, float velocityRot = 0, float radius = 0, float scale = 1)
+	{
+		if (n == 0) return new Projectile[0];
+		if (instance == null) return new Projectile[0];
+
+		List<Projectile> projectiles = new();
 
 		for (int i = 0; i < n; i++)
 		{
@@ -227,25 +257,46 @@ public class ProjectileManager : MonoBehaviour, IPausable
 			Vector2 direction = Extensions.Deg2Vec(a + directionRot, radius);
 			Vector2 velocity = Extensions.Deg2Vec(a + velocityRot, speed);
 
-			if (SpawnProjectile(position + direction, netVelocity + velocity, team, projectilePrefab, scale)) c++;
+			projectiles.Add(SpawnProjectile(position + direction, rotation, netVelocity + velocity, angularSpeed, team, projectilePrefab, scale));
 		}
 
-		return c;
+		return projectiles.ToArray();
 	}
-	public static int SpawnProjectileArc(Vector2 position, Vector2 netVelocity, float speed, Team team, GameObject projectilePrefab, uint n, Range<float> arcRange, float velocityRot = 0, float radius = 0, float scale = 1)
+	public static Projectile[] SpawnProjectileRandomBurst(Vector2 position, Range<float> rotation, Vector2 netVelocity, Range<float> speed, Range<float> angularSpeed, Team team, WeightedArray<GameObject> projectilePrefabs, Range<uint> nr, Range<float> directionRot, Range<float> velocityRot, Range<float> directionRandomness, Range<float> radius, Range<float> scale)
 	{
-		if (n == 0) return 0;
-		if (instance == null) return 0;
+		uint n = nr.Random();
+		if (n == 0) return new Projectile[0];
+		if (instance == null) return new Projectile[0];
 
-		int c = 0;
+		List<Projectile> projectiles = new();
+
+		for (int i = 0; i < n; i++)
+		{
+			float dr = directionRandomness.Random();
+			float a = (i / (float)n) * 360f + Random.Range(-dr, dr) * 180f;
+			Vector2 direction = Extensions.Deg2Vec(a + directionRot.Random(), radius.Random());
+			Vector2 velocity = Extensions.Deg2Vec(a + velocityRot.Random(), speed.Random());
+
+			projectiles.Add(SpawnProjectileRandom(position + direction, rotation, netVelocity + velocity, angularSpeed.Random(), team, projectilePrefabs, scale));
+		}
+
+		return projectiles.ToArray();
+	}
+
+	public static Projectile[] SpawnProjectileArc(Vector2 position, float rotation, Vector2 netVelocity, float speed, float angularSpeed, Team team, GameObject projectilePrefab, uint n, Range<float> arcRange, float velocityRot = 0, float radius = 0, float scale = 1)
+	{
+		if (n == 0) return new Projectile[0];
+		if (instance == null) return new Projectile[0];
 
 		if (n == 1)
 		{
 			float a = arcRange.Lerp(0.5f);
 			Vector2 direction = Extensions.Deg2Vec(a, radius);
 			Vector2 velocity = Extensions.Deg2Vec(a + velocityRot, speed);
-			return SpawnProjectile(position + direction, netVelocity + velocity, team, projectilePrefab, scale) ? 1 : 0;
+			return new Projectile[1] { SpawnProjectile(position + direction, rotation, netVelocity + velocity, angularSpeed, team, projectilePrefab, scale) };
 		}
+
+		List<Projectile> projectiles = new();
 
 		for (int i = 0; i < n; i++)
 		{
@@ -253,15 +304,44 @@ public class ProjectileManager : MonoBehaviour, IPausable
 			Vector2 direction = Extensions.Deg2Vec(a, radius);
 			Vector2 velocity = Extensions.Deg2Vec(a + velocityRot, speed);
 
-			if (SpawnProjectile(position + direction, netVelocity + velocity, team, projectilePrefab, scale)) c++;
+			projectiles.Add(SpawnProjectile(position + direction, rotation, netVelocity + velocity, angularSpeed, team, projectilePrefab, scale));
 		}
 
-		return c;
+		return projectiles.ToArray();
+	}
+	public static Projectile[] SpawnProjectileRandomArc(Vector2 position, Range<float> rotation, Vector2 netVelocity, Range<float> speed, Range<float> angularSpeed, Team team, WeightedArray<GameObject> projectilePrefab, Range<uint> nr, Range<float> arcRange, Range<float> velocityRot, Range<float> directionRandomness, Range<float> radius, Range<float> scale)
+	{
+		uint n = nr.Random();
+		if (n == 0) return new Projectile[0];
+		if (instance == null) return new Projectile[0];
+
+		if (n == 1)
+		{
+
+			float a = Mathf.Lerp(arcRange.Lerp(0.5f), arcRange.Random(), directionRandomness.Random());
+			Vector2 direction = Extensions.Deg2Vec(a, radius.Random());
+			Vector2 velocity = Extensions.Deg2Vec(a + velocityRot.Random(), speed.Random());
+			return new Projectile[1] { SpawnProjectileRandom(position + direction, rotation, netVelocity + velocity, angularSpeed, team, projectilePrefab, scale) };
+		}
+
+		List<Projectile> projectiles = new();
+
+		for (int i = 0; i < n; i++)
+		{
+			float a = Mathf.Lerp(arcRange.Lerp(i / (float)(n - 1)), arcRange.Random(), directionRandomness.Random());
+			Vector2 direction = Extensions.Deg2Vec(a, radius.Random());
+			Vector2 velocity = Extensions.Deg2Vec(a + velocityRot.Random(), speed.Random());
+
+			projectiles.Add(SpawnProjectileRandom(position + direction, rotation, netVelocity + velocity, angularSpeed, team, projectilePrefab, scale));
+		}
+
+		return projectiles.ToArray();
 	}
 
-	public static int SpawnProjectileArc(Vector2 position, Vector2 netVelocity, float speed, Team team, GameObject projectilePrefab, uint n, float arcAngle, float directionRot, float velocityRot = 0, float radius = 0, float scale = 1)
+
+	public static Projectile[] SpawnProjectileArc(Vector2 position, float rotation, Vector2 netVelocity, float speed, float angularSpeed, Team team, GameObject projectilePrefab, uint n, float arcAngle, float directionRot, float velocityRot = 0, float radius = 0, float scale = 1)
 	{
 		Range<float> arcRange = new(directionRot - arcAngle / 2f, directionRot + arcAngle / 2f);
-		return SpawnProjectileArc(position, netVelocity, speed, team, projectilePrefab, n, arcRange, velocityRot, radius, scale);
+		return SpawnProjectileArc(position, rotation, netVelocity, angularSpeed, speed, team, projectilePrefab, n, arcRange, velocityRot, radius, scale);
 	}
 }

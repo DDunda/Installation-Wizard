@@ -163,6 +163,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 507408932}
+  - component: {fileID: 507408938}
   - component: {fileID: 507408931}
   - component: {fileID: 507408933}
   - component: {fileID: 507408934}
@@ -218,7 +219,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   netVelocity: {x: 0, y: 0}
-  speed: 10
+  speed:
+    min: 9
+    max: 11
   team: 1
   arcAngle: 60
   directionAngle: -90
@@ -240,13 +243,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   netVelocity: {x: 0, y: 0}
-  speed: 10
+  speed:
+    min: 5
+    max: 10
   team: 1
-  directionRotation: 0
-  velocityRotation: 160
-  n: 25
-  radius: 2
-  projectilePrefab: {fileID: 3607278727637472301, guid: b7a3294d6ab851e418c079990ddb8158, type: 3}
+  directionRotation:
+    min: 0
+    max: 0
+  velocityRotation:
+    min: 0
+    max: 0
+  directionRandomness:
+    min: 1
+    max: 1
+  n:
+    min: 1
+    max: 1
+  radius:
+    min: 0
+    max: 0
+  projectilePrefab:
+    entries:
+    - weight: 1
+      item: {fileID: 3607278727637472301, guid: b7a3294d6ab851e418c079990ddb8158, type: 3}
   button: 51
 --- !u!114 &507408935
 MonoBehaviour:
@@ -261,6 +280,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: 27
+--- !u!114 &507408938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 507408930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab2b509198d9c43ae35687222f3bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teams: 3
 --- !u!1 &738257679
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,7 +424,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 738257679}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03, y: -2.94, z: 0}
+  m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -640,7 +672,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977143376}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.04, y: -1.49, z: 0}
+  m_LocalPosition: {x: 5, y: -1.5, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -782,7 +814,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1528581271}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.67, y: -1.28, z: 0}
+  m_LocalPosition: {x: -5, y: -1.5, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children: []

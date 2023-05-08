@@ -13,7 +13,7 @@ public class TestSingleShot : MonoBehaviour
 	{
 		if(Input.GetKeyDown(button))
 		{
-			ProjectileManager.SpawnProjectile(transform.position, velocity, team, projectilePrefab);
+			ProjectileManager.SpawnProjectile(transform.position, 0, velocity, 0, team, projectilePrefab);
 		}
 	}
 }

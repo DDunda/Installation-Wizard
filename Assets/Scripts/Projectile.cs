@@ -18,9 +18,9 @@ public class Projectile : MonoBehaviour
 	private void Awake()
 	{
 		rigidbody = GetComponent<Rigidbody2D>();
-		if (type.lifetime > 0)
+		if (type.lifetime.min > 0 || type.lifetime.max > 0)
 		{
-			lifetime = type.lifetime;
+			lifetime = type.lifetime.Random();
 		}
 		ProjectileManager.AddProjectile(this);
 	}

@@ -12,14 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 077b11da19a79a74d9336ae1d3b9ca2a, type: 3}
   m_Name: Decorative projectile
   m_EditorClassIdentifier: 
-  damage: 0
-  lifetime: 5
+  damage:
+    min: 10
+    max: 10
+  lifetime:
+    min: 5
+    max: 5
   maxCollisions: 1
   destroyProjectiles: 0
   entityRelationship: {fileID: 11400000, guid: 3f482c3cc59278b459c0cf182eeee4c2, type: 2}
-  onCollide:
-    m_PersistentCalls:
-      m_Calls: []
-  onDestroy:
-    m_PersistentCalls:
-      m_Calls: []

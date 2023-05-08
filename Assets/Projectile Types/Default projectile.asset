@@ -12,14 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 077b11da19a79a74d9336ae1d3b9ca2a, type: 3}
   m_Name: Default projectile
   m_EditorClassIdentifier: 
-  damage: 10
-  lifetime: 3
+  damage:
+    min: 10
+    max: 10
+  lifetime:
+    min: 3
+    max: 3
   maxCollisions: 1
   destroyProjectiles: 0
   entityRelationship: {fileID: 11400000, guid: 96fc1d772b13cf746af2882c46bc8708, type: 2}
-  onCollide:
-    m_PersistentCalls:
-      m_Calls: []
-  onDestroy:
-    m_PersistentCalls:
-      m_Calls: []

@@ -5,20 +5,21 @@ using UnityEngine;
 public class TestBurstShot : MonoBehaviour
 {
 	public Vector2 netVelocity;
-	public float speed;
+	public Range<float> speed;
 	[EnumMask] public Team team;
-	public float directionRotation = 0;
-	public float velocityRotation = 0;
-	public uint n = 5;
-	public float radius = 0;
-	public GameObject projectilePrefab;
+	public Range<float> directionRotation = 0;
+	public Range<float> velocityRotation = 0;
+	public Range<float> directionRandomness = 0;
+	public Range<uint> n = 5;
+	public Range<float> radius = 0;
+	public WeightedArray<GameObject> projectilePrefab;
 	public KeyCode button;
 
 	void Update()
 	{
 		if (Input.GetKeyDown(button))
 		{
-			ProjectileManager.SpawnProjectileBurst(transform.position, netVelocity, speed, team,projectilePrefab, n, directionRotation, velocityRotation, radius);
+			ProjectileManager.SpawnProjectileRandomBurst(transform.position, 0, netVelocity, speed, 0, team, projectilePrefab, n, directionRotation, velocityRotation, directionRandomness, radius, 1);
 		}
 	}
 }
