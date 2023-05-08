@@ -14,15 +14,6 @@ public class ProjectileType : ScriptableObject
 	[Space]
 	public TeamRelationship entityRelationship;
 
-	[Space]
-	[SerializeField] private UnityEvent onCollide;
-	[SerializeField] private UnityEvent onDestroy;
-
-	public virtual void OnCollide(Projectile p) {
-		onCollide.Invoke();
-	}
-	public virtual void OnDestroyProjectile(Projectile p)
-	{
-		onDestroy.Invoke();
-	}
+	public virtual void OnCollide(Projectile p) { }
+	public virtual void OnDestroyProjectile(Projectile p) { }
 }
