@@ -35,4 +35,5 @@ public static class Extensions
 		if (p == null) p = Pauser.instance;
 		p.UnregisterListener(l);
 	}
+	public static T Random<T>(this T[] arr) => arr[UnityEngine.Random.Range(0,arr.Length)];
 }

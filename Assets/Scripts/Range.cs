@@ -10,6 +10,7 @@ public struct Range<T>
 		this.min = min;
 		this.max = max;
 	}
+	public static implicit operator Range<T>(T v) => new Range<T>(v, v);
 }
 
 public static class RangeExtension
@@ -34,6 +35,16 @@ public static class RangeExtension
 	public static float Random(this Range<float> r)
 	{
 		return UnityEngine.Random.Range(r.min, r.max);
+	}
+
+	public static int Random(this Range<int> r)
+	{
+		return UnityEngine.Random.Range(r.min, r.max);
+	}
+	
+	public static uint Random(this Range<uint> r)
+	{
+		return (uint)UnityEngine.Random.Range((int)r.min, (int)r.max);
 	}
 
 	public static float InverseLerp(this Range<float> r, float value)
