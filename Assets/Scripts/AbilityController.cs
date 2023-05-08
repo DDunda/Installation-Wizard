@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class AbilityController : MonoBehaviour, IPausable
 {
+    /*
+     * DELETE IF NOT BEING USED
     [Serializable]
     public class AbilityHolder
     {
@@ -45,11 +47,10 @@ public class AbilityController : MonoBehaviour, IPausable
             cooldown -= reduction;
 		}
     }
+    */
 
     [SerializeField]
-    private AbilityHolder[] abilities;
-    [SerializeField]
-    private Transform entity; // the entity that these abilities originate from
+    private Ability[] abilities;
 
 	private void Awake()
 	{
@@ -74,29 +75,37 @@ public class AbilityController : MonoBehaviour, IPausable
     // Update is called once per frame
     void Update()
     {
+        Ability abi;
+
+        // reduce all ability cooldowns
+        for (var i = 0; i < abilities.Length; i++)
+        {
+            abi = abilities[i];
+            abi.ReduceCooldown(Time.deltaTime);
+        }
+
+        // try to activate each ability: only activate the first one that changes state
         for (var i = 0; i < abilities.Length; i++)
 		{
-            var holder = abilities[i];
-            holder.ReduceCooldown(Time.deltaTime); // reduce the cooldown
-
-            // if this ability's button is currently being pressed and the cooldown is over,
-            // use this ability and restart the cooldown
-            if (holder.Button != null && Input.GetButtonDown(holder.Button))
+            abi = abilities[i];
+            if (abi.Activate())
 			{
-                // activate the ability and, if successful, restart the cooldown
-                holder.Activate(entity);
+                //Debug.Log(string.Format("Ability {0} just activated on frame {1}!", i, Time.frameCount));
+                break;
 			}
 		}
     }
 
+    /*
     // manually activate an ability
     public bool ActivateAbility(int abilityIndex)
 	{
         if (abilityIndex >= 0 && abilityIndex < abilities.Length)
 		{
-            return abilities[abilityIndex].Activate(entity);
+            return abilities[abilityIndex].Activate();
 		}
 
         return false;
 	}
+    */
 }
