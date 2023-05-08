@@ -8,6 +8,8 @@ public class Projectile : MonoBehaviour
 	public ProjectileType type;
 	[HideInInspector]
 	public new Rigidbody2D rigidbody;
+	[EnumMask]
+	public Team team;
 
 	public uint Collisions { get; private set; } = 0;
 

@@ -36,36 +36,32 @@ public class ProjectileManager : MonoBehaviour
 	{
 		HashSet<Projectile> toDelete = new();
 		List<Collider2D> colliders = new();
-		HashSet<GameObject> cObjects = new();
-
-		Projectile p2 = null;
+		HashSet<Projectile> cProjectiles = new();
 
 		foreach (Projectile p in instance.projectiles.Where(x => x.type.destroyProjectiles))
 		{
 			if (toDelete.Contains(p)) continue;
 			if (p.rigidbody.OverlapCollider(instance.projectileLayerFilter, colliders) == 0) continue;
 
-			cObjects = new(from c in colliders select c.attachedRigidbody.gameObject);
-			foreach (var o in cObjects)
+			cProjectiles = new(from c in colliders select c.GetComponent<Projectile>());
+			cProjectiles.Remove(p);
+			cProjectiles.Remove(null);
+
+			foreach (Projectile p2 in cProjectiles.Where(x => p.type.entityRelationship.GetRelationship(x.team)))
 			{
-				if (p.gameObject == o) continue;
-				if (!o.TryGetComponent(out p2)) continue;
 				if (toDelete.Contains(p2)) continue;
 
 				p.OnCollide();
 				toDelete.Add(p2);
 
-				if(p2.type.destroyProjectiles)
+				if (p2.type.destroyProjectiles && p2.type.entityRelationship.GetRelationship(p.team))
 				{
 					p2.OnCollide();
-					toDelete.Add(p);
-					break;
 				}
-				else if (p.Collisions >= p.type.maxCollisions)
-				{
-					toDelete.Add(p);
-					break;
-				}
+				else if (p.type.maxCollisions == 0 || p.Collisions < p.type.maxCollisions) continue;
+
+				toDelete.Add(p);
+				break;
 			}
 		}
 
@@ -101,7 +97,7 @@ public class ProjectileManager : MonoBehaviour
 
 				p.OnCollide();
 
-				if (p.Collisions < p.type.maxCollisions) continue;
+				if (p.type.maxCollisions == 0 || p.Collisions < p.type.maxCollisions) continue;
 
 				toDelete.Add(p);
 				break;
@@ -118,9 +114,7 @@ public class ProjectileManager : MonoBehaviour
 
 	private static void CheckEnvironmentCollisions()
 	{
-		Projectile[] toDelete = (from p in instance.projectiles where p.rigidbody.IsTouchingLayers(instance.environmentLayer) select p).ToArray();
-
-		foreach (Projectile p in toDelete)
+		foreach (Projectile p in instance.projectiles.Where(x => x.rigidbody.IsTouchingLayers(instance.environmentLayer)))
 		{
 			Destroy(p.root != null ? p.root : p.gameObject);
 		}
@@ -147,62 +141,46 @@ public class ProjectileManager : MonoBehaviour
 		instance.projectiles.Remove(p);
 	}
 
-	public static bool SpawnProjectile(Vector2 position, Vector2 velocity, ProjectileType type = null, Sprite sprite = null, float scale = 1)
+	public static Projectile SpawnProjectile(Vector2 position, Vector2 velocity, Team team, ProjectileType type = null, Sprite sprite = null, float scale = 1)
 	{
-		if (instance == null) return false;
-		if (instance.projectilePrefab == null) return false;
-
-		float angle = velocity.magnitude > 0 ? Mathf.Atan2(velocity.y, velocity.x) * Mathf.Rad2Deg : 0;
-		Quaternion rot = instance.projectilePrefab.transform.rotation * Quaternion.Euler(0, 0, angle);
-
-		GameObject projectile = Instantiate(instance.projectilePrefab, position, rot, instance.projectileContainer);
-
-		Projectile p;
+		Projectile p = SpawnProjectile(position, velocity, team, instance.projectilePrefab, scale);
 		SpriteRenderer sr;
 
-		if (!projectile.TryGetComponent(out p))
-		{
-			Destroy(projectile);
-			return false;
-		}
+		if (p == null) return null;
 
 		if (type != null) p.type = type;
-		if (sprite != null && projectile.TryGetComponent(out sr)) sr.sprite = sprite;
+		if (sprite != null && p.TryGetComponent(out sr)) sr.sprite = sprite;
 
-		projectile.transform.localScale *= scale;
-		p.rigidbody.velocity = velocity;
-
-		AddProjectile(p);
-
-		return true;
+		return p;
 	}
 
-	public static bool SpawnProjectile(Vector2 position, Vector2 velocity, GameObject projectilePrefab, float scale = 1)
+	public static Projectile SpawnProjectile(Vector2 position, Vector2 velocity, Team team, GameObject projectilePrefab, float scale = 1)
 	{
-		if (instance == null) return false;
+		if (projectilePrefab == null) return null;
 
 		float angle = velocity.magnitude > 0 ? Mathf.Atan2(velocity.y, velocity.x) * Mathf.Rad2Deg : 0;
 		Quaternion rot = projectilePrefab.transform.rotation * Quaternion.Euler(0, 0, angle);
 
-		GameObject projectile = Instantiate(projectilePrefab, position, rot, instance.projectileContainer);
+		GameObject projectile = Instantiate(projectilePrefab, position, rot, instance != null ? instance.projectileContainer : null);
 
 		Projectile p;
 
 		if (!projectile.TryGetComponent(out p))
 		{
 			Destroy(projectile);
-			return false;
+			return null;
 		}
 
 		projectile.transform.localScale *= scale;
 		p.rigidbody.velocity = velocity;
+		p.team = team;
 
 		AddProjectile(p);
 
-		return true;
+		return p;
 	}
 
-	public static int SpawnProjectileBurst(Vector2 position, Vector2 netVelocity, float speed, GameObject projectilePrefab, uint n, float directionRot = 0, float velocityRot = 0, float radius = 0, float scale = 1)
+	public static int SpawnProjectileBurst(Vector2 position, Vector2 netVelocity, float speed, Team team, GameObject projectilePrefab, uint n, float directionRot = 0, float velocityRot = 0, float radius = 0, float scale = 1)
 	{
 		if (n == 0) return 0;
 		if (instance == null) return 0;
@@ -215,12 +193,12 @@ public class ProjectileManager : MonoBehaviour
 			Vector2 direction = Extensions.Deg2Vec(a + directionRot, radius);
 			Vector2 velocity = Extensions.Deg2Vec(a + velocityRot, speed);
 
-			if (SpawnProjectile(position + direction, netVelocity + velocity, projectilePrefab, scale)) c++;
+			if (SpawnProjectile(position + direction, netVelocity + velocity, team, projectilePrefab, scale)) c++;
 		}
 
 		return c;
 	}
-	public static int SpawnProjectileArc(Vector2 position, Vector2 netVelocity, float speed, GameObject projectilePrefab, uint n, Range<float> arcRange, float velocityRot = 0, float radius = 0, float scale = 1)
+	public static int SpawnProjectileArc(Vector2 position, Vector2 netVelocity, float speed, Team team, GameObject projectilePrefab, uint n, Range<float> arcRange, float velocityRot = 0, float radius = 0, float scale = 1)
 	{
 		if (n == 0) return 0;
 		if (instance == null) return 0;
@@ -232,7 +210,7 @@ public class ProjectileManager : MonoBehaviour
 			float a = arcRange.Lerp(0.5f);
 			Vector2 direction = Extensions.Deg2Vec(a, radius);
 			Vector2 velocity = Extensions.Deg2Vec(a + velocityRot, speed);
-			return SpawnProjectile(position + direction, netVelocity + velocity, projectilePrefab, scale) ? 1 : 0;
+			return SpawnProjectile(position + direction, netVelocity + velocity, team, projectilePrefab, scale) ? 1 : 0;
 		}
 
 		for (int i = 0; i < n; i++)
@@ -241,15 +219,15 @@ public class ProjectileManager : MonoBehaviour
 			Vector2 direction = Extensions.Deg2Vec(a, radius);
 			Vector2 velocity = Extensions.Deg2Vec(a + velocityRot, speed);
 
-			if (SpawnProjectile(position + direction, netVelocity + velocity, projectilePrefab, scale)) c++;
+			if (SpawnProjectile(position + direction, netVelocity + velocity, team, projectilePrefab, scale)) c++;
 		}
 
 		return c;
 	}
 
-	public static int SpawnProjectileArc(Vector2 position, Vector2 netVelocity, float speed, GameObject projectilePrefab, uint n, float arcAngle, float directionRot, float velocityRot = 0, float radius = 0, float scale = 1)
+	public static int SpawnProjectileArc(Vector2 position, Vector2 netVelocity, float speed, Team team, GameObject projectilePrefab, uint n, float arcAngle, float directionRot, float velocityRot = 0, float radius = 0, float scale = 1)
 	{
 		Range<float> arcRange = new(directionRot - arcAngle / 2f, directionRot + arcAngle / 2f);
-		return SpawnProjectileArc(position, netVelocity, speed, projectilePrefab, n, arcRange, velocityRot, radius, scale);
+		return SpawnProjectileArc(position, netVelocity, speed, team, projectilePrefab, n, arcRange, velocityRot, radius, scale);
 	}
 }

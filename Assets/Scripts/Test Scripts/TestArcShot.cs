@@ -6,6 +6,7 @@ public class TestArcShot : MonoBehaviour
 {
 	public Vector2 netVelocity;
 	public float speed;
+	[EnumMask] public Team team;
 	public float arcAngle;
 	public float directionAngle = 0;
 	public float velocityRotation = 0;
@@ -18,7 +19,7 @@ public class TestArcShot : MonoBehaviour
 	{
 		if (Input.GetKeyDown(button))
 		{
-			ProjectileManager.SpawnProjectileArc(transform.position, netVelocity, speed, projectilePrefab, n, arcAngle, directionAngle, velocityRotation, radius);
+			ProjectileManager.SpawnProjectileArc(transform.position, netVelocity, speed, team, projectilePrefab, n, arcAngle, directionAngle, velocityRotation, radius);
 		}
 	}
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class TestSingleShot : MonoBehaviour
 {
 	public Vector2 velocity;
+	[EnumMask] public Team team;
 	public GameObject projectilePrefab;
 	public KeyCode button;
 
@@ -12,7 +13,7 @@ public class TestSingleShot : MonoBehaviour
 	{
 		if(Input.GetKeyDown(button))
 		{
-			ProjectileManager.SpawnProjectile(transform.position, velocity, projectilePrefab);
+			ProjectileManager.SpawnProjectile(transform.position, velocity, team, projectilePrefab);
 		}
 	}
 }

@@ -8,8 +8,8 @@ public class ProjectileType : ScriptableObject
 	public float damage;
 	[Min(0),Tooltip("Set to 0 for infinite lifetime")]
 	public float lifetime = 0;
-	[Min(1)]
-	public uint maxCollisions = 1;
+	[Min(0), Tooltip("Set to 0 for infinite collisions")]
+	public uint maxCollisions = 0;
 	public bool destroyProjectiles = false;
 	[Space]
 	public TeamRelationship entityRelationship;

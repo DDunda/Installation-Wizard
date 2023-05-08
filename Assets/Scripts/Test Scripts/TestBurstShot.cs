@@ -6,6 +6,7 @@ public class TestBurstShot : MonoBehaviour
 {
 	public Vector2 netVelocity;
 	public float speed;
+	[EnumMask] public Team team;
 	public float directionRotation = 0;
 	public float velocityRotation = 0;
 	public uint n = 5;
@@ -17,7 +18,7 @@ public class TestBurstShot : MonoBehaviour
 	{
 		if (Input.GetKeyDown(button))
 		{
-			ProjectileManager.SpawnProjectileBurst(transform.position, netVelocity, speed, projectilePrefab, n, directionRotation, velocityRotation, radius);
+			ProjectileManager.SpawnProjectileBurst(transform.position, netVelocity, speed, team,projectilePrefab, n, directionRotation, velocityRotation, radius);
 		}
 	}
 }

@@ -186,6 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: -10}
+  team: 1
   projectilePrefab: {fileID: 3607278727637472301, guid: b7a3294d6ab851e418c079990ddb8158, type: 3}
   button: 49
 --- !u!4 &507408932
@@ -217,6 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   netVelocity: {x: 0, y: 0}
   speed: 10
+  team: 1
   arcAngle: 60
   directionAngle: -90
   velocityRotation: 0
@@ -238,9 +240,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   netVelocity: {x: 0, y: 0}
   speed: 10
+  team: 1
   directionRotation: 0
   velocityRotation: 160
-  n: 20
+  n: 25
   radius: 2
   projectilePrefab: {fileID: 3607278727637472301, guid: b7a3294d6ab851e418c079990ddb8158, type: 3}
   button: 51
@@ -253,7 +256,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 738257685}
-  - component: {fileID: 738257684}
+  - component: {fileID: 738257686}
   - component: {fileID: 738257683}
   - component: {fileID: 738257682}
   - component: {fileID: 738257681}
@@ -367,28 +370,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teams: 4
---- !u!114 &738257684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 738257679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb41e359fa523594cb11aef5ee1d4d68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  healthMax: 100
-  destroyOnDeath: 1
-  destroyDelay: 0
-  onDamage:
-    m_PersistentCalls:
-      m_Calls: []
-  onDeath:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &738257685
 Transform:
   m_ObjectHideFlags: 0
@@ -404,6 +385,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &738257686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738257679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f45474290d0e42a4e9042dd171e5972b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  healthMax: 100
+  destroyOnDeath: 1
+  destroyDelay: 0
+  onDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  iTime: 0
+  iDamageTime: 1
+  invincible: 0
 --- !u!1 &954265802
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,7 +503,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 977143382}
-  - component: {fileID: 977143381}
+  - component: {fileID: 977143383}
   - component: {fileID: 977143380}
   - component: {fileID: 977143379}
   - component: {fileID: 977143378}
@@ -611,28 +617,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teams: 4
---- !u!114 &977143381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 977143376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb41e359fa523594cb11aef5ee1d4d68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  healthMax: 100
-  destroyOnDeath: 1
-  destroyDelay: 0
-  onDamage:
-    m_PersistentCalls:
-      m_Calls: []
-  onDeath:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!4 &977143382
 Transform:
   m_ObjectHideFlags: 0
@@ -648,6 +632,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &977143383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977143376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f45474290d0e42a4e9042dd171e5972b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  healthMax: 100
+  destroyOnDeath: 1
+  destroyDelay: 0
+  onDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  iTime: 0
+  iDamageTime: 1
+  invincible: 0
 --- !u!1 &1528581271
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,7 +804,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1528581271}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb41e359fa523594cb11aef5ee1d4d68, type: 3}
+  m_Script: {fileID: 11500000, guid: f45474290d0e42a4e9042dd171e5972b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
@@ -808,6 +817,9 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
+  iTime: 0
+  iDamageTime: 1
+  invincible: 0
 --- !u!1 &1755565135
 GameObject:
   m_ObjectHideFlags: 0
