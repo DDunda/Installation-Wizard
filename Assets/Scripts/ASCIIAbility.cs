@@ -10,7 +10,7 @@ public class ASCIIAbility : Ability
 	[SerializeField]
 	private GameObject projectilePrefab; // the projectile to fire
 	[SerializeField]
-	private GameObject trailText; // the text to modify
+	private GameObject trailText; // the text field to modify
 	[SerializeField]
 	private float textTimerMax = 0.2f; // every n seconds, change the text in projectile trails
 	private float textTimer;
