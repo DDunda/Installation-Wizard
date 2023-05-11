@@ -342,6 +342,6 @@ public class ProjectileManager : MonoBehaviour, IPausable
 	public static Projectile[] SpawnProjectileArc(Vector2 position, float rotation, Vector2 netVelocity, float speed, float angularSpeed, Team team, GameObject projectilePrefab, uint n, float arcAngle, float directionRot, float velocityRot = 0, float radius = 0, float scale = 1)
 	{
 		Range<float> arcRange = new(directionRot - arcAngle / 2f, directionRot + arcAngle / 2f);
-		return SpawnProjectileArc(position, rotation, netVelocity, angularSpeed, speed, team, projectilePrefab, n, arcRange, velocityRot, radius, scale);
+		return SpawnProjectileArc(position, rotation, netVelocity, speed, angularSpeed, team, projectilePrefab, n, arcRange, velocityRot, radius, scale);
 	}
 }

@@ -222,8 +222,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   netVelocity: {x: 0, y: 0}
   speed:
-    min: 0
-    max: 0
+    min: 10
+    max: 10
   team: 1
   arcAngle: 60
   directionAngle: -90
@@ -246,8 +246,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   netVelocity: {x: 0, y: 0}
   speed:
-    min: 0
-    max: 0
+    min: 10
+    max: 10
   team: 1
   directionRotation:
     min: 0
@@ -259,13 +259,15 @@ MonoBehaviour:
     min: 0
     max: 0
   n:
-    min: 5
-    max: 5
+    min: 20
+    max: 20
   radius:
     min: 0
     max: 0
   projectilePrefab:
-    entries: []
+    entries:
+    - weight: 1
+      item: {fileID: 3607278727637472301, guid: b7a3294d6ab851e418c079990ddb8158, type: 3}
   button: 51
 --- !u!114 &507408935
 MonoBehaviour:
