@@ -21,4 +21,4 @@ MonoBehaviour:
   maxCollisions: 1
   destroyProjectiles: 0
   entityRelationship: {fileID: 11400000, guid: a026e6f26bff68245942658ba9962b02, type: 2}
-  knockback: 0
+  bounceMaterial: {fileID: 6200000, guid: 4750febfc0a8cc8488317c075c7ec30a, type: 2}
