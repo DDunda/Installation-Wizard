@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 134862249}
   - component: {fileID: 134862248}
   - component: {fileID: 134862247}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -337,7 +337,7 @@ GameObject:
   m_Component:
   - component: {fileID: 166615934}
   - component: {fileID: 166615935}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: PlayerSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -553,7 +553,7 @@ GameObject:
   - component: {fileID: 685517693}
   - component: {fileID: 685517692}
   - component: {fileID: 685517691}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -664,7 +664,7 @@ GameObject:
   - component: {fileID: 794697880}
   - component: {fileID: 794697879}
   - component: {fileID: 794697878}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
