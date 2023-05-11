@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 6507520375657196968}
   - component: {fileID: 5454267637277259617}
   - component: {fileID: 5261365150734073005}
+  - component: {fileID: -6771485271307795167}
   m_Layer: 9
   m_Name: BaseEnemy 3
   m_TagString: Enemy
@@ -239,3 +240,15 @@ MonoBehaviour:
     m_Bits: 512
   maxForce: 3
   maxDistance: 2
+--- !u!114 &-6771485271307795167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4793477065093700143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f16b5cfd62fb84dacc395a34f93ab7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
