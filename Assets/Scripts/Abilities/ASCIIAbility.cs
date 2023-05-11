@@ -37,13 +37,8 @@ public class ASCIIAbility : Ability
 			direction.Normalize();
 			var angle = direction.Angle();
 
-			// find velocity of parent, if possible
-			Vector2 v = Vector2.zero;
-			Rigidbody2D rb;
-			if (entity.TryGetComponent(out rb)) v = rb.velocity;
-
-			// add initial velocity of projectile
-			v += Extensions.Deg2Vec(angle, projectileSpeed);
+			// define initial velocity (don't factor in parent's movement)
+			Vector2 v = Extensions.Deg2Vec(angle, projectileSpeed);
 
 			// find team of parent, if possible
 			EntityTeams et;

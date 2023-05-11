@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 4793477065093700142}
   - component: {fileID: -1311911483242688383}
   - component: {fileID: 2618787576467864921}
+  - component: {fileID: -5045441907894100229}
+  - component: {fileID: 720290916399776445}
   m_Layer: 9
   m_Name: BaseEnemy 2
   m_TagString: Enemy
@@ -221,3 +223,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teams: 4
+--- !u!114 &-5045441907894100229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4793477065093700143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b88ea7d556c525740a27a7d41f2eab55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layer:
+    serializedVersion: 2
+    m_Bits: 512
+  maxForce: 3
+  maxDistance: 2
+--- !u!114 &720290916399776445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4793477065093700143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f16b5cfd62fb84dacc395a34f93ab7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

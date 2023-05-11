@@ -8,6 +8,7 @@ public class iFrameHealth : EntityHealth, IPausable
 	[SerializeField,Tooltip("Overrides iframes")] private bool invincible = false;
 
 	protected override bool canTakeDamage { get => !invincible && iTime == 0; }
+	protected override bool canTakeDamageContinuous { get => !invincible; }
 
 	private void Awake()
 	{

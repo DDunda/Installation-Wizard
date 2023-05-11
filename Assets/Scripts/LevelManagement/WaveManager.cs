@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build.Content;
 using UnityEngine;
 
 public class WaveManager : MonoBehaviour
@@ -20,15 +21,18 @@ public class WaveManager : MonoBehaviour
     private bool canSpawn = true;
 
     //This value should be adjusted when an enemy is killed
+    private EnemyCounter enemyCounter;
     public int enemiesRemaining;
 
     private void Start()
     {
         StartNewWave();
+        enemyCounter = GameObject.Find("GameManager").GetComponent<EnemyCounter>();
     }
 
     public void Update()
     {
+        enemiesRemaining = EnemyCounter.count;
         if (spawnIndex < endWave)
         {
             if (canSpawn)
