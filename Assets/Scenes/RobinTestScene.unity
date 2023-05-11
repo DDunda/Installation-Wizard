@@ -345,8 +345,8 @@ MonoBehaviour:
   button: 324
   deadzone: 0.1
   speed:
-    min: 10
-    max: 10
+    min: 13
+    max: 13
   projectilePrefab: {fileID: 3607278727637472301, guid: 9cf5f27e4ee08a345a1f4bcfe957e325, type: 3}
   n:
     min: 1

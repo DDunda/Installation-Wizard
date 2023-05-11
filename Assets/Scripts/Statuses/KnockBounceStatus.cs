@@ -29,6 +29,12 @@ public class KnockBounceStatus : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // disable the enemy's ability to do anything
+        // (this is done every frame, which is inefficient, but works)
+        enemy.canMove = false;
+        enemy.canAttack = false;
+
+
         // destroy this script once time has elapsed
         length -= Time.deltaTime;
         if (length <= 0) 
@@ -39,21 +45,13 @@ public class KnockBounceStatus : MonoBehaviour
         }
     }
 
-    public void OnCollide(GameObject other)
-	{
-		length = 0.2f;
-        if(other.layer == 7)
-        {
-            length = 0.2f;
-        }
-	}
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        length = 0.2f;
         if(collision.transform.gameObject.layer == 7)
         {
+            //this.gameObject.GetComponent<Rigidbody2D>().drag = drag;
             length = 0.2f;
         }
     }
 }
+
