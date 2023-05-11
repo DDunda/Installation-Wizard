@@ -14,7 +14,9 @@ GameObject:
   - component: {fileID: 4793477065093700144}
   - component: {fileID: 4793477065093700145}
   - component: {fileID: 4793477065093700142}
-  m_Layer: 2
+  - component: {fileID: 6158388956877356527}
+  - component: {fileID: 6767773848816243042}
+  m_Layer: 9
   m_Name: BaseEnemy 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -181,3 +183,41 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   nextWaypointDistance: 3
+--- !u!114 &6158388956877356527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4793477065093700143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f45474290d0e42a4e9042dd171e5972b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  healthMax: 100
+  destroyOnDeath: 1
+  destroyDelay: 0
+  onDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  iTime: 0
+  iDamageTime: 0
+  invincible: 0
+--- !u!114 &6767773848816243042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4793477065093700143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab2b509198d9c43ae35687222f3bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teams: 4
