@@ -11,24 +11,24 @@ public class BaseEnemy : MonoBehaviour
 
     //Player Information
     private Transform player;
-    private Vector3 playerPosition;
-    private Vector2 directionToPlayer;
-    private Vector3 lastSeenPosition;
+    protected Vector3 playerPosition;
+    protected Vector2 directionToPlayer;
+    protected Vector3 lastSeenPosition;
 
     //Object States Declaration
-    private bool playerInLOS = false;
-    private bool canAttack = true;
-    private bool canMove = false;
+    protected bool playerInLOS = false;
+    protected bool canAttack = true;
+    protected bool canMove = false;
 
     //Enemy Values
-    [SerializeField] private float fireRate;
-    [SerializeField] private float moveSpeed;
+    [SerializeField] protected float fireRate;
+    [SerializeField] protected float moveSpeed;
 
     [SerializeField] private LayerMask barrierLayer;
 
     //Pathfinding Variables
-    private Path currentPath;
-    private int currentWaypoint = 0;
+    protected Path currentPath;
+    protected int currentWaypoint = 0;
     [SerializeField] float nextWaypointDistance;
 
     Seeker seeker;
@@ -84,7 +84,7 @@ public class BaseEnemy : MonoBehaviour
     }
 
     //Fires a projectile at the player if the player is in line of sight.
-    public IEnumerator Attack()
+    public virtual IEnumerator Attack()
     {
         canAttack = false;
         Debug.Log("Pew");
