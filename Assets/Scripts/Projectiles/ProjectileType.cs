@@ -13,6 +13,6 @@ public class ProjectileType : ScriptableObject
 	[Space]
 	public TeamRelationship entityRelationship;
 
-	public virtual void OnCollide(Projectile p) { }
+	public virtual void OnCollide(Projectile p, GameObject other) { }
 	public virtual void OnDestroyProjectile(Projectile p) { }
 }

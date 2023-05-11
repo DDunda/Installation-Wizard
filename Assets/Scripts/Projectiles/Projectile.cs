@@ -31,9 +31,9 @@ public class Projectile : MonoBehaviour
 		type.OnDestroyProjectile(this);
 	}
 
-	public void OnCollide()
+	public void OnCollide(GameObject other)
 	{
 		Collisions++;
-		type.OnCollide(this);
+		type.OnCollide(this, other);
 	}
 }

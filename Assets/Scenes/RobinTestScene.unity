@@ -171,7 +171,8 @@ GameObject:
   - component: {fileID: 134862249}
   - component: {fileID: 134862248}
   - component: {fileID: 134862247}
-  m_Layer: 11
+  - component: {fileID: 134862250}
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -271,7 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownMax: 3
-  button: 324
+  button: 325
   style: {fileID: 11400000, guid: dc9afb573d5895f4aa2961a150afbe3a, type: 2}
   deadzone: 0.1
   speed:
@@ -327,6 +328,41 @@ MonoBehaviour:
   abilities:
   - {fileID: 134862248}
   - {fileID: 134862247}
+  - {fileID: 134862250}
+--- !u!114 &134862250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134862242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38dad36e4daefbb478edd37c984ae9aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldownMax: 1
+  button: 324
+  deadzone: 0.1
+  speed:
+    min: 10
+    max: 10
+  projectilePrefab: {fileID: 3607278727637472301, guid: 9cf5f27e4ee08a345a1f4bcfe957e325, type: 3}
+  n:
+    min: 1
+    max: 1
+  spreadAngle: 0
+  directionRandomness: 0
+  fireRadius: 0.1
+  randomScale:
+    min: 1
+    max: 1
+  randomRotation:
+    min: 0
+    max: 0
+  randomAngularSpeed:
+    min: 0
+    max: 0
 --- !u!1 &166615933
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,7 +373,7 @@ GameObject:
   m_Component:
   - component: {fileID: 166615934}
   - component: {fileID: 166615935}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: PlayerSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -553,7 +589,7 @@ GameObject:
   - component: {fileID: 685517693}
   - component: {fileID: 685517692}
   - component: {fileID: 685517691}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -664,7 +700,7 @@ GameObject:
   - component: {fileID: 794697880}
   - component: {fileID: 794697879}
   - component: {fileID: 794697878}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
