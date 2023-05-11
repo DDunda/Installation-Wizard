@@ -17,8 +17,8 @@ public class BaseEnemy : MonoBehaviour
 
     //Object States Declaration
     protected bool playerInLOS = false;
-    protected bool canAttack = true;
-    protected bool canMove = false;
+    public bool canAttack = true;
+    public bool canMove = false;
 
     //Enemy Values
     [SerializeField] protected float fireRate;

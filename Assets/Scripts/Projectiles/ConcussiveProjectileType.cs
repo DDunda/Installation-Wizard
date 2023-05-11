@@ -9,7 +9,8 @@ public class ConcussiveProjectileType : ProjectileType
 
 	public override void OnCollide(Projectile p, GameObject other)
     {
-
+        var stun = other.AddComponent<StunStatus>();
+        stun.Enemy = other.GetComponent<BaseEnemy>();
     }
 	public override void OnDestroyProjectile(Projectile p)
     {
