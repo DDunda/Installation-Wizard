@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   root: {fileID: 3607278727637472301}
-  type: {fileID: 11400000, guid: e12a684438a1eb14c9a1a3f981aa8eec, type: 2}
+  type: {fileID: 11400000, guid: bf1f64b9ee28cc541acc3683bc900ffb, type: 2}
   rigidbody: {fileID: 3607278727637472300}
   team: 1
 --- !u!58 &3607278727637472303
