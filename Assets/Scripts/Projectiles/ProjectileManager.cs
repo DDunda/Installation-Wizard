@@ -68,12 +68,12 @@ public class ProjectileManager : MonoBehaviour, IPausable
 			{
 				if (toDelete.Contains(p2)) continue;
 
-				p.OnCollide();
+				p.OnCollide(p2.gameObject);
 				toDelete.Add(p2);
 
 				if (p2.type.destroyProjectiles && p2.type.entityRelationship.GetRelationship(p.team))
 				{
-					p2.OnCollide();
+					p2.OnCollide(p.gameObject);
 				}
 				else if (p.type.maxCollisions == 0 || p.Collisions < p.type.maxCollisions) continue;
 
@@ -112,7 +112,7 @@ public class ProjectileManager : MonoBehaviour, IPausable
 				if (!p.type.entityRelationship.GetRelationship(mask)) continue;
 				if (!(o.TryGetComponent(out h) && h.ChangeHealth(-p.type.damage.Random()))) continue;
 
-				p.OnCollide();
+				p.OnCollide(o.gameObject);
 
 				if (p.type.maxCollisions == 0 || p.Collisions < p.type.maxCollisions) continue;
 
