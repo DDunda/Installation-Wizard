@@ -16,7 +16,7 @@ public class ByteEnemy : BaseEnemy
         canMove = true;
 	}
 
-	private void Update()
+	protected override void Update()
 	{
         //Update the player's position as they move
         GetPlayerLocation();

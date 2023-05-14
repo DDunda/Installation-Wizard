@@ -2,6 +2,60 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[System.Serializable]
+public class ProjectileBurst
+{
+	public Range<float> projectileRotation; // Degrees
+	public Range<float> projectileScale;
+	[Space]
+	public Range<float> speed; // The speed by which projectiles fire away from the center (positive: away from center, negative: toward center)
+	public Range<float> velocityRotation; // By default projectiles fire away from the center, this rotates away from that direction (degrees)
+	public Range<float> angularSpeed;
+	[Space]
+	public Range<float> radius; // The size of the spawning circle (may be negative)
+	public Range<float> directionRotation; // Rotates the whole circle of projectiles (degrees)
+	public Range<float> directionRandomness; // Determines how the projectiles are spawned along the circle (0: Evenly, 1: Randomly)
+	[Space]
+	public WeightedArray<GameObject> projectilePrefabs; // Projectile(s) that may be spawned
+	public Range<uint> projectileCount;
+
+	public ProjectileBurst()
+	{
+		projectileRotation = 0;
+		projectileScale = 1;
+
+		speed = 1;
+		velocityRotation = 0;
+		angularSpeed = 0;
+
+		radius = 1;
+		directionRotation = 0;
+		directionRandomness = 0;
+
+		projectilePrefabs = new();
+		projectileCount = 16;
+	}
+
+	public void Spawn(Vector2 position, Vector2 netVelocity, Team team = 0)
+	{
+		ProjectileManager.SpawnProjectileRandomBurst(
+			position,
+			projectileRotation,
+			netVelocity,
+			speed,
+			angularSpeed,
+			team,
+			projectilePrefabs,
+			projectileCount,
+			directionRotation,
+			velocityRotation,
+			directionRandomness,
+			radius,
+			projectileScale
+		);
+	}
+}
+
 [RequireComponent(typeof(PhysicsPauser))]
 public class ProjectileManager : MonoBehaviour, IPausable
 {
