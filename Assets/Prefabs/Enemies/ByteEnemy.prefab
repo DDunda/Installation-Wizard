@@ -12,9 +12,12 @@ GameObject:
   - component: {fileID: 8705233199434721135}
   - component: {fileID: 8705233199434721134}
   - component: {fileID: 8705233199434721133}
+  - component: {fileID: 7725472627365346323}
+  - component: {fileID: 3437949771350444887}
   - component: {fileID: 2411618917793335555}
   - component: {fileID: 8705233199434721132}
   - component: {fileID: -1802097205483867197}
+  - component: {fileID: -4747704682699296387}
   - component: {fileID: -4029306907784127457}
   - component: {fileID: -5805242471538370764}
   m_Layer: 9
@@ -138,6 +141,44 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.2}
   m_EdgeRadius: 0.4
+--- !u!114 &7725472627365346323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8705233199434721138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f45474290d0e42a4e9042dd171e5972b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  healthMax: 100
+  destroyOnDeath: 1
+  destroyDelay: 0
+  onDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  iTime: 0.2
+  iDamageTime: 0
+  invincible: 0
+--- !u!114 &3437949771350444887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8705233199434721138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ab2b509198d9c43ae35687222f3bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teams: 4
 --- !u!114 &2411618917793335555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,6 +191,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f097080ee02ce9d419495e3cd5f8ec0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canAttack: 1
+  canMove: 0
   fireRate: 2
   moveSpeed: 200
   barrierLayer:
@@ -204,6 +247,18 @@ MonoBehaviour:
     m_Bits: 512
   maxForce: 3
   maxDistance: 2
+--- !u!114 &-4747704682699296387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8705233199434721138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f16b5cfd62fb84dacc395a34f93ab7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-4029306907784127457
 MonoBehaviour:
   m_ObjectHideFlags: 0
