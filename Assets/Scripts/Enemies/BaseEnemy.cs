@@ -89,7 +89,7 @@ public class BaseEnemy : MonoBehaviour
         canAttack = false;
         Debug.Log("Pew");
         //Create instance of enemy projectile
-        yield return new WaitForSeconds(fireRate);
+        yield return new WaitWithPause(fireRate);
         canAttack = true;
     }
 

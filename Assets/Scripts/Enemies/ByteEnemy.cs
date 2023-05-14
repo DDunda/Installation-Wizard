@@ -64,7 +64,7 @@ public class ByteEnemy : BaseEnemy
             projectilePrefab);
 
         // wait amount of seconds before firing again
-        yield return new WaitForSeconds(fireRate);
+        yield return new WaitWithPause(fireRate);
         canAttack = true;
     }
 }
