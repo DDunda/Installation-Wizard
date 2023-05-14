@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Concussive Projectile", menuName = "Concussive Projectile Type", order = 1)]
+[CreateAssetMenu(fileName = "Concussive Projectile", menuName = "Projectile Type/Concussive", order = 1)]
 public class ConcussiveProjectileType : ProjectileType
 {
     public PhysicsMaterial2D bounceMaterial;

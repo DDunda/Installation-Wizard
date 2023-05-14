@@ -43,7 +43,7 @@ public class ASCIIAbility : Ability
 			// find team of parent, if possible
 			EntityTeams et;
 			Team t = 0;
-			if (entity.TryGetComponent(out et)) t = et.Teams;
+			if (entity.TryGetComponent(out et)) t = et.teams;
 
 			ProjectileManager.SpawnProjectile(
 				entity.position, 

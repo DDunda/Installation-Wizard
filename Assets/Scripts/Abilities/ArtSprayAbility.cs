@@ -22,11 +22,11 @@ public class ArtSprayAbility : Ability
 
 	public SortingLayer projectileSortingLayer;
 
-	private WeightedArray<GameObject> projectileArray = new();
+	private WeightedArray<GameObject> projectileArray;
 
 	public void Awake()
 	{
-		projectileArray.AddEntry(1, projectilePrefab);
+		projectileArray = new(projectilePrefab);
 	}
 
 	public override bool Activate()
@@ -48,7 +48,7 @@ public class ArtSprayAbility : Ability
 
 			EntityTeams et;
 			Team t = 0;
-			if (entity.TryGetComponent(out et)) t = et.Teams;
+			if (entity.TryGetComponent(out et)) t = et.teams;
 
 			var projectiles = ProjectileManager.SpawnProjectileRandomArc(
 				entity.position,

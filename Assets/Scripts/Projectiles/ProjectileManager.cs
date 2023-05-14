@@ -107,7 +107,7 @@ public class ProjectileManager : MonoBehaviour, IPausable
 			foreach (var o in cObjects)
 			{
 				t = o.GetComponent<EntityTeams>();
-				mask = t != null ? t.Teams : 0;
+				mask = t != null ? t.teams : 0;
 
 				if (!p.type.entityRelationship.GetRelationship(mask)) continue;
 				if (!(o.TryGetComponent(out h) && h.ChangeHealth(-p.type.damage.Random()))) continue;
@@ -216,33 +216,7 @@ public class ProjectileManager : MonoBehaviour, IPausable
 	}
 
 	public static Projectile SpawnProjectileRandom(Vector2 position, Range<float> rotation, Vector2 velocity, Range<float> angularSpeed, Team team, WeightedArray<GameObject> projectilePrefabs, Range<float> scale)
-	{
-		GameObject prefab = projectilePrefabs.GetRandom();
-
-		if (prefab == null) return null;
-
-		float angle = velocity.magnitude > 0 ? Mathf.Atan2(velocity.y, velocity.x) * Mathf.Rad2Deg : 0;
-		Quaternion rot = prefab.transform.rotation * Quaternion.Euler(0, 0, angle + rotation.Random());
-
-		GameObject projectile = Instantiate(prefab, position, rot, instance != null ? instance.projectileContainer : null);
-
-		Projectile p;
-
-		if (!projectile.TryGetComponent(out p))
-		{
-			Destroy(projectile);
-			return null;
-		}
-
-		projectile.transform.localScale *= scale.Random();
-		p.rigidbody.velocity = velocity;
-		p.rigidbody.angularVelocity = angularSpeed.Random();
-		p.team = team;
-
-		AddProjectile(p);
-
-		return p;
-	}
+		=> SpawnProjectile(position, rotation.Random(), velocity, angularSpeed.Random(), team, projectilePrefabs.GetRandom(), scale.Random());
 
 	public static Projectile[] SpawnProjectileBurst(Vector2 position, float rotation, Vector2 netVelocity, float speed, float angularSpeed, Team team, GameObject projectilePrefab, uint n, float directionRot = 0, float velocityRot = 0, float radius = 0, float scale = 1)
 	{

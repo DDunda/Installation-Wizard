@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0209eab9b4a77934d97f90080c9e749c, type: 3}
+  m_Name: Bomb projectile
+  m_EditorClassIdentifier: 
+  damage:
+    min: 0
+    max: 0
+  lifetime:
+    min: 0.5
+    max: 0.5
+  maxCollisions: 0
+  destroyProjectiles: 0
+  entityRelationship: {fileID: 11400000, guid: 3f482c3cc59278b459c0cf182eeee4c2, type: 2}
+  inheritVelocity: 0
+  inheritTeam: 0
+  onCreateSounds:
+    entries: []
+  onCreateSpawn: []
+  onCreateSpawnRandom:
+    entries: []
+  onCreateSpawnN: 0
+  onCreateSpawnUnique: 0
+  onHitSounds:
+    entries: []
+  onHitSpawn: []
+  onHitSpawnRandom:
+    entries: []
+  onHitSpawnN: 0
+  onHitSpawnUnique: 0
+  onDestroySounds:
+    entries: []
+  onDestroySpawn:
+  - {fileID: 8979115270589938233, guid: 8bed331e1c9032e419af1e39d0c8ebbf, type: 3}
+  onDestroySpawnRandom:
+    entries: []
+  onDestroySpawnN: 0
+  onDestroySpawnUnique: 0

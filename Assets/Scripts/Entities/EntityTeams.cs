@@ -6,7 +6,5 @@ public class EntityTeams : MonoBehaviour
 {
 	[SerializeField]
 	[EnumMask]
-	private Team teams;
-
-	public Team Teams { get => teams; }
+	public Team teams;
 }

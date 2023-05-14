@@ -30,7 +30,7 @@ public abstract class EffectArea : MonoBehaviour
 		float delta = Time.fixedDeltaTime;
 		foreach (var o in objects)
 		{
-			if (!o.TryGetComponent(out t) || !targets.GetRelationship(t.Teams)) continue;
+			if (!o.TryGetComponent(out t) || !targets.GetRelationship(t.teams)) continue;
 			DoEffect(o, delta);
 		}
 	}

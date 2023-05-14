@@ -44,4 +44,23 @@ public static class Extensions
 		Vector3 p = cam.ScreenToWorldPoint(Input.mousePosition);
 		return new(p.x, p.y);
 	}
+
+	public static T[] Shuffled<T>(this T[] arr)
+	{
+		T[] _arr = (T[])arr.Clone();
+		_arr.Shuffle();
+		return _arr;
+	}
+
+	public static void Shuffle<T>(this T[] arr)
+	{
+		int n = arr.Length;
+		while (n > 1)
+		{
+			int k = UnityEngine.Random.Range(0, n--);
+			T temp = arr[n];
+			arr[n] = arr[k];
+			arr[k] = temp;
+		}
+	}
 }
