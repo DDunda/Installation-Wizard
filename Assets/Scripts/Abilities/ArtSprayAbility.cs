@@ -20,7 +20,7 @@ public class ArtSprayAbility : Ability
 	public Range<float> randomRotation = 0;
 	public Range<float> randomAngularSpeed = 0;
 
-	public SortingLayer projectileSortingLayer;
+	public string projectileSortingLayer;
 
 	private WeightedArray<GameObject> projectileArray;
 

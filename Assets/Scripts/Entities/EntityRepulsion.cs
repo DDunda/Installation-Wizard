@@ -19,7 +19,7 @@ public class EntityRepulsion : MonoBehaviour
 
     private void Update()
     {
-        List<RaycastHit2D> hits = new(Physics2D.CircleCastAll(transform.position, maxDistance, Vector2.zero, layer));
+        List<RaycastHit2D> hits = new(Physics2D.CircleCastAll(transform.position, maxDistance, Vector2.zero, 0, layer));
 
         hits.RemoveAll(c => c.rigidbody == rigidBody);
 

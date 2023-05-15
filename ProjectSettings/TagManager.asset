@@ -46,9 +46,9 @@ TagManager:
   - name: Ground
     uniqueID: 1967249137
     locked: 0
-  - name: Projectiles
-    uniqueID: 325782809
-    locked: 0
   - name: Entities
     uniqueID: 1492275567
+    locked: 0
+  - name: Projectiles
+    uniqueID: 325782809
     locked: 0
