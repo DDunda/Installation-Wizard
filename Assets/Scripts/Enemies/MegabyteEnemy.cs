@@ -7,6 +7,7 @@ public class MegabyteEnemy : BaseEnemy
 {
 	[Header("Projectile ring")]
 	[SerializeField] protected float stopDistance = 5f;
+	[SerializeField] protected float maxAttackRange = 10f;
 	[SerializeField] protected ProjectileBurst burstSettings = new();
 
 	[Header("Bit spawning")]
@@ -33,11 +34,11 @@ public class MegabyteEnemy : BaseEnemy
 
 		if (canSpawn && bitsToSpawn > 0 && (maximumBits == 0 || _nBits < maximumBits)) StartCoroutine(SpawnBits());
 
-		if (playerInLOS && directionToPlayer.magnitude <= stopDistance)
+		if (playerInLOS && maxAttackRange == -1 || directionToPlayer.magnitude <= maxAttackRange)
 		{
 			if (canAttack) StartCoroutine(Attack());
 		}
-		else
+		if (!playerInLOS || directionToPlayer.magnitude >= stopDistance)
 		{
 			if (canMove) Move();
 		}

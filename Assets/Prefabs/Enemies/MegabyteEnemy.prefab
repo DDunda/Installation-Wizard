@@ -162,6 +162,7 @@ MonoBehaviour:
     m_Bits: 128
   nextWaypointDistance: 3
   stopDistance: 2
+  maxAttackRange: 20
   burstSettings:
     projectileRotation:
       min: 0
@@ -170,8 +171,8 @@ MonoBehaviour:
       min: 1
       max: 1
     speed:
-      min: 1
-      max: 1
+      min: 10
+      max: 10
     velocityRotation:
       min: 0
       max: 0
@@ -188,7 +189,9 @@ MonoBehaviour:
       min: 0
       max: 0
     projectilePrefabs:
-      entries: []
+      entries:
+      - weight: 1
+        item: {fileID: 3607278727637472301, guid: d37cfd0bc0b905043b3647f14ed38ca7, type: 3}
     projectileCount:
       min: 16
       max: 16
