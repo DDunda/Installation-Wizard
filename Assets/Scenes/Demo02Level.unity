@@ -272,17 +272,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bcd2af89f1e11149865abbf0ec5b102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownMax: 3
+  cooldownMax: 0.1
   button: 324
   style: {fileID: 11400000, guid: dc9afb573d5895f4aa2961a150afbe3a, type: 2}
   deadzone: 0.1
   speed:
-    min: 5
-    max: 5
+    min: 50
+    max: 50
   projectilePrefab: {fileID: 5318035973014089012, guid: 6e58c76f7aa7b8e4899da41d45f4d6d4, type: 3}
   n:
-    min: 5
-    max: 5
+    min: 50
+    max: 50
   spreadAngle: 30
   directionRandomness: 1
   fireRadius: 0

@@ -16,6 +16,7 @@ public class BaseEnemy : MonoBehaviour, IPausable, ITeams
     //Player Information
     private Transform player;
     protected Vector3 playerPosition;
+    protected Vector2 playerPosition2D;
     protected Vector2 directionToPlayer;
     protected Vector3 lastSeenPosition;
 
@@ -82,6 +83,7 @@ public class BaseEnemy : MonoBehaviour, IPausable, ITeams
     public void GetPlayerLocation()
     {
         playerPosition = player.position;
+        playerPosition2D = player.position;
         directionToPlayer = playerPosition - transform.position;
     }
 
