@@ -5,34 +5,34 @@ public class HealthbarController : MonoBehaviour
 	public EntityHealth health;
 
 	public SpriteRenderer healthbarSprite;
-    public SpriteRenderer backgroundSprite;
+	public SpriteRenderer[] allSprites;
 
-    public Vector2 minSize = new(1,1);
-    private Vector2 maxSize;
+	public bool showIfFull = false;
+	public bool showIfDead = false;
 
-    public bool showIfFull = false;
-    public bool showIfDead = false;
+	private Range<Vector2> size;
+	private bool _spritesEnabled = true;
 
 	private void Awake()
 	{
-        maxSize = healthbarSprite.size;
+		size = new(new(1,1), healthbarSprite.size);
+		foreach (var s in allSprites) s.enabled = _spritesEnabled;
 	}
 
-	void Update()
-    {
-        if((!showIfDead && health.Health == 0) || (!showIfFull && health.Health == health.HealthMax))
-        {
-            healthbarSprite.enabled = false;
-            backgroundSprite.enabled = false;
-            return;
-        }
+	private void Update()
+	{
+		bool hidden = (!showIfDead && health.Health == 0) || (!showIfFull && health.Health == health.HealthMax);
+		EnableSprites(!hidden);
 
+		if (hidden) return;
 
-        healthbarSprite.enabled = true;
-        backgroundSprite.enabled = true;
+		healthbarSprite.size = size.Lerp(Mathf.InverseLerp(0, health.HealthMax, health.Health));
+	}
 
-        Range<Vector2> size = new(minSize, maxSize);
-
-        healthbarSprite.size = size.Lerp(Mathf.InverseLerp(0, health.HealthMax, health.Health));
+	protected void EnableSprites(bool e)
+	{
+		if (e == _spritesEnabled) return;
+		foreach (var s in allSprites) s.enabled = e;
+		_spritesEnabled = e;
 	}
 }
