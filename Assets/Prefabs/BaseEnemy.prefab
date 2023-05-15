@@ -200,8 +200,8 @@ MonoBehaviour:
   layer:
     serializedVersion: 2
     m_Bits: 512
-  maxForce: 3
-  maxDistance: 2
+  maxForce: 1.5
+  maxDistance: 1
 --- !u!114 &-4029306907784127457
 MonoBehaviour:
   m_ObjectHideFlags: 0

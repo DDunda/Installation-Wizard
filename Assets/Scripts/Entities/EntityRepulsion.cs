@@ -11,30 +11,28 @@ public class EntityRepulsion : MonoBehaviour
     [SerializeField, Min(0)] private float maxForce;
     [SerializeField, Min(0)] private float maxDistance;
     private Rigidbody2D rigidBody;
-    private ContactFilter2D contactFilter;
 
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
-        contactFilter = new ContactFilter2D();
-        contactFilter.SetLayerMask(layer);
     }
 
     private void Update()
     {
-        List<Collider2D> colliders = new();
-        if (rigidBody.OverlapCollider(contactFilter, colliders) == 0) return;
+        List<RaycastHit2D> hits = new(Physics2D.CircleCastAll(transform.position, maxDistance, Vector2.zero, layer));
 
-        HashSet<Rigidbody2D> rbs = new(from r in colliders select r.attachedRigidbody);
+        hits.RemoveAll(c => c.rigidbody == rigidBody);
+
+        if (hits.Count == 0) return;
 
         Vector2 force = Vector2.zero;
 
-        foreach(Rigidbody2D r in rbs)
+        foreach(RaycastHit2D h in hits)
         {
-            Vector2 off = rigidBody.transform.position - r.transform.position;
-            if (off.magnitude >= maxDistance) continue;
+            Vector2 off = rigidBody.position - h.point;
+            //if (off.magnitude >= maxDistance) continue;
 
-            force += off.normalized * Mathf.InverseLerp(maxDistance, 0, off.magnitude) * maxForce;
+            force += off.normalized * maxForce * Mathf.InverseLerp(maxDistance, 0, off.magnitude) * maxForce;
         }
 
         rigidBody.AddForce(force);

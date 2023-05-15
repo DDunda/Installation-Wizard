@@ -257,9 +257,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 896
   maxForce: 3
-  maxDistance: 3
+  maxDistance: 1.5
 --- !u!114 &5030095498891963967
 MonoBehaviour:
   m_ObjectHideFlags: 0
