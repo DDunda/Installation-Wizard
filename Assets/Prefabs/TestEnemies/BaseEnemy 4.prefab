@@ -180,7 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _team: 4
   canAttack: 1
-  canMove: 0
+  canMove: 1
   fireRate: 0
   moveSpeed: 1
   barrierLayer:
@@ -209,7 +209,6 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
-  iTime: 0
   iDamageTime: 0
   invincible: 0
 --- !u!114 &-7575686630625346230

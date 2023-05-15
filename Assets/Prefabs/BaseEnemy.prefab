@@ -178,8 +178,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ff0a5569b402ea48a365ecf8e3fe8b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 0
   _team: 4
+  canAttack: 1
+  canMove: 1
+  fireRate: 1
   moveSpeed: 200
   barrierLayer:
     serializedVersion: 2

@@ -269,7 +269,6 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
-  iTime: 0
   iDamageTime: 0.1
   invincible: 0
 --- !u!114 &1158583352866789268
