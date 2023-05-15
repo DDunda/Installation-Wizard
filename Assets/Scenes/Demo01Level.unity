@@ -694,6 +694,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &328087259
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 328087260}
+  m_Layer: 0
+  m_Name: SpawnLocationC
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &328087260
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328087259}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &342978637
 GameObject:
   m_ObjectHideFlags: 0
@@ -723,7 +754,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &685517690
 GameObject:
@@ -1087,7 +1118,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1159326528
 GameObject:
@@ -1416,17 +1447,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
+  - {fileID: 0}
   - {fileID: 4793477065093700143, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
   - {fileID: 8705233199434721138, guid: faf0a60deda8c25468ec07720f651bc3, type: 3}
   - {fileID: 4793477065093700143, guid: aaceff64f2e6f214c86e4f7a8824379e, type: 3}
   - {fileID: 8436448246741505362, guid: e49d805ce0dab334b9f443a4ec46066d, type: 3}
-  spawnOrder: 00000000000000000000000001000000010000000100000001000000020000000200000003000000
-  enemiesPerWave: 050000000400000001000000
+  spawnOrder: 01000000010000000100000001000000020000000200000003000000
+  enemiesPerWave: 040000000200000001000000
   spawnLocations:
   - {fileID: 1866129875}
   - {fileID: 1481616471}
   - {fileID: 342978637}
   - {fileID: 1049045607}
+  - {fileID: 328087259}
   spawnDelay: 0
   enemiesRemaining: 0
 --- !u!4 &1472756962
@@ -1454,7 +1487,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1481616472}
   m_Layer: 0
-  m_Name: SpawnLocationNE
+  m_Name: SpawnLocationNW
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1473,7 +1506,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1507696190
 PrefabInstance:
@@ -1872,7 +1905,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1866129876}
   m_Layer: 0
-  m_Name: SpawnLocationNW
+  m_Name: SpawnLocationNE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
