@@ -5,13 +5,13 @@ using Pathfinding;
 using System.Runtime.InteropServices.WindowsRuntime;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(EntityTeams))]
 [RequireComponent(typeof(Seeker))]
-public class BaseEnemy : MonoBehaviour, IPausable
+public class BaseEnemy : MonoBehaviour, IPausable, ITeams
 {
     //Component Declaration
     protected Rigidbody2D rb;
-    protected EntityTeams team;
+    [SerializeField, EnumMask]
+    protected Team _team;
 
     //Player Information
     private Transform player;
@@ -42,11 +42,12 @@ public class BaseEnemy : MonoBehaviour, IPausable
     public void OnPause() => enabled = false;
     public void OnResume() => enabled = true;
 
+    public Team team { get => _team; set => _team = value; }
+    
     //Initialises components
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        team = GetComponent<EntityTeams>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         seeker = GetComponent<Seeker>();
 

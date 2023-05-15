@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: -1770491060757015804}
   - component: {fileID: 4793477065093700142}
   - component: {fileID: 6158388956877356527}
-  - component: {fileID: 6767773848816243042}
   - component: {fileID: -7896215481037633317}
   m_Layer: 9
   m_Name: BaseEnemy 1
@@ -196,6 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ff0a5569b402ea48a365ecf8e3fe8b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _team: 4
   canAttack: 1
   canMove: 0
   fireRate: 0
@@ -229,19 +229,6 @@ MonoBehaviour:
   iTime: 0
   iDamageTime: 0
   invincible: 0
---- !u!114 &6767773848816243042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4793477065093700143}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3ab2b509198d9c43ae35687222f3bf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teams: 4
 --- !u!114 &-7896215481037633317
 MonoBehaviour:
   m_ObjectHideFlags: 0

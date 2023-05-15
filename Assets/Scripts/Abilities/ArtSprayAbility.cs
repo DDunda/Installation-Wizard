@@ -46,9 +46,9 @@ public class ArtSprayAbility : Ability
 			Rigidbody2D rb;
 			if (entity.TryGetComponent(out rb)) v = rb.velocity;
 
-			EntityTeams et;
+			ITeams tt;
 			Team t = 0;
-			if (entity.TryGetComponent(out et)) t = et.teams;
+			if (entity.TryGetComponent(out tt)) t = tt.team;
 
 			var projectiles = ProjectileManager.SpawnProjectileRandomArc(
 				entity.position,

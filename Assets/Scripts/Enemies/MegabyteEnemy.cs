@@ -47,7 +47,7 @@ public class MegabyteEnemy : BaseEnemy
 	{
 		canAttack = false;
 		// Assuming fireRate is actually a rate, the seconds between shots is its inverse
-		burstSettings.Spawn(transform.position, rb.velocity, team.teams);
+		burstSettings.Spawn(transform.position, rb.velocity, _team);
 		yield return new WaitWithPause(1f / fireRate);
 		canAttack = true;
 	}

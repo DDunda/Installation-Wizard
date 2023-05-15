@@ -2,18 +2,20 @@ using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
-public class Projectile : MonoBehaviour
+public class Projectile : MonoBehaviour, ITeams
 {
 	public GameObject root = null;
 	public ProjectileType type;
 	[HideInInspector]
 	public new Rigidbody2D rigidbody;
-	[EnumMask]
-	public Team team;
+	[SerializeField,EnumMask]
+	protected Team _team;
 
 	public float? lifetime = null;
 
 	public uint Collisions { get; private set; } = 0;
+
+	public Team team { get => _team; set => _team = value; }
 
 	protected bool TryPlaySounds(WeightedArray<AudioClip[]> clips)
 	{

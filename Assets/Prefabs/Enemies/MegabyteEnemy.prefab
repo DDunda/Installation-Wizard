@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 7721089097164915171}
   - component: {fileID: 5030095498891963967}
   - component: {fileID: 2500862533061125396}
-  - component: {fileID: 8800360720487901776}
   - component: {fileID: 4673377418272622920}
   - component: {fileID: -7906951856587656642}
   m_Layer: 9
@@ -153,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 818cb05b35be9554cbf2fe1ada1e30a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _team: 4
   canAttack: 1
   canMove: 1
   fireRate: 0.5
@@ -298,19 +298,6 @@ MonoBehaviour:
   raycastOffset: {x: 0, y: 0, z: 0}
   useGraphRaycasting: 0
   quality: 1
---- !u!114 &8800360720487901776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8436448246741505362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3ab2b509198d9c43ae35687222f3bf8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teams: 4
 --- !u!114 &4673377418272622920
 MonoBehaviour:
   m_ObjectHideFlags: 0

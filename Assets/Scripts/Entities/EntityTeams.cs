@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class EnumMask : PropertyAttribute {}
 
-public class EntityTeams : MonoBehaviour
+public class EntityTeams : MonoBehaviour, ITeams
 {
-	[SerializeField]
-	[EnumMask]
-	public Team teams;
+	[SerializeField,EnumMask]
+	private Team _team;
+
+	public Team team { get => _team; set => _team = value; }
 }

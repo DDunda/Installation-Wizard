@@ -50,17 +50,12 @@ public class ByteEnemy : BaseEnemy
         // define initial velocity (don't factor in parent's movement)
         Vector2 v = Extensions.Deg2Vec(angle, projectileSpeed);
 
-        // find team of parent, if possible
-        EntityTeams et;
-        Team t = 0;
-        if (entity.TryGetComponent(out et)) t = et.teams;
-
         ProjectileManager.SpawnProjectile(
             entity.position,
             0,
             v,
             0,
-            Team.Enemy,
+            _team,
             projectilePrefab);
 
         // wait amount of seconds before firing again

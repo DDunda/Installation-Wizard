@@ -149,7 +149,7 @@ public class ProjectileManager : MonoBehaviour, IPausable
 		HashSet<GameObject> cObjects = new();
 
 		EntityHealth h;
-		EntityTeams t;
+		ITeams t;
 		Team mask;
 
 		foreach (Projectile p in instance.projectiles)
@@ -160,8 +160,8 @@ public class ProjectileManager : MonoBehaviour, IPausable
 
 			foreach (var o in cObjects)
 			{
-				t = o.GetComponent<EntityTeams>();
-				mask = t != null ? t.teams : 0;
+				t = o.GetComponent<ITeams>();
+				mask = t != null ? t.team : 0;
 
 				if (!p.type.entityRelationship.GetRelationship(mask)) continue;
 				if (!(o.TryGetComponent(out h) && h.ChangeHealth(-p.type.damage.Random()))) continue;

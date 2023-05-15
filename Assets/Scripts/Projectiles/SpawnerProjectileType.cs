@@ -31,7 +31,7 @@ public class SpawnerProjectileType : ProjectileType
 	{
 		Rigidbody2D rb;
 		Projectile p2;
-		EntityTeams t;
+		ITeams t;
 		foreach (var o in objects)
 		{
 			Instantiate(o, p.transform.position, p.transform.rotation);
@@ -51,7 +51,7 @@ public class SpawnerProjectileType : ProjectileType
 				if(o.TryGetComponent(out p2)) p2.team = p.team;
 				else if(o.layer == 10) {
 					if (!o.TryGetComponent(out t)) t = o.AddComponent<EntityTeams>();
-					t.teams = p.team;
+					t.team = p.team;
 				}
 			}
 		}

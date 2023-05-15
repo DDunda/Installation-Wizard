@@ -179,6 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 0
+  _team: 4
   moveSpeed: 200
   barrierLayer:
     serializedVersion: 2
