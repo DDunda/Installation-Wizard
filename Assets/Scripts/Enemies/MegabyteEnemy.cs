@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class MegabyteEnemy : BaseEnemy
@@ -30,7 +31,7 @@ public class MegabyteEnemy : BaseEnemy
 
 		if (_nBits > 0) _nBits -= _spawnedBits.RemoveWhere(x => x == null);
 
-		if (canSpawn && bitsToSpawn > 0 && (maximumBits == 0 || _nBits < maximumBits)) SpawnBits();
+		if (canSpawn && bitsToSpawn > 0 && (maximumBits == 0 || _nBits < maximumBits)) StartCoroutine(SpawnBits());
 
 		if (playerInLOS && directionToPlayer.magnitude <= stopDistance)
 		{
@@ -77,7 +78,7 @@ public class MegabyteEnemy : BaseEnemy
 
 	public IEnumerator SpawnBits()
 	{
-		Vector2[] locations = GetSpawnLocations(bitsToSpawn);
+		Vector2[] locations = GetSpawnLocations((uint)Math.Min(maximumBits - _nBits, bitsToSpawn));
 
 		if (locations.Length > 0)
 		{

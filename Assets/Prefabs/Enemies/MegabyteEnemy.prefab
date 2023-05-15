@@ -189,18 +189,18 @@ MonoBehaviour:
       max: 0
     projectilePrefabs:
       entries: []
-    projectilesToSpawn:
+    projectileCount:
       min: 16
       max: 16
   canSpawn: 1
-  bitPrefab: {fileID: 4793477065093700143, guid: 3cf83acd099cb984e957fe87e6248006, type: 3}
+  bitPrefab: {fileID: 8705233199434721138, guid: faf0a60deda8c25468ec07720f651bc3, type: 3}
   spawnClearRadius: 1
   spawnBlockingLayers:
     serializedVersion: 2
     m_Bits: 1408
   bitsToSpawn: 2
   maximumBits: 6
-  bitSpawnDelay: 5
+  bitSpawnDelay: 10
   spawnLocations:
     entries:
     - weight: 1
