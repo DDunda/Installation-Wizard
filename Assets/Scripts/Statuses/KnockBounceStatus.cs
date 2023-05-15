@@ -39,6 +39,7 @@ public class KnockBounceStatus : MonoBehaviour
         length -= Time.deltaTime;
         if (length <= 0) 
         { 
+            enemy.canMove = true;
             this.gameObject.GetComponent<Rigidbody2D>().sharedMaterial = material;
             this.gameObject.GetComponent<Rigidbody2D>().drag = drag;
             Destroy(this);
