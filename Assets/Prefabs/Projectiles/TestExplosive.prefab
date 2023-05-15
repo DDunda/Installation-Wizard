@@ -50,7 +50,7 @@ MonoBehaviour:
   root: {fileID: 329861021338143851}
   type: {fileID: 11400000, guid: a3bc8ea43fad03545814cc059d3759c2, type: 2}
   rigidbody: {fileID: 329861021338143850}
-  team: 1
+  _team: 0
 --- !u!58 &329861021338143849
 CircleCollider2D:
   m_ObjectHideFlags: 0
