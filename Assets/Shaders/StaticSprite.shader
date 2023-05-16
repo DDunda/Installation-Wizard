@@ -22,7 +22,12 @@ Shader "Sprites/Static"
 	Properties
 	{
 		[PerRendererData] _MainTex("Static mask", 2D) = "white" {}
-		_Color("Tint", Color) = (1,1,1,1)
+		_Colour0("Colour 0", Color) = (0,0,0,1)
+		[MainColor] _Colour1("Colour 1", Color) = (1,1,1,1)
+		UpdateRate("Update rate", Float) = 60
+		Amount("Amount", Range(0.,1.)) = 1.
+		Bias("Bias", Range(-1.,1.)) = 0.
+		Coverage("Coverage", Range(0.,1.)) = .5
 		PixelSize("Pixel size", Float) = 1
 		[MaterialToggle] PixelSnap("Pixel snap", Float) = 0
 		[ShowAsVector2] PixelOffset("Pixel offset", Vector) = (0,0,0,0)
@@ -67,8 +72,6 @@ Shader "Sprites/Static"
 				float2 texcoord  : TEXCOORD0;
 			};
 
-			fixed4 _Color;
-
 			v2f vert(appdata_t IN)
 			{
 				v2f OUT;
@@ -86,6 +89,12 @@ Shader "Sprites/Static"
 			sampler2D _MainTex;
 			sampler2D _AlphaTex;
 			float4 _MainTex_TexelSize;
+			fixed4 _Colour0;
+			fixed4 _Colour1;
+			float UpdateRate;
+			float Bias;
+			float Amount;
+			float Coverage;
 			float PixelSize;
 			float4 PixelOffset;
 			#ifdef PIXELSNAP_ON
@@ -124,22 +133,38 @@ Shader "Sprites/Static"
 
 			fixed4 frag(v2f IN) : SV_Target
 			{
+				float iTime = (floor(_Time.y * UpdateRate) / UpdateRate) % 100;
 
 				#ifdef PIXELSNAP_ON
 				float2 uv = IN.texcoord.xy * _MainTex_TexelSize.zw;
 				uv = round(floor(uv - _MainTex_TexelSize.zw / 2.) / PixelSize - PixelOffset.xy) * PixelSize + _MainTex_TexelSize.zw / 2.;
-				fixed4 c = SampleSpriteTexture((uv - MASK_OFFSET) / _MainTex_TexelSize.zw) * IN.color * _Color;
+				fixed4 c = SampleSpriteTexture((uv - MASK_OFFSET) / _MainTex_TexelSize.zw) * IN.color;
 				#else
 				float2 uv = GetPos(IN.vertex);
 				uv = round(floor(uv - _ScreenParams.xy / 2.) / PixelSize - PixelOffset.xy) * PixelSize + _ScreenParams / 2.;
-				fixed4 c = SampleSpriteTexture(IN.texcoord.xy) * IN.color * _Color;
+				fixed4 c = SampleSpriteTexture(IN.texcoord.xy) * IN.color;
 				#endif
-					
-				//float3 pos = (float3(IN.texcoord.xy, _Time.y) * .152 * 9377. + _Time * 1500. + 50.0);
-				float3 pos = float3(uv, _Time.y * .3) + _Time.y * 500. + 50.0;
+
+				//float3 pos = (float3(IN.texcoord.xy, iTime) * .152 * 9377. + iTime * 1500. + 50.0);
+				float3 pos = float3(uv, iTime * .3) + iTime * 500. + 50.0;
 				float a = hash13(pos);
 
-				c.rgb *= a;
+				// Coverage
+				float min = saturate(1. - 2. * Coverage);
+				float max = saturate(2. - 2. * Coverage);
+				a = saturate((a - min) / (max - min));
+				a = abs(Coverage - 0.5) >= 0.5 ? Coverage : a;
+
+				// Bias + Amount
+				a = lerp(.5, a, Amount);
+				a = a + Bias * (1. - Amount) * .5;
+
+				// Bias
+				/*float min = saturate(Bias);
+				float max = saturate(Bias + 1.);
+				a = lerp(min, max, a);*/
+				
+				c.rgba *= lerp(_Colour0, _Colour1, a);
 
 				return c;
 			}
