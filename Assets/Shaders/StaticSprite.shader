@@ -25,120 +25,125 @@ Shader "Sprites/Static"
 		_Color("Tint", Color) = (1,1,1,1)
 		PixelSize("Pixel size", Float) = 1
 		[MaterialToggle] PixelSnap("Pixel snap", Float) = 0
+		[ShowAsVector2] PixelOffset("Pixel offset", Vector) = (0,0,0,0)
 	}
 
-		SubShader
+	SubShader
+	{
+		Tags
 		{
-			Tags
-			{
-				"Queue" = "Transparent"
-				"IgnoreProjector" = "True"
-				"RenderType" = "Transparent"
-				"PreviewType" = "Plane"
-				"CanUseSpriteAtlas" = "True"
-			}
-
-			Cull Off
-			Lighting Off
-			ZWrite Off
-			Blend SrcAlpha OneMinusSrcAlpha
-
-			Pass
-			{
-				CGPROGRAM
-				#pragma vertex vert
-				#pragma fragment frag
-				#pragma multi_compile _ PIXELSNAP_ON
-				#pragma multi_compile _ ETC1_EXTERNAL_ALPHA
-				#include "UnityCG.cginc"
-
-				struct appdata_t
-				{
-					float4 vertex   : POSITION;
-					float4 color    : COLOR;
-					float2 texcoord : TEXCOORD0;
-				};
-
-				struct v2f
-				{
-					float4 vertex   : SV_POSITION;
-					fixed4 color : COLOR;
-					float2 texcoord  : TEXCOORD0;
-				};
-
-				fixed4 _Color;
-
-				v2f vert(appdata_t IN)
-				{
-					v2f OUT;
-					OUT.vertex = UnityObjectToClipPos(IN.vertex);
-					OUT.texcoord = IN.texcoord;
-					OUT.color = IN.color;
-
-					#ifdef PIXELSNAP_ON
-					OUT.vertex = UnityPixelSnap(OUT.vertex);
-					#endif
-
-					return OUT;
-				}
-
-				sampler2D _MainTex;
-				sampler2D _AlphaTex;
-				float4 _MainTex_TexelSize;
-				float PixelSize;
-
-				fixed4 SampleSpriteTexture(float2 uv)
-				{
-					fixed4 color = tex2D(_MainTex, uv);
-
-					#if ETC1_EXTERNAL_ALPHA
-					// get the color from an external texture (usecase: Alpha support for ETC1 on android)
-					color.a = tex2D(_AlphaTex, uv).r;
-					#endif
-
-					return color;
-				}
-
-				float hash12(float2 p)
-				{
-					float3 p3 = frac(p.xyx * .1031);
-					p3 += dot(p3, p3.yzx + 33.33);
-					return frac((p3.x + p3.y) * p3.z);
-				}
-
-				float hash13(float3 p)
-				{
-					float3 p3 = frac(p.xyz * .1031);
-					p3 += dot(p3, p3.zyx + 31.32);
-					return frac((p3.x + p3.y) * p3.z);
-				}
-
-				float2 GetPos(float4 vertex) {
-					return ComputeScreenPos(vertex).xy * float2(2.,-2.);
-				}
-
-				fixed4 frag(v2f IN) : SV_Target
-				{
-
-					#ifdef PIXELSNAP_ON
-					float2 uv = IN.texcoord.xy * _MainTex_TexelSize.zw;
-					uv = round(floor(uv - _MainTex_TexelSize.zw / 2.) / PixelSize) * PixelSize + _MainTex_TexelSize.zw / 2.;
-					fixed4 c = SampleSpriteTexture(uv / _MainTex_TexelSize.zw) * IN.color * _Color;
-					#else
-					float2 uv = GetPos(IN.vertex);
-					uv = round(floor(uv - _ScreenParams.xy / 2.) / PixelSize) * PixelSize + _ScreenParams / 2.;
-					fixed4 c = SampleSpriteTexture(IN.texcoord.xy) * IN.color * _Color;
-					#endif
-					
-					//float3 pos = (float3(IN.texcoord.xy, _Time.y) * .152 * 9377. + _Time * 1500. + 50.0);
-					float3 pos = float3(uv, _Time.y * .3) + _Time.y * 500. + 50.0;
-					float a = hash13(pos);
-
-					c.rgb *= a;
-
-					return c;
-				}
-				ENDCG
-			}
+			"Queue" = "Transparent"
+			"IgnoreProjector" = "True"
+			"RenderType" = "Transparent"
+			"PreviewType" = "Plane"
+			"CanUseSpriteAtlas" = "True"
 		}
+
+		Cull Off
+		Lighting Off
+		ZWrite Off
+		Blend SrcAlpha OneMinusSrcAlpha
+
+		Pass
+		{
+			CGPROGRAM
+			#pragma vertex vert
+			#pragma fragment frag
+			#pragma multi_compile _ PIXELSNAP_ON
+			#pragma multi_compile _ ETC1_EXTERNAL_ALPHA
+			#include "UnityCG.cginc"
+
+			struct appdata_t
+			{
+				float4 vertex   : POSITION;
+				float4 color    : COLOR;
+				float2 texcoord : TEXCOORD0;
+			};
+
+			struct v2f
+			{
+				float4 vertex   : SV_POSITION;
+				fixed4 color : COLOR;
+				float2 texcoord  : TEXCOORD0;
+			};
+
+			fixed4 _Color;
+
+			v2f vert(appdata_t IN)
+			{
+				v2f OUT;
+				OUT.vertex = UnityObjectToClipPos(IN.vertex);
+				OUT.texcoord = IN.texcoord;
+				OUT.color = IN.color;
+
+				#ifdef PIXELSNAP_ON
+				OUT.vertex = UnityPixelSnap(OUT.vertex);
+				#endif
+
+				return OUT;
+			}
+
+			sampler2D _MainTex;
+			sampler2D _AlphaTex;
+			float4 _MainTex_TexelSize;
+			float PixelSize;
+			float4 PixelOffset;
+			#ifdef PIXELSNAP_ON
+			#define MASK_OFFSET (PixelOffset.xy - float2(PixelSize, PixelSize) / 2.)
+			#endif
+
+			fixed4 SampleSpriteTexture(float2 uv)
+			{
+				fixed4 color = tex2D(_MainTex, uv);
+
+				#if ETC1_EXTERNAL_ALPHA
+				// get the color from an external texture (usecase: Alpha support for ETC1 on android)
+				color.a = tex2D(_AlphaTex, uv).r;
+				#endif
+
+				return color;
+			}
+
+			float hash12(float2 p)
+			{
+				float3 p3 = frac(p.xyx * .1031);
+				p3 += dot(p3, p3.yzx + 33.33);
+				return frac((p3.x + p3.y) * p3.z);
+			}
+
+			float hash13(float3 p)
+			{
+				float3 p3 = frac(p.xyz * .1031);
+				p3 += dot(p3, p3.zyx + 31.32);
+				return frac((p3.x + p3.y) * p3.z);
+			}
+
+			float2 GetPos(float4 vertex) {
+				return ComputeScreenPos(vertex).xy * float2(2.,-2.);
+			}
+
+			fixed4 frag(v2f IN) : SV_Target
+			{
+
+				#ifdef PIXELSNAP_ON
+				float2 uv = IN.texcoord.xy * _MainTex_TexelSize.zw;
+				uv = round(floor(uv - _MainTex_TexelSize.zw / 2.) / PixelSize - PixelOffset.xy) * PixelSize + _MainTex_TexelSize.zw / 2.;
+				fixed4 c = SampleSpriteTexture((uv - MASK_OFFSET) / _MainTex_TexelSize.zw) * IN.color * _Color;
+				#else
+				float2 uv = GetPos(IN.vertex);
+				uv = round(floor(uv - _ScreenParams.xy / 2.) / PixelSize - PixelOffset.xy) * PixelSize + _ScreenParams / 2.;
+				fixed4 c = SampleSpriteTexture(IN.texcoord.xy) * IN.color * _Color;
+				#endif
+					
+				//float3 pos = (float3(IN.texcoord.xy, _Time.y) * .152 * 9377. + _Time * 1500. + 50.0);
+				float3 pos = float3(uv, _Time.y * .3) + _Time.y * 500. + 50.0;
+				float a = hash13(pos);
+
+				c.rgb *= a;
+
+				return c;
+			}
+			ENDCG
+		}
+	}
 }
