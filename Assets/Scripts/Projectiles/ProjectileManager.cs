@@ -1,6 +1,8 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 [System.Serializable]
 public class ProjectileBurst
@@ -53,6 +55,90 @@ public class ProjectileBurst
 			radius,
 			projectileScale
 		);
+	}
+}
+
+
+[System.Serializable]
+public class ProjectileSpiral
+{
+	public Vector2 position;
+	public Vector2 netVelocity;
+	public Range<float> rotation;
+	public ITeams team;
+	[Space]
+	public Range<float> projectileRotation; // Degrees
+	public Range<float> projectileScale;
+	[Space]
+	public Range<float> speed; // The speed by which projectiles fire away from the center (positive: away from center, negative: toward center)
+	public Range<float> velocityRotation; // By default projectiles fire away from the center, this rotates away from that direction (degrees)
+	public Range<float> angularSpeed;
+	[Space]
+	public Range<float> radius; // The size of the spawning circle (may be negative)
+	public Range<float> directionRotation; // Rotates the whole circle of projectiles (degrees)
+	public Range<float> directionRandomness; // Determines how the projectiles are spawned along the circle (0: Evenly, 1: Randomly)
+	[Space]
+	public WeightedArray<GameObject> projectilePrefabs; // Projectile(s) that may be spawned
+	[Min(1)] public int arms = 3;
+	public int iterations = 1;
+	[Range(-180f,180f)] public float iterationRotation = 360f;
+
+	public List<Projectile> projectiles { get; private set; } = new();
+
+	public ProjectileSpiral()
+	{
+		position = Vector2.zero;
+		netVelocity = Vector2.zero;
+		team = null;
+
+		projectileRotation = 0;
+		projectileScale = 1;
+
+		speed = 1;
+		velocityRotation = 0;
+		angularSpeed = 0;
+
+		radius = 1;
+		directionRotation = 0;
+		directionRandomness = 0;
+
+		projectilePrefabs = new();
+		arms = 3;
+		iterations = 1;
+		iterationRotation = 1f;
+	}
+
+	private void DoIteration(float r)
+	{
+		for(int i = 0; i < arms; i++)
+		{
+			float dr = directionRandomness.Random();
+			float a = i * (360f / arms) + r + Random.Range(-dr, dr) * 180f + directionRotation.Random();
+			
+			Vector2 direction = Extensions.Deg2Vec(a, radius.Random());
+			Vector2 velocity = Extensions.Deg2Vec(a, speed.Random());
+
+			projectiles.Add(ProjectileManager.SpawnProjectileRandom(position + direction, rotation, netVelocity + velocity, angularSpeed.Random(), team.team, projectilePrefabs, projectileScale));
+		}
+	}
+
+	public IEnumerator Spawn(GameObject parent, Range<float> preDelay, Range<float> iterationDelay)
+	{
+		if (iterations != 0)
+		{
+			float d = preDelay.Random();
+			if (d > 0) yield return new WaitWithPause(d);
+
+			uint i = 0;
+			for (float r = 0; parent != null; r = Mathf.Repeat(r + iterationRotation, 360f))
+			{
+				DoIteration(r);
+				if (iterations > 0 && ++i == iterations) break;
+
+				d = iterationDelay.Random();
+				if (d > 0) yield return new WaitWithPause(d);
+			}
+		}
 	}
 }
 
