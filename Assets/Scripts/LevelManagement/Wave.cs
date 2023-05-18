@@ -19,11 +19,14 @@ public class Wave : MonoBehaviour
 	//Spawn Variables
 	[SerializeField] private List<EnemySpawn> enemySpawns;
 	[SerializeField] private List<GameObject> spawnLocations;
-	private bool canSpawn = true;
+	public bool isActive = false;
+
+	// The delay between groups of enemies spawning
+	[SerializeField, Min(0)] private float spawnSetDelay;
 
 	public IEnumerator SpawnWave()
 	{
-		canSpawn = false;
+		isActive = true;
 
 		int currentSpawnPoint = 0;
 
@@ -50,6 +53,6 @@ public class Wave : MonoBehaviour
 			}
 		}
 
-		canSpawn = true;
+		isActive = false;
 	}
 }

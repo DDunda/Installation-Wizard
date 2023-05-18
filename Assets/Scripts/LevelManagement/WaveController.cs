@@ -6,6 +6,9 @@ public class WaveController : MonoBehaviour
 {
     [SerializeField] private List<GameObject> waves;
     public int waveIndex = 0;
+    public bool repeatWaves = false;
+
+    private Wave _currentWave = null;
 
     public void Start()
     {
@@ -14,7 +17,7 @@ public class WaveController : MonoBehaviour
 
     public void Update()
     {
-        if (EnemyCounter.count == 0 && waveIndex != waves.Count)
+        if ((_currentWave == null | !_currentWave.isActive) && EnemyCounter.count == 0)
         {
             StartWave();
         }
@@ -22,9 +25,17 @@ public class WaveController : MonoBehaviour
 
     public void StartWave()
     {
-        Wave currentWave = waves[waveIndex].GetComponent<Wave>();
+        if (waveIndex >= waves.Count)
+        {
+            if (!repeatWaves) return;
+            else waveIndex = 0;
+        }
 
-        waveIndex++;
-        StartCoroutine(currentWave.SpawnWave());
-    }
+        if (waves[waveIndex].TryGetComponent(out _currentWave))
+        {
+            StartCoroutine(_currentWave.SpawnWave());
+        }
+
+		waveIndex++;
+	}
 }
