@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: MegabyteProjectile
   m_EditorClassIdentifier: 
   damage:
-    min: 3
-    max: 3
+    min: 10
+    max: 10
   lifetime:
     min: 5
     max: 5
