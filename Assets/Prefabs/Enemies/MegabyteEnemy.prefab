@@ -35,7 +35,7 @@ Transform:
   m_GameObject: {fileID: 8436448246741505362}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 0.22, y: 0.22, z: 0.22}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4879108091573768627}
@@ -83,8 +83,8 @@ SpriteRenderer:
   m_SortingLayerID: 1492275567
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 44cdce0186c2a6a43a554b772a2abca3, type: 3}
-  m_Color: {r: 0, g: 0.023529412, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 91e2b55ab7fb4584b99c935d23cb94b8, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -131,8 +131,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0.28125}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 12.42, y: 13.17}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -352,19 +352,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2409703397337706747, guid: 78ba9bfd6801bba4c975330e0c0c3cda, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2409703397337706747, guid: 78ba9bfd6801bba4c975330e0c0c3cda, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2409703397337706747, guid: 78ba9bfd6801bba4c975330e0c0c3cda, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2409703397337706747, guid: 78ba9bfd6801bba4c975330e0c0c3cda, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.15
+      value: -8.5
       objectReference: {fileID: 0}
     - target: {fileID: 2409703397337706747, guid: 78ba9bfd6801bba4c975330e0c0c3cda, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

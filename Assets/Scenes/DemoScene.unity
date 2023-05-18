@@ -348,8 +348,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f45474290d0e42a4e9042dd171e5972b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 200
-  healthMax: 200
+  health: 10
+  healthMax: 10
   destroyOnDeath: 0
   destroyDelay: 0
   onDamage:
@@ -400,8 +400,8 @@ Transform:
   m_GameObject: {fileID: 166615933}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.12, y: 0.12, z: 0.12}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 134862245}
   m_RootOrder: 0
@@ -447,7 +447,7 @@ SpriteRenderer:
   m_SortingLayerID: 1492275567
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8a2fd34ac80dd2241b64fbc401b8f2c0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7f37c4796b531594a91d9e5e2aa98082, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -982,14 +982,15 @@ MonoBehaviour:
   - {fileID: 4793477065093700143, guid: cffe64603a638934f9669966fcec97bd, type: 3}
   - {fileID: 4793477065093700143, guid: 7a66339cdea46944f99a9319de54e816, type: 3}
   spawnOrder: 00000000000000000000000001000000010000000100000001000000020000000200000003000000
-  enemiesPerWave: 050000000400000001000000
+  enemyIndex: 0
+  spawnIndex: 0
   spawnLocations:
   - {fileID: 1866129875}
   - {fileID: 1481616471}
   - {fileID: 342978637}
   - {fileID: 1049045607}
   spawnDelay: 0
-  enemiesRemaining: 0
+  isActive: 0
 --- !u!4 &1472756962
 Transform:
   m_ObjectHideFlags: 0
