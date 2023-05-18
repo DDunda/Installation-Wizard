@@ -14,4 +14,18 @@ public class SpawnArea : MonoBehaviour, ISpawnpoint
 
 		return transform.position + randPos;
 	}
+	void OnDrawGizmos()
+	{
+		Gizmos.color = Color.green;
+
+		Vector3 corner1 = transform.position + new Vector3(-0.5f * width, 0.5f * height);
+		Vector3 corner2 = transform.position + new Vector3(-0.5f * width, -0.5f * height);
+		Vector3 corner3 = transform.position + new Vector3( 0.5f * width, -0.5f * height);
+		Vector3 corner4 = transform.position + new Vector3( 0.5f * width, 0.5f * height);
+
+		Gizmos.DrawLine(corner1, corner2);
+		Gizmos.DrawLine(corner2, corner3);
+		Gizmos.DrawLine(corner3, corner4);
+		Gizmos.DrawLine(corner4, corner1);
+	}
 }
