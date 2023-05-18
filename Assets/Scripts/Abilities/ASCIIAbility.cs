@@ -41,9 +41,9 @@ public class ASCIIAbility : Ability
 			Vector2 v = Extensions.Deg2Vec(angle, projectileSpeed);
 
 			// find team of parent, if possible
-			EntityTeams et;
+			ITeams tt;
 			Team t = 0;
-			if (entity.TryGetComponent(out et)) t = et.Teams;
+			if (entity.TryGetComponent(out tt)) t = tt.team;
 
 			ProjectileManager.SpawnProjectile(
 				entity.position, 

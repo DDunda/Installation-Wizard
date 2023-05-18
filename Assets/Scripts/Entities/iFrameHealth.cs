@@ -2,13 +2,16 @@ using UnityEngine;
 
 public class iFrameHealth : EntityHealth, IPausable
 {
-	[Min(0),SerializeField] private float iTime = 0;
+	private float iTime = 0;
+
+	[Header("Invincibility")]
 	[Min(0),SerializeField,Tooltip("i-frames applied when damaged")] private float iDamageTime;
+	[SerializeField,Tooltip("Overrides iframes")] public bool invincible = false;
+	[SerializeField, Tooltip("Whether this entity absorbs projectiles while invincible")] public bool absorbWhenInvincible = true;
 
-	[SerializeField,Tooltip("Overrides iframes")] private bool invincible = false;
-
-	protected override bool canTakeDamage { get => !invincible && iTime == 0; }
-	protected override bool canTakeDamageContinuous { get => !invincible; }
+	public override bool canAbsorbProjectiles { get => canTakeDamage || absorbWhenInvincible; }
+	public override bool canTakeDamage { get => !invincible && iTime == 0; }
+	public override bool canTakeDamageContinuous { get => !invincible; }
 
 	private void Awake()
 	{

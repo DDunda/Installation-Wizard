@@ -20,13 +20,13 @@ public class ArtSprayAbility : Ability
 	public Range<float> randomRotation = 0;
 	public Range<float> randomAngularSpeed = 0;
 
-	public SortingLayer projectileSortingLayer;
+	public string projectileSortingLayer;
 
-	private WeightedArray<GameObject> projectileArray = new();
+	private WeightedArray<GameObject> projectileArray;
 
 	public void Awake()
 	{
-		projectileArray.AddEntry(1, projectilePrefab);
+		projectileArray = new(projectilePrefab);
 	}
 
 	public override bool Activate()
@@ -46,9 +46,9 @@ public class ArtSprayAbility : Ability
 			Rigidbody2D rb;
 			if (entity.TryGetComponent(out rb)) v = rb.velocity;
 
-			EntityTeams et;
+			ITeams tt;
 			Team t = 0;
-			if (entity.TryGetComponent(out et)) t = et.Teams;
+			if (entity.TryGetComponent(out tt)) t = tt.team;
 
 			var projectiles = ProjectileManager.SpawnProjectileRandomArc(
 				entity.position,

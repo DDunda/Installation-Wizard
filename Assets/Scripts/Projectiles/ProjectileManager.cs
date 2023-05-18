@@ -2,6 +2,60 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[System.Serializable]
+public class ProjectileBurst
+{
+	public Range<float> projectileRotation; // Degrees
+	public Range<float> projectileScale;
+	[Space]
+	public Range<float> speed; // The speed by which projectiles fire away from the center (positive: away from center, negative: toward center)
+	public Range<float> velocityRotation; // By default projectiles fire away from the center, this rotates away from that direction (degrees)
+	public Range<float> angularSpeed;
+	[Space]
+	public Range<float> radius; // The size of the spawning circle (may be negative)
+	public Range<float> directionRotation; // Rotates the whole circle of projectiles (degrees)
+	public Range<float> directionRandomness; // Determines how the projectiles are spawned along the circle (0: Evenly, 1: Randomly)
+	[Space]
+	public WeightedArray<GameObject> projectilePrefabs; // Projectile(s) that may be spawned
+	public Range<uint> projectileCount;
+
+	public ProjectileBurst()
+	{
+		projectileRotation = 0;
+		projectileScale = 1;
+
+		speed = 1;
+		velocityRotation = 0;
+		angularSpeed = 0;
+
+		radius = 1;
+		directionRotation = 0;
+		directionRandomness = 0;
+
+		projectilePrefabs = new();
+		projectileCount = 16;
+	}
+
+	public void Spawn(Vector2 position, Vector2 netVelocity, Team team = 0)
+	{
+		ProjectileManager.SpawnProjectileRandomBurst(
+			position,
+			projectileRotation,
+			netVelocity,
+			speed,
+			angularSpeed,
+			team,
+			projectilePrefabs,
+			projectileCount,
+			directionRotation,
+			velocityRotation,
+			directionRandomness,
+			radius,
+			projectileScale
+		);
+	}
+}
+
 [RequireComponent(typeof(PhysicsPauser))]
 public class ProjectileManager : MonoBehaviour, IPausable
 {
@@ -95,7 +149,7 @@ public class ProjectileManager : MonoBehaviour, IPausable
 		HashSet<GameObject> cObjects = new();
 
 		EntityHealth h;
-		EntityTeams t;
+		ITeams t;
 		Team mask;
 
 		foreach (Projectile p in instance.projectiles)
@@ -106,8 +160,8 @@ public class ProjectileManager : MonoBehaviour, IPausable
 
 			foreach (var o in cObjects)
 			{
-				t = o.GetComponent<EntityTeams>();
-				mask = t != null ? t.Teams : 0;
+				t = o.GetComponent<ITeams>();
+				mask = t != null ? t.team : 0;
 
 				if (!p.type.entityRelationship.GetRelationship(mask)) continue;
 				if (!(o.TryGetComponent(out h) && h.ChangeHealth(-p.type.damage.Random()))) continue;
@@ -216,33 +270,7 @@ public class ProjectileManager : MonoBehaviour, IPausable
 	}
 
 	public static Projectile SpawnProjectileRandom(Vector2 position, Range<float> rotation, Vector2 velocity, Range<float> angularSpeed, Team team, WeightedArray<GameObject> projectilePrefabs, Range<float> scale)
-	{
-		GameObject prefab = projectilePrefabs.GetRandom();
-
-		if (prefab == null) return null;
-
-		float angle = velocity.magnitude > 0 ? Mathf.Atan2(velocity.y, velocity.x) * Mathf.Rad2Deg : 0;
-		Quaternion rot = prefab.transform.rotation * Quaternion.Euler(0, 0, angle + rotation.Random());
-
-		GameObject projectile = Instantiate(prefab, position, rot, instance != null ? instance.projectileContainer : null);
-
-		Projectile p;
-
-		if (!projectile.TryGetComponent(out p))
-		{
-			Destroy(projectile);
-			return null;
-		}
-
-		projectile.transform.localScale *= scale.Random();
-		p.rigidbody.velocity = velocity;
-		p.rigidbody.angularVelocity = angularSpeed.Random();
-		p.team = team;
-
-		AddProjectile(p);
-
-		return p;
-	}
+		=> SpawnProjectile(position, rotation.Random(), velocity, angularSpeed.Random(), team, projectilePrefabs.GetRandom(), scale.Random());
 
 	public static Projectile[] SpawnProjectileBurst(Vector2 position, float rotation, Vector2 netVelocity, float speed, float angularSpeed, Team team, GameObject projectilePrefab, uint n, float directionRot = 0, float velocityRot = 0, float radius = 0, float scale = 1)
 	{

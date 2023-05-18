@@ -14,8 +14,9 @@ public class EntityHealth : MonoBehaviour
 	[SerializeField] private UnityEvent onDamage;
 	[SerializeField] private UnityEvent onDeath;
 
-	protected virtual bool canTakeDamage { get => true; }
-	protected virtual bool canTakeDamageContinuous {  get => true; }
+	public virtual bool canAbsorbProjectiles { get => true; }
+	public virtual bool canTakeDamage { get => true; }
+	public virtual bool canTakeDamageContinuous {  get => true; }
 
 	protected virtual void OnDamage(float amt) {
 		onDamage.Invoke();
@@ -42,7 +43,7 @@ public class EntityHealth : MonoBehaviour
 	public bool ChangeHealth(float amt)
 	{
 		if (amt == 0) return true;
-		if (amt < 0 && !canTakeDamage) return false;
+		if (amt < 0 && !canTakeDamage) return canAbsorbProjectiles;
 
 		float lHealth = health;
 		health = Mathf.Clamp(health + amt, 0, healthMax);

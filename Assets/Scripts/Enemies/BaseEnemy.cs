@@ -4,21 +4,27 @@ using UnityEngine;
 using Pathfinding;
 using System.Runtime.InteropServices.WindowsRuntime;
 
-public class BaseEnemy : MonoBehaviour
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Seeker))]
+public class BaseEnemy : MonoBehaviour, IPausable, ITeams
 {
     //Component Declaration
-    private Rigidbody2D rb;
+    protected Rigidbody2D rb;
+    [SerializeField, EnumMask]
+    protected Team _team;
 
     //Player Information
     private Transform player;
     protected Vector3 playerPosition;
+    protected Vector2 playerPosition2D;
     protected Vector2 directionToPlayer;
     protected Vector3 lastSeenPosition;
 
     //Object States Declaration
     protected bool playerInLOS = false;
+    protected bool seenPlayer = false;
     public bool canAttack = true;
-    public bool canMove = false;
+    public bool canMove = true;
 
     //Enemy Values
     [SerializeField] protected float fireRate;
@@ -33,6 +39,12 @@ public class BaseEnemy : MonoBehaviour
 
     Seeker seeker;
 
+    // Responds to pausing by disabling the enemy completely
+    public void OnPause() => enabled = false;
+    public void OnResume() => enabled = true;
+
+    public Team team { get => _team; set => _team = value; }
+    
     //Initialises components
     private void Start()
     {
@@ -45,12 +57,14 @@ public class BaseEnemy : MonoBehaviour
         InvokeRepeating("UpdatePath", 0f, 0.5f);
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         //Update the player's position as they move
         GetPlayerLocation();
         //Determine whether the enemy can see the player
         CanSeePlayer();
+        // If the enemy has not seen the player yet remain inactive
+        if (!seenPlayer) return;
         //If the enemy can see the player move towards them and shoot
         if (playerInLOS)
         {
@@ -58,15 +72,18 @@ public class BaseEnemy : MonoBehaviour
             {
                 StartCoroutine(Attack());
             }
-            canMove = true;
         }
-        Move();
+        if (canMove)
+        {
+            Move();
+        }
     }
 
     //Updates the player's location and direction from the enemy.
     public void GetPlayerLocation()
     {
         playerPosition = player.position;
+        playerPosition2D = player.position;
         directionToPlayer = playerPosition - transform.position;
     }
 
@@ -79,6 +96,7 @@ public class BaseEnemy : MonoBehaviour
         // If the player is detected, the corresponding object state is updated.
         if (playerInLOS)
         {
+            seenPlayer = true;
             lastSeenPosition = playerPosition;
         }
     }
@@ -89,7 +107,7 @@ public class BaseEnemy : MonoBehaviour
         canAttack = false;
         Debug.Log("Pew");
         //Create instance of enemy projectile
-        yield return new WaitForSeconds(fireRate);
+        yield return new WaitWithPause(fireRate);
         canAttack = true;
     }
 
@@ -129,7 +147,7 @@ public class BaseEnemy : MonoBehaviour
 
         //Calculates the direction and force in which to move the enemy
         Vector2 direction = ((Vector2)currentPath.vectorPath[currentWaypoint] - rb.position).normalized;
-        Vector2 force = direction * moveSpeed * Time.deltaTime;
+        Vector2 force = direction * moveSpeed;
 
         rb.AddForce(force);
 

@@ -16,7 +16,7 @@ public class ByteEnemy : BaseEnemy
         canMove = true;
 	}
 
-	private void Update()
+	protected override void Update()
 	{
         //Update the player's position as they move
         GetPlayerLocation();
@@ -50,21 +50,16 @@ public class ByteEnemy : BaseEnemy
         // define initial velocity (don't factor in parent's movement)
         Vector2 v = Extensions.Deg2Vec(angle, projectileSpeed);
 
-        // find team of parent, if possible
-        EntityTeams et;
-        Team t = 0;
-        if (entity.TryGetComponent(out et)) t = et.Teams;
-
         ProjectileManager.SpawnProjectile(
             entity.position,
             0,
             v,
             0,
-            Team.Enemy,
+            _team,
             projectilePrefab);
 
         // wait amount of seconds before firing again
-        yield return new WaitForSeconds(fireRate);
+        yield return new WaitWithPause(fireRate);
         canAttack = true;
     }
 }

@@ -9,6 +9,6 @@ public class DamageArea : EffectArea
 
 		if (!go.TryGetComponent(out health)) return;
 
-		health.ChangeHealthContinuous(damageRate * delta);
+		health.ChangeHealthContinuous(-damageRate * delta);
 	}
 }

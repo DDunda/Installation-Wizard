@@ -21,7 +21,7 @@ public class JPEGWizStyle : ScriptableObject
 	public Gradient tint;
 	public Range<float> randomScale = 1;
 
-	public bool AddSprite(GameObject obj, CircleCollider2D c, SortingLayer layer)
+	public bool AddSprite(GameObject obj, CircleCollider2D c, string layerName)
 	{
 		if (obj == null) return false;
 
@@ -31,7 +31,7 @@ public class JPEGWizStyle : ScriptableObject
 		SpriteRenderer sr = obj.AddComponent<SpriteRenderer>();
 		sr.sprite = s.sprite;
 		sr.color = tint.Evaluate(UnityEngine.Random.value) * s.tint.Evaluate(UnityEngine.Random.value);
-		sr.sortingLayerID = layer.id;
+		sr.sortingLayerName = layerName;
 		obj.transform.localScale *= randomScale.Random() * s.scale.Random();
 		if(c != null) c.radius = s.colliderRadius;
 

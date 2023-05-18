@@ -26,11 +26,11 @@ public abstract class EffectArea : MonoBehaviour
 
 		GameObject[] objects = (from c in colliders where c.gameObject != gameObject select c.gameObject).ToArray();
 
-		EntityTeams t;
+		ITeams t;
 		float delta = Time.fixedDeltaTime;
 		foreach (var o in objects)
 		{
-			if (!o.TryGetComponent(out t) || !targets.GetRelationship(t.Teams)) continue;
+			if (!o.TryGetComponent(out t) || !targets.GetRelationship(t.team)) continue;
 			DoEffect(o, delta);
 		}
 	}
