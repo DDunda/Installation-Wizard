@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 3796319891285435635}
   - component: {fileID: 3796319891285435632}
   - component: {fileID: 3796319891285435633}
+  - component: {fileID: -1482448419036691654}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -89,6 +90,7 @@ MonoBehaviour:
   - {fileID: 3796319891285435637}
   - {fileID: 5287433214710290560}
   - {fileID: 7283655153533489080}
+  - {fileID: -1482448419036691654}
 --- !u!114 &5287433214710290560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,7 +145,7 @@ MonoBehaviour:
   randomAngularSpeed:
     min: 0
     max: 0
-  projectileSortingLayer: 
+  projectileSortingLayer: Projectiles
 --- !u!114 &7283655153533489080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,6 +317,42 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-1482448419036691654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3796319891285435647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 846a1b8a2ec6e6e44afa2a54c8df99e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldownMax: 0.1
+  button: 32
+  style: {fileID: 11400000, guid: dc9afb573d5895f4aa2961a150afbe3a, type: 2}
+  deadzone: 0.1
+  speed:
+    min: 50
+    max: 50
+  projectilePrefab: {fileID: 5318035973014089012, guid: 6e58c76f7aa7b8e4899da41d45f4d6d4, type: 3}
+  n:
+    min: 50
+    max: 50
+  spreadAngle: 30
+  directionRandomness: 1
+  fireRadius: 0
+  randomScale:
+    min: 1
+    max: 1
+  randomRotation:
+    min: 0
+    max: 0
+  randomAngularSpeed:
+    min: 0
+    max: 0
+  projectileSortingLayer: Projectiles
 --- !u!1001 &5425257494235495166
 PrefabInstance:
   m_ObjectHideFlags: 0

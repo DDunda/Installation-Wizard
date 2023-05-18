@@ -440,9 +440,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9abb1437a4c9290449655b2cca2add47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 0
-  height: 0
-  isArea: 0
+  width: 4
+  height: 4
 --- !u!1 &395981155
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,7 +472,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1472756962}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &395981157
 MonoBehaviour:
@@ -487,22 +486,71 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784eb9bac60767a458927792b8d74c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
-  - {fileID: 4793477065093700143, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
-  - {fileID: 4793477065093700143, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
-  - {fileID: 8705233199434721138, guid: faf0a60deda8c25468ec07720f651bc3, type: 3}
-  - {fileID: 4793477065093700143, guid: aaceff64f2e6f214c86e4f7a8824379e, type: 3}
-  - {fileID: 8436448246741505362, guid: e49d805ce0dab334b9f443a4ec46066d, type: 3}
   spawnOrder: 0300000003000000010000000100000001000000040000000200000002000000020000000200000002000000
-  enemyIndex: 0
-  spawnIndex: 0
+  enemySpawns:
+  - enemy: {fileID: 4793477065093700143, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
+    count: 3
+    spawnDelay: 0.5
+  - enemy: {fileID: 8705233199434721138, guid: faf0a60deda8c25468ec07720f651bc3, type: 3}
+    count: 5
+    spawnDelay: 0.5
+  - enemy: {fileID: 4793477065093700143, guid: aaceff64f2e6f214c86e4f7a8824379e, type: 3}
+    count: 2
+    spawnDelay: 0.5
+  - enemy: {fileID: 8436448246741505362, guid: e49d805ce0dab334b9f443a4ec46066d, type: 3}
+    count: 1
+    spawnDelay: 0
   spawnLocations:
   - {fileID: 1866129875}
   - {fileID: 342978637}
   - {fileID: 1049045607}
   - {fileID: 1481616471}
-  spawnDelay: 0
-  isActive: 0
+--- !u!1 &528999874
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 528999875}
+  - component: {fileID: 528999876}
+  m_Layer: 0
+  m_Name: SpawnLocationC
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &528999875
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528999874}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 16, y: -9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1472756962}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &528999876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528999874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9abb1437a4c9290449655b2cca2add47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 0
+  height: 0
 --- !u!1 &603495601
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,7 +783,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1472756962}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &861699393
 MonoBehaviour:
@@ -749,22 +797,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784eb9bac60767a458927792b8d74c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
-  - {fileID: 4793477065093700143, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
-  - {fileID: 4793477065093700143, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
-  - {fileID: 8705233199434721138, guid: faf0a60deda8c25468ec07720f651bc3, type: 3}
-  - {fileID: 4793477065093700143, guid: aaceff64f2e6f214c86e4f7a8824379e, type: 3}
-  - {fileID: 8436448246741505362, guid: e49d805ce0dab334b9f443a4ec46066d, type: 3}
   spawnOrder: 0100000001000000010000000100000002000000020000000200000002000000
-  enemyIndex: 0
-  spawnIndex: 0
+  enemySpawns:
+  - enemy: {fileID: 4793477065093700143, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
+    count: 4
+    spawnDelay: 0.5
+  - enemy: {fileID: 8705233199434721138, guid: faf0a60deda8c25468ec07720f651bc3, type: 3}
+    count: 4
+    spawnDelay: 0.5
   spawnLocations:
   - {fileID: 1866129875}
   - {fileID: 342978637}
   - {fileID: 1049045607}
   - {fileID: 1481616471}
-  spawnDelay: 0.1
-  isActive: 0
 --- !u!1 &942057108
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,9 +955,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9abb1437a4c9290449655b2cca2add47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 0
-  height: 0
-  isArea: 0
+  width: 4
+  height: 4
 --- !u!1 &1159326528
 GameObject:
   m_ObjectHideFlags: 0
@@ -1240,7 +1284,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1472756962}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1296591236
 MonoBehaviour:
@@ -1254,22 +1298,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784eb9bac60767a458927792b8d74c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
-  - {fileID: 4793477065093700143, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
-  - {fileID: 4793477065093700143, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
-  - {fileID: 8705233199434721138, guid: faf0a60deda8c25468ec07720f651bc3, type: 3}
-  - {fileID: 4793477065093700143, guid: aaceff64f2e6f214c86e4f7a8824379e, type: 3}
-  - {fileID: 8436448246741505362, guid: e49d805ce0dab334b9f443a4ec46066d, type: 3}
   spawnOrder: 040000000100000001000000010000000100000002000000020000000200000002000000
-  enemyIndex: 0
-  spawnIndex: 0
+  enemySpawns:
+  - enemy: {fileID: 4793477065093700143, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
+    count: 5
+    spawnDelay: 0.5
+  - enemy: {fileID: 8705233199434721138, guid: faf0a60deda8c25468ec07720f651bc3, type: 3}
+    count: 4
+    spawnDelay: 0.5
+  - enemy: {fileID: 8436448246741505362, guid: e49d805ce0dab334b9f443a4ec46066d, type: 3}
+    count: 1
+    spawnDelay: 0.5
   spawnLocations:
   - {fileID: 1866129875}
   - {fileID: 342978637}
   - {fileID: 1049045607}
   - {fileID: 1481616471}
-  spawnDelay: 0
-  isActive: 0
 --- !u!1 &1308030490
 GameObject:
   m_ObjectHideFlags: 0
@@ -1505,6 +1549,7 @@ Transform:
   - {fileID: 342978638}
   - {fileID: 1049045608}
   - {fileID: 1481616472}
+  - {fileID: 528999875}
   - {fileID: 861699392}
   - {fileID: 1296591235}
   - {fileID: 395981156}
@@ -1574,9 +1619,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9abb1437a4c9290449655b2cca2add47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 0
-  height: 0
-  isArea: 0
+  width: 4
+  height: 4
 --- !u!1 &1506076914
 GameObject:
   m_ObjectHideFlags: 0
@@ -1764,15 +1808,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784eb9bac60767a458927792b8d74c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
-  - {fileID: 8732482096056108571, guid: eab2fa4d33bd4a7479c048a5d1f19797, type: 3}
   spawnOrder: 00000000
-  enemyIndex: 0
-  spawnIndex: 0
+  enemySpawns:
+  - enemy: {fileID: 8732482096056108571, guid: eab2fa4d33bd4a7479c048a5d1f19797, type: 3}
+    count: 1
+    spawnDelay: 0
   spawnLocations:
   - {fileID: 0}
-  spawnDelay: 0
-  isActive: 0
 --- !u!4 &1618144720
 Transform:
   m_ObjectHideFlags: 0
@@ -1786,7 +1828,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1472756962}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1721028975
 GameObject:
@@ -2128,9 +2170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9abb1437a4c9290449655b2cca2add47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 0
-  height: 0
-  isArea: 0
+  width: 4
+  height: 4
 --- !u!1 &2071941785 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1164858727078285445, guid: c7efe01fcf75db449a85433fe6865e17, type: 3}

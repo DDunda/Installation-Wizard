@@ -278,15 +278,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784eb9bac60767a458927792b8d74c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
-  - {fileID: 8732482096056108571, guid: eab2fa4d33bd4a7479c048a5d1f19797, type: 3}
   spawnOrder: 00000000
-  enemyIndex: 0
-  spawnIndex: 0
+  enemySpawns:
+  - enemy: {fileID: 8732482096056108571, guid: eab2fa4d33bd4a7479c048a5d1f19797, type: 3}
+    count: 1
+    spawnDelay: 0
   spawnLocations:
-  - {fileID: 0}
-  spawnDelay: 0
+  - {fileID: 328087259}
   isActive: 0
+  spawnSetDelay: 0
 --- !u!1 &322774067
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,7 +444,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 0
   height: 0
-  isArea: 0
 --- !u!1 &342978637
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,7 +490,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 0
   height: 0
-  isArea: 0
 --- !u!1 &685517690
 GameObject:
   m_ObjectHideFlags: 0
@@ -871,7 +869,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 0
   height: 0
-  isArea: 0
 --- !u!1 &1159326528
 GameObject:
   m_ObjectHideFlags: 0
@@ -1151,7 +1148,9 @@ MonoBehaviour:
   - {fileID: 1869514395}
   - {fileID: 2115841577}
   - {fileID: 1789835877}
+  - {fileID: 2115841577}
   waveIndex: 0
+  repeatWaves: 0
 --- !u!1 &1481616471
 GameObject:
   m_ObjectHideFlags: 0
@@ -1198,7 +1197,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 0
   height: 0
-  isArea: 0
 --- !u!1001 &1507696190
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1445,19 +1443,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784eb9bac60767a458927792b8d74c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
-  - {fileID: 4793477065093700143, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
-  - {fileID: 4793477065093700143, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
-  - {fileID: 8705233199434721138, guid: faf0a60deda8c25468ec07720f651bc3, type: 3}
-  - {fileID: 4793477065093700143, guid: aaceff64f2e6f214c86e4f7a8824379e, type: 3}
-  - {fileID: 8436448246741505362, guid: e49d805ce0dab334b9f443a4ec46066d, type: 3}
   spawnOrder: 04000000
-  enemyIndex: 0
-  spawnIndex: 0
+  enemySpawns:
+  - enemy: {fileID: 8436448246741505362, guid: e49d805ce0dab334b9f443a4ec46066d, type: 3}
+    count: 1
+    spawnDelay: 0.5
   spawnLocations:
   - {fileID: 328087259}
-  spawnDelay: 0
   isActive: 0
+  spawnSetDelay: 0
 --- !u!1 &1836081349
 GameObject:
   m_ObjectHideFlags: 0
@@ -1615,7 +1609,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 0
   height: 0
-  isArea: 0
 --- !u!1 &1869514395
 GameObject:
   m_ObjectHideFlags: 0
@@ -1660,22 +1653,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784eb9bac60767a458927792b8d74c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
-  - {fileID: 4793477065093700143, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
-  - {fileID: 4793477065093700143, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
-  - {fileID: 8705233199434721138, guid: faf0a60deda8c25468ec07720f651bc3, type: 3}
-  - {fileID: 4793477065093700143, guid: aaceff64f2e6f214c86e4f7a8824379e, type: 3}
-  - {fileID: 8436448246741505362, guid: e49d805ce0dab334b9f443a4ec46066d, type: 3}
   spawnOrder: 01000000010000000100000001000000
-  enemyIndex: 0
-  spawnIndex: 0
+  enemySpawns:
+  - enemy: {fileID: 4793477065093700143, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
+    count: 4
+    spawnDelay: 0.5
   spawnLocations:
   - {fileID: 1866129875}
   - {fileID: 342978637}
   - {fileID: 1049045607}
   - {fileID: 1481616471}
-  spawnDelay: 0.1
   isActive: 0
+  spawnSetDelay: 0
 --- !u!1001 &2076010439
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1901,19 +1890,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784eb9bac60767a458927792b8d74c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
-  - {fileID: 4793477065093700143, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
-  - {fileID: 4793477065093700143, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
-  - {fileID: 8705233199434721138, guid: faf0a60deda8c25468ec07720f651bc3, type: 3}
-  - {fileID: 4793477065093700143, guid: aaceff64f2e6f214c86e4f7a8824379e, type: 3}
-  - {fileID: 8436448246741505362, guid: e49d805ce0dab334b9f443a4ec46066d, type: 3}
   spawnOrder: 0200000002000000
-  enemyIndex: 0
-  spawnIndex: 0
+  enemySpawns:
+  - enemy: {fileID: 8705233199434721138, guid: faf0a60deda8c25468ec07720f651bc3, type: 3}
+    count: 2
+    spawnDelay: 0.5
   spawnLocations:
   - {fileID: 1866129875}
   - {fileID: 342978637}
   - {fileID: 1049045607}
   - {fileID: 1481616471}
-  spawnDelay: 0
   isActive: 0
+  spawnSetDelay: 0
