@@ -20,6 +20,8 @@ public class ArtSprayAbility : Ability
 	public Range<float> randomRotation = 0;
 	public Range<float> randomAngularSpeed = 0;
 
+	[Range(0,1)] public float inheritVelocity = 0;
+
 	public string projectileSortingLayer;
 
 	private WeightedArray<GameObject> projectileArray;
@@ -44,7 +46,7 @@ public class ArtSprayAbility : Ability
 
 			Vector2 v = Vector2.zero;
 			Rigidbody2D rb;
-			if (entity.TryGetComponent(out rb)) v = rb.velocity;
+			if (entity.TryGetComponent(out rb)) v = rb.velocity * inheritVelocity;
 
 			ITeams tt;
 			Team t = 0;

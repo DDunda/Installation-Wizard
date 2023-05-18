@@ -493,21 +493,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784eb9bac60767a458927792b8d74c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
-  - {fileID: 4793477065093700143, guid: 4ca2b38770f637f499ac888997ba53f5, type: 3}
-  - {fileID: 4793477065093700143, guid: 3cf83acd099cb984e957fe87e6248006, type: 3}
-  - {fileID: 4793477065093700143, guid: cffe64603a638934f9669966fcec97bd, type: 3}
-  - {fileID: 4793477065093700143, guid: 7a66339cdea46944f99a9319de54e816, type: 3}
   spawnOrder: 00000000000000000000000001000000010000000100000001000000020000000200000003000000
-  enemyIndex: 0
-  spawnIndex: 0
+  enemySpawns: []
   spawnLocations:
   - {fileID: 1866129875}
   - {fileID: 1481616471}
   - {fileID: 342978637}
   - {fileID: 1049045607}
-  spawnDelay: 0
   isActive: 0
+  spawnSetDelay: 0
 --- !u!4 &1472756962
 Transform:
   m_ObjectHideFlags: 0
@@ -564,34 +558,6 @@ PrefabInstance:
     - target: {fileID: 1164858727711300040, guid: c7efe01fcf75db449a85433fe6865e17, type: 3}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1164858727711300040, guid: c7efe01fcf75db449a85433fe6865e17, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 27
-      objectReference: {fileID: 0}
-    - target: {fileID: 1164858727711300040, guid: c7efe01fcf75db449a85433fe6865e17, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1164858727711300040, guid: c7efe01fcf75db449a85433fe6865e17, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1164858727711300040, guid: c7efe01fcf75db449a85433fe6865e17, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1164858727711300040, guid: c7efe01fcf75db449a85433fe6865e17, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1164858727711300040, guid: c7efe01fcf75db449a85433fe6865e17, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1164858727711300040, guid: c7efe01fcf75db449a85433fe6865e17, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1164858727711300040, guid: c7efe01fcf75db449a85433fe6865e17, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

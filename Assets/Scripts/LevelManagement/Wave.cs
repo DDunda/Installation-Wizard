@@ -13,9 +13,6 @@ public struct EnemySpawn
 
 public class Wave : MonoBehaviour
 {
-	//Enemy Variables
-	[SerializeField] private List<int> spawnOrder;
-
 	//Spawn Variables
 	[SerializeField] private List<EnemySpawn> enemySpawns;
 	[SerializeField] private List<GameObject> spawnLocations;

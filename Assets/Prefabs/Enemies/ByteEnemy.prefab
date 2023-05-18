@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8705233199434721138
+--- !u!1 &2302836975647405358
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8705233199434721128}
-  - component: {fileID: 8705233199434721135}
-  - component: {fileID: 8705233199434721134}
-  - component: {fileID: 8705233199434721133}
-  - component: {fileID: 2411618917793335555}
-  - component: {fileID: 8705233199434721132}
-  - component: {fileID: -1802097205483867197}
-  - component: {fileID: -4029306907784127457}
-  - component: {fileID: -5805242471538370764}
-  - component: {fileID: 584588749664789085}
-  - component: {fileID: 1158583352866789268}
+  - component: {fileID: 8123274334942719719}
+  - component: {fileID: 1796118581324598707}
   m_Layer: 9
-  m_Name: ByteEnemy
-  m_TagString: Enemy
+  m_Name: Sprite
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8705233199434721128
+--- !u!4 &8123274334942719719
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8705233199434721138}
+  m_GameObject: {fileID: 2302836975647405358}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 132188987492665794}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_Children: []
+  m_Father: {fileID: 8705233199434721128}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &8705233199434721135
+--- !u!212 &1796118581324598707
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8705233199434721138}
+  m_GameObject: {fileID: 2302836975647405358}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -94,6 +84,48 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!1 &8705233199434721138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8705233199434721128}
+  - component: {fileID: 8705233199434721134}
+  - component: {fileID: 8705233199434721133}
+  - component: {fileID: 2411618917793335555}
+  - component: {fileID: 8705233199434721132}
+  - component: {fileID: -1802097205483867197}
+  - component: {fileID: -4029306907784127457}
+  - component: {fileID: -5805242471538370764}
+  - component: {fileID: 584588749664789085}
+  - component: {fileID: 1158583352866789268}
+  m_Layer: 9
+  m_Name: ByteEnemy
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8705233199434721128
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8705233199434721138}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 132188987492665794}
+  - {fileID: 8123274334942719719}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &8705233199434721134
 Rigidbody2D:
   serializedVersion: 4
@@ -128,19 +160,19 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.28125}
+  m_Offset: {x: 0, y: 0.87}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 12, y: 12}
+    pivot: {x: 0.50148565, y: 0.111531615}
+    oldSize: {x: 1.0909091, y: 1.0909091}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.25, y: 0.0625}
-  m_EdgeRadius: 0.25
+  m_Size: {x: 0.25, y: 0.9}
+  m_EdgeRadius: 0.4
 --- !u!114 &2411618917793335555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,19 +330,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2409703397337706747, guid: 78ba9bfd6801bba4c975330e0c0c3cda, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.2
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2409703397337706747, guid: 78ba9bfd6801bba4c975330e0c0c3cda, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.2
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2409703397337706747, guid: 78ba9bfd6801bba4c975330e0c0c3cda, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.2
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2409703397337706747, guid: 78ba9bfd6801bba4c975330e0c0c3cda, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2409703397337706747, guid: 78ba9bfd6801bba4c975330e0c0c3cda, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -326,11 +358,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2556953060416487780, guid: 78ba9bfd6801bba4c975330e0c0c3cda, type: 3}
       propertyPath: m_Size.x
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2907419358780058139, guid: 78ba9bfd6801bba4c975330e0c0c3cda, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 4174682657336862650, guid: 78ba9bfd6801bba4c975330e0c0c3cda, type: 3}
       propertyPath: m_LocalPosition.x
@@ -354,7 +386,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7817099209116325801, guid: 78ba9bfd6801bba4c975330e0c0c3cda, type: 3}
       propertyPath: m_Size.x
-      value: 6.25
+      value: 8.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78ba9bfd6801bba4c975330e0c0c3cda, type: 3}

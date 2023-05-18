@@ -63,4 +63,49 @@ public static class Extensions
 			arr[k] = temp;
 		}
 	}
+
+	public static void DrawGizmoSpiral1(Vector3 position, Vector3 scale, float segmentLength = 0.1f, int arms = 6, float a = 20f, int n = 10)
+	{
+		for (int j = 0; j < arms; j++)
+		{
+			Vector3 lp = position;
+			for (int i = 0; i < n; i++)
+			{
+				Vector3 p = (Vector3)Deg2Vec(i * a + j * 360f / arms, segmentLength * (i + 1));
+				p.Scale(scale);
+				p += position;
+				Gizmos.DrawLine(lp, p);
+				lp = p;
+			}
+		}
+	}
+
+	public static void DrawGizmoSpiral2(Vector3 position, Vector3 scale, float segmentLength = 0.1735f, int arms = 6, float a = 20f, int n = 9)
+	{
+		for (int j = 0; j < arms; j++)
+		{
+			Vector3 lp = position;
+			for (int i = 0; i < n; i++)
+			{
+				Vector3 p = (Vector3)Deg2Vec((i + 0.5f) * a + j * 360f / arms, segmentLength);
+				p.Scale(scale);
+				p += lp;
+				Gizmos.DrawLine(lp, p);
+				lp = p;
+			}
+		}
+	}
+
+	public static void DrawGizmoCircle(Vector3 position, Vector3 scale, float r = 1, float n = 45)
+	{
+		Vector3 lp = (Vector3)Deg2Vec(360f * (n - 1) / n, r) + position;
+		lp.Scale(scale);
+		for (int i = 0; i < n; i++)
+		{
+			Vector3 p = (Vector3)Deg2Vec(360f * i / n, r) + position;
+			p.Scale(scale);
+			Gizmos.DrawLine(lp, p);
+			lp = p;
+		}
+	}
 }

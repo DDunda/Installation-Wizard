@@ -56,4 +56,15 @@ public class Projectile : MonoBehaviour, ITeams
 		TryPlaySounds(type.onHitSounds);
 		type.OnCollide(this, other);
 	}
+
+	public void OnCollisionEnter(Collision collision)
+	{
+		OnCollide(collision.gameObject);
+
+		if(Collisions >= type.maxCollisions)
+		{
+			Destroy(gameObject);
+			return;
+		}
+	}
 }
