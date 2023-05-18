@@ -1,61 +1,66 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
+public struct EnemySpawn
+{
+	public GameObject enemy;
+	[Min(1)] public uint count;
+	[Min(0)] public float spawnDelay;
+}
+
 public class Wave : MonoBehaviour
 {
-    //Enemy Variables
-    [SerializeField] private List<GameObject> enemies;
-    [SerializeField] private List<int> spawnOrder;
-    public int enemyIndex = 0;
-    public int spawnIndex = 0;
-    
-    //Spawn Variables
-    [SerializeField] private List<GameObject> spawnLocations;
-    private int currentSpawnPoint = 0;
-    [SerializeField] private float spawnDelay;
-    private bool canSpawn = true;
-    public bool isActive = false;
+	//Enemy Variables
+	[SerializeField] private List<int> spawnOrder;
 
-    public void Update()
-    {
-        if (isActive && canSpawn)
-        {
-            StartCoroutine(SpawnWave());
-        }
-            
-    }
+	//Spawn Variables
+	[SerializeField] private List<EnemySpawn> enemySpawns;
+	[SerializeField] private List<GameObject> spawnLocations;
+	private bool canSpawn = true;
+	public bool isActive = false;
 
-    public IEnumerator SpawnWave()
-    {
-        canSpawn = false;
-        //Gets the spawn point
-        SpawnArea spawnPointGetter = spawnLocations[currentSpawnPoint].GetComponent<SpawnArea>();
+	public void Update()
+	{
+		if (isActive && canSpawn)
+		{
+			StartCoroutine(SpawnWave());
+		}
+			
+	}
 
-        Vector3 spawnPoint = spawnPointGetter.GetSpawnLocation();
+	public IEnumerator SpawnWave()
+	{
+		canSpawn = false;
 
-        //Determines which enemy to spawn and moves to the next one
-        enemyIndex = spawnOrder[spawnIndex];
+		int currentSpawnPoint = 0;
 
-        spawnIndex++;
+		for (int spawnIndex = 0; spawnIndex < enemySpawns.Count; spawnIndex++)
+		{
+			EnemySpawn es = enemySpawns[spawnIndex];
 
-        if (spawnIndex ==  spawnOrder.Count)
-        {
-            isActive = false;
-        }
+			GameObject enemy = es.enemy;
 
-        //Spawns the enemy
-        Instantiate(enemies[enemyIndex], spawnPoint, Quaternion.identity);
+			for (uint i = 0; i < enemySpawns[spawnIndex].count; i++)
+			{
+				// Gets the spawn point
+				ISpawnpoint spawnPointGetter = spawnLocations[currentSpawnPoint].GetComponent<ISpawnpoint>();
 
-        //Moves to the next spawn point if there is one otherwise starts from the first spawn point again
-        currentSpawnPoint++;
-        if (currentSpawnPoint == spawnLocations.Count)
-        {
-            currentSpawnPoint = 0;
-        }
+				currentSpawnPoint++;
+				currentSpawnPoint %= spawnLocations.Count;
 
-        yield return new WaitForSeconds(spawnDelay);
+				Vector3 spawnPoint = spawnPointGetter.GetSpawnLocation();
 
-        canSpawn = true;
-    }
+				// Spawns the enemy
+				Instantiate(enemy, spawnPoint, Quaternion.identity);
+
+				if(es.spawnDelay > 0) yield return new WaitWithPause(es.spawnDelay);
+			}
+		}
+
+		canSpawn = true;
+		isActive = false;
+	}
 }
