@@ -20,16 +20,6 @@ public class Wave : MonoBehaviour
 	[SerializeField] private List<EnemySpawn> enemySpawns;
 	[SerializeField] private List<GameObject> spawnLocations;
 	private bool canSpawn = true;
-	public bool isActive = false;
-
-	public void Update()
-	{
-		if (isActive && canSpawn)
-		{
-			StartCoroutine(SpawnWave());
-		}
-			
-	}
 
 	public IEnumerator SpawnWave()
 	{
@@ -61,6 +51,5 @@ public class Wave : MonoBehaviour
 		}
 
 		canSpawn = true;
-		isActive = false;
 	}
 }

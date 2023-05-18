@@ -24,10 +24,7 @@ public class WaveController : MonoBehaviour
     {
         Wave currentWave = waves[waveIndex].GetComponent<Wave>();
 
-        currentWave.isActive = true;
-
         waveIndex++;
+        StartCoroutine(currentWave.SpawnWave());
     }
-
-
 }
