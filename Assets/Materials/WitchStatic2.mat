@@ -7,10 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Static
+  m_Name: WitchStatic2
   m_Shader: {fileID: 4800000, guid: 2b1380247265d784f95ebc503758c339, type: 3}
-  m_ValidKeywords:
-  - PIXELSNAP_ON
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -59,11 +58,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Amount: 0.25
-    - Bias: 0
-    - Coverage: 0.6
-    - PixelSize: 8
-    - PixelSnap: 1
+    - Amount: 0.303
+    - Bias: 0.617
+    - Coverage: 0.5
+    - PixelSize: 2
+    - PixelSnap: 0
     - Scale: 1
     - UpdateRate: 60
     - _BumpScale: 1
