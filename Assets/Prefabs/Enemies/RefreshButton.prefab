@@ -10,12 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1586825995605570671}
   - component: {fileID: 1563965453140253752}
-  - component: {fileID: 2384996446133645921}
+  - component: {fileID: 4454883908055862987}
+  - component: {fileID: 6204890993019856806}
   - component: {fileID: 2147174046425177462}
   - component: {fileID: 1434264756579919053}
   m_Layer: 9
   m_Name: RefreshButton
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,19 +45,19 @@ Rigidbody2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8732482096056108571}
   m_BodyType: 0
-  m_Simulated: 0
+  m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &2384996446133645921
+  m_Constraints: 7
+--- !u!114 &4454883908055862987
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -65,19 +66,46 @@ MonoBehaviour:
   m_GameObject: {fileID: 8732482096056108571}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45f023d9f6d8db540ab861786bef2629, type: 3}
+  m_Script: {fileID: 11500000, guid: f45474290d0e42a4e9042dd171e5972b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
   healthMax: 1
-  destroyOnDeath: 0
+  destroyOnDeath: 1
   destroyDelay: 0
   onDamage:
     m_PersistentCalls:
       m_Calls: []
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6204890993019856806}
+        m_TargetAssemblyTypeName: CustomEntityDeaths, Assembly-CSharp
+        m_MethodName: NextLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  iDamageTime: 0
+  invincible: 0
+  absorbWhenInvincible: 1
+--- !u!114 &6204890993019856806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8732482096056108571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6654de5c44bffca498245b1a4976d8cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &2147174046425177462
 SpriteRenderer:
   m_ObjectHideFlags: 0

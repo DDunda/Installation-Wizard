@@ -421,7 +421,7 @@ MonoBehaviour:
   - {fileID: 1481616471}
   - {fileID: 342978637}
   isActive: 0
-  spawnSetDelay: 0
+  spawnSetDelay: 1
 --- !u!1 &794697877
 GameObject:
   m_ObjectHideFlags: 0
@@ -596,7 +596,7 @@ MonoBehaviour:
   spawnLocations:
   - {fileID: 328087259}
   isActive: 0
-  spawnSetDelay: 0
+  spawnSetDelay: 1
 --- !u!1 &1049045607
 GameObject:
   m_ObjectHideFlags: 0
@@ -1138,7 +1138,7 @@ MonoBehaviour:
   spawnLocations:
   - {fileID: 328087259}
   isActive: 0
-  spawnSetDelay: 0
+  spawnSetDelay: 1
 --- !u!1 &1472756960
 GameObject:
   m_ObjectHideFlags: 0
@@ -1378,7 +1378,7 @@ MonoBehaviour:
   spawnLocations:
   - {fileID: 1866129875}
   isActive: 0
-  spawnSetDelay: 0
+  spawnSetDelay: 1
 --- !u!1 &1721028975
 GameObject:
   m_ObjectHideFlags: 0
@@ -1584,7 +1584,7 @@ MonoBehaviour:
   spawnLocations:
   - {fileID: 1049045607}
   isActive: 0
-  spawnSetDelay: 0
+  spawnSetDelay: 1
 --- !u!1 &1836081349
 GameObject:
   m_ObjectHideFlags: 0
