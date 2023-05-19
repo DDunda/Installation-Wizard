@@ -134,8 +134,6 @@ GameObject:
   - component: {fileID: 461740719}
   - component: {fileID: 461740718}
   - component: {fileID: 461740717}
-  - component: {fileID: 461740716}
-  - component: {fileID: 461740720}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -143,18 +141,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &461740716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 461740715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5921a133ab47944d99afeda855dcf89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!81 &461740717
 AudioListener:
   m_ObjectHideFlags: 0
@@ -221,18 +207,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &461740720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 461740715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 063cd3ac966222e4d901bf20eacbd87d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &570807890
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,7 +278,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Start
+  m_Text: Restart
 --- !u!222 &570807893
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -822,7 +796,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Installation Wizard
+  m_Text: GAME OVER
 --- !u!222 &1590594290
 CanvasRenderer:
   m_ObjectHideFlags: 0

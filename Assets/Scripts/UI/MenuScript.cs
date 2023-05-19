@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class StartMenu : MonoBehaviour 
+public class MenuScript : MonoBehaviour 
 {
 	public void LoadScene(string sceneName)
 	{
@@ -16,13 +16,12 @@ public class StartMenu : MonoBehaviour
 		Application.Quit();
 		Debug.Log("Quit!");
 	}
-	//not actually used but here when needed for easy access
-	//private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Escape)) {
-    //        //SceneManager.LoadScene("StartMenu");
-    //        Application.Quit();
-	//	    Debug.Log("Quit!");
-    //    }
-    //}
+
+	private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            Application.Quit();
+			Debug.Log("Quit!");
+        }
+    }
 }
