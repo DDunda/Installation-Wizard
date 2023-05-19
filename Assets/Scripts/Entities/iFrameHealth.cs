@@ -43,6 +43,29 @@ public class iFrameHealth : EntityHealth, IPausable
 	protected override void OnDamage(float amt)
 	{
 		base.OnDamage(amt);
+		if (gameObject.tag == "Player")
+		{
+			GameObject.Find("GameManager").GetComponent<GlobalStatTransfer>().localDamageTaken += amt;
+		}
+		else if (gameObject.tag == "Enemy")
+		{
+			GameObject.Find("GameManager").GetComponent<GlobalStatTransfer>().localDamageDealt += amt;
+		}
+		
 		iTime += iDamageTime;
+	}
+
+	protected override void OnDeath()
+	{
+		if (gameObject.tag == "Player")
+		{
+			GameObject.Find("GameManager").GetComponent<GlobalStatTransfer>().localTimesDied++;
+		}
+		else if (gameObject.tag == "Enemy")
+		{
+			GameObject.Find("GameManager").GetComponent<GlobalStatTransfer>().localEmemiesKilled++;
+		}
+		
+		base.OnDeath();
 	}
 }
