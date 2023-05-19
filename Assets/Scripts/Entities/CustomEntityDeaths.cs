@@ -8,7 +8,7 @@ public class CustomEntityDeaths : MonoBehaviour
 
     public void PlayerDeath()
 	{
-        SceneManager.LoadScene("");
+        SceneManager.LoadScene("GameOver");
 	}
 
     public void NextLevel()
