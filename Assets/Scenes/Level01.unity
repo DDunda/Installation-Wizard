@@ -278,7 +278,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784eb9bac60767a458927792b8d74c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnOrder: 00000000
   enemySpawns:
   - enemy: {fileID: 8732482096056108571, guid: eab2fa4d33bd4a7479c048a5d1f19797, type: 3}
     count: 1
@@ -1147,7 +1146,7 @@ MonoBehaviour:
   - {fileID: 1869514395}
   - {fileID: 2115841577}
   - {fileID: 1789835877}
-  - {fileID: 2115841577}
+  - {fileID: 113767576}
   waveIndex: 0
   repeatWaves: 0
 --- !u!1 &1481616471
@@ -1418,7 +1417,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784eb9bac60767a458927792b8d74c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnOrder: 04000000
   enemySpawns:
   - enemy: {fileID: 8436448246741505362, guid: e49d805ce0dab334b9f443a4ec46066d, type: 3}
     count: 1
@@ -1628,7 +1626,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784eb9bac60767a458927792b8d74c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnOrder: 01000000010000000100000001000000
   enemySpawns:
   - enemy: {fileID: 4793477065093700143, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
     count: 4
@@ -1837,7 +1834,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 784eb9bac60767a458927792b8d74c09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnOrder: 0200000002000000
   enemySpawns:
   - enemy: {fileID: 8705233199434721138, guid: faf0a60deda8c25468ec07720f651bc3, type: 3}
     count: 2
