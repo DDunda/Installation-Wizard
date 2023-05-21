@@ -14,7 +14,7 @@ public class BaseEnemy : MonoBehaviour, IPausable, ITeams
     protected Team _team;
 
     //Player Information
-    private Transform player;
+    protected Transform player;
     protected Vector3 playerPosition;
     protected Vector2 playerPosition2D;
     protected Vector2 directionToPlayer;
