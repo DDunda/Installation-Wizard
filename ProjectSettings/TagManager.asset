@@ -19,7 +19,7 @@ TagManager:
   - Entity
   - Projectile
   - Player
-  - 
+  - HurtBox
   - 
   - 
   - 
