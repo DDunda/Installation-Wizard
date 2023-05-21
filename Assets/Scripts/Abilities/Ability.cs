@@ -16,6 +16,15 @@ public class Ability : MonoBehaviour
 		}
 	}
 
+    // returns a value from 0 to 1, where 0 is "fully on cooldown" and 1 is "ready to go"
+    public float RechargePercent
+	{
+        get
+		{
+            return Mathf.InverseLerp(0, cooldownMax, cooldown);
+		}
+	}
+
     // called when the ability is activated: returns true if the ability successfully changed state in some way (e.g. received an input)
     public virtual bool Activate() 
     {
