@@ -111,7 +111,7 @@ MonoBehaviour:
   trailText: {fileID: 0}
   textTimerMax: 0.2
   trailCharNum: 10
-  projectileSpeed: 10
+  projectileSpeed: 15
 --- !u!114 &3796319891285435637
 MonoBehaviour:
   m_ObjectHideFlags: 0
