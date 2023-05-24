@@ -329,7 +329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownMax: 0.1
-  button: 32
+  button: 108
   style: {fileID: 11400000, guid: dc9afb573d5895f4aa2961a150afbe3a, type: 2}
   deadzone: 0.1
   speed:
