@@ -428,38 +428,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -253586735448184698, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
-      propertyPath: pwr
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: -253586735448184698, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
-      propertyPath: _team
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: -253586735448184698, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
-      propertyPath: fireRate
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -253586735448184698, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
-      propertyPath: moveSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -253586735448184698, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
-      propertyPath: minDistToPlayer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: -253586735448184698, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
-      propertyPath: nextWaypointDistance
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3063626098871591076, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3063626098871591076, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4793477065093700143, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
       propertyPath: m_Name
       value: BitEnemy
@@ -507,14 +475,6 @@ PrefabInstance:
     - target: {fileID: 4793477065093700149, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7364001835305939011, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7364001835305939011, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
