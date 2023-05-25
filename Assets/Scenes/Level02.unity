@@ -593,6 +593,7 @@ MonoBehaviour:
   - {fileID: 528999874}
   - {fileID: 528999874}
   isActive: 0
+  startDelay: 0
   spawnSetDelay: 1
 --- !u!1 &528999874
 GameObject:
@@ -1003,6 +1004,7 @@ MonoBehaviour:
   - {fileID: 528999874}
   - {fileID: 528999874}
   isActive: 0
+  startDelay: 0
   spawnSetDelay: 1
 --- !u!1 &1049045607
 GameObject:
@@ -1443,6 +1445,7 @@ MonoBehaviour:
   - {fileID: 528999874}
   - {fileID: 528999874}
   isActive: 0
+  startDelay: 0
   spawnSetDelay: 1
 --- !u!1 &1472756960
 GameObject:
@@ -1643,6 +1646,7 @@ MonoBehaviour:
   spawnLocations:
   - {fileID: 528999874}
   isActive: 0
+  startDelay: 0
   spawnSetDelay: 1
 --- !u!4 &1618144720
 Transform:
@@ -2222,7 +2226,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1994787997
 MonoBehaviour:
   m_ObjectHideFlags: 0
