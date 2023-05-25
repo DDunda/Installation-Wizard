@@ -18,6 +18,8 @@ public class Wave : MonoBehaviour
 	[SerializeField] private List<GameObject> spawnLocations;
 	public bool isActive = false;
 
+	// The delay for the wave beginning
+	[SerializeField, Min(0)] private float startDelay;
 	// The delay between groups of enemies spawning
 	[SerializeField, Min(0)] private float spawnSetDelay;
 
@@ -26,6 +28,8 @@ public class Wave : MonoBehaviour
 		isActive = true;
 
 		int currentSpawnPoint = 0;
+		
+		if (startDelay > 0) yield return new WaitWithPause(startDelay);
 
 		for (int spawnIndex = 0; spawnIndex < enemySpawns.Count; spawnIndex++)
 		{
@@ -48,6 +52,8 @@ public class Wave : MonoBehaviour
 
 				if(es.spawnDelay > 0) yield return new WaitWithPause(es.spawnDelay);
 			}
+
+			if (spawnSetDelay > 0) yield return new WaitWithPause(spawnSetDelay);
 		}
 
 		isActive = false;
