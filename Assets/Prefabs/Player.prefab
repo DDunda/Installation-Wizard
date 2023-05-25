@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f140f1f1ec2380546b9485980cfa32ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownMax: 1
+  cooldownMax: 0.5
   button: 323
   projectilePrefab: {fileID: 3607278727637472301, guid: e750fa90e5241724ab1b77eda053ff9b, type: 3}
   trailText: {fileID: 0}
@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38dad36e4daefbb478edd37c984ae9aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownMax: 1
+  cooldownMax: 2
   button: 325
   deadzone: 0.1
   speed:
