@@ -22,6 +22,9 @@ GameObject:
   - component: {fileID: 3796319891285435632}
   - component: {fileID: 3796319891285435633}
   - component: {fileID: -1482448419036691654}
+  - component: {fileID: 9148197529622358283}
+  - component: {fileID: 4022008502358960808}
+  - component: {fileID: 2660838735682903017}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -352,6 +355,48 @@ MonoBehaviour:
     min: 0
     max: 0
   projectileSortingLayer: Projectiles
+--- !u!114 &9148197529622358283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3796319891285435647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294288ebd8d1ce440964abbd0ffbe031, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ability: {fileID: 7283655153533489080}
+  cooldownBar: {fileID: 0}
+--- !u!114 &4022008502358960808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3796319891285435647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294288ebd8d1ce440964abbd0ffbe031, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ability: {fileID: 3796319891285435637}
+  cooldownBar: {fileID: 0}
+--- !u!114 &2660838735682903017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3796319891285435647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294288ebd8d1ce440964abbd0ffbe031, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ability: {fileID: 5287433214710290560}
+  cooldownBar: {fileID: 0}
 --- !u!1 &6689612443647189914
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,6 +488,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3796319891285435641}
     m_Modifications:
+    - target: {fileID: 1954896624983836600, guid: 78ba9bfd6801bba4c975330e0c0c3cda, type: 3}
+      propertyPath: _showIfFull
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1954896624983836600, guid: 78ba9bfd6801bba4c975330e0c0c3cda, type: 3}
+      propertyPath: _showIfEmpty
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2409703397337706747, guid: 78ba9bfd6801bba4c975330e0c0c3cda, type: 3}
       propertyPath: m_RootOrder
       value: 0
