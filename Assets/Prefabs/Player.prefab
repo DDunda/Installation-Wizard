@@ -62,8 +62,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   normVar: 0.70922
-  moveSpeed: 5
-  dashingPower: 12
+  moveSpeed: 6
+  dashingPower: 16
   dashingTime: 0.2
   dashingCooldown: 1
 --- !u!114 &3796319891285435642
@@ -114,7 +114,7 @@ MonoBehaviour:
   trailText: {fileID: 0}
   textTimerMax: 0.2
   trailCharNum: 10
-  projectileSpeed: 7
+  projectileSpeed: 8
 --- !u!114 &3796319891285435637
 MonoBehaviour:
   m_ObjectHideFlags: 0

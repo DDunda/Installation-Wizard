@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: HealPack projectile
   m_EditorClassIdentifier: 
   damage:
-    min: -25
-    max: -25
+    min: -15
+    max: -15
   lifetime:
     min: 999
     max: 999
