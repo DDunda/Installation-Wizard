@@ -134,6 +134,14 @@ PrefabInstance:
       propertyPath: cooldownBar
       value: 
       objectReference: {fileID: 373222529}
+    - target: {fileID: 3796319891285435637, guid: 8bcd5e4b0cbab0a40b62ee197080de26, type: 3}
+      propertyPath: speed.max
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796319891285435637, guid: 8bcd5e4b0cbab0a40b62ee197080de26, type: 3}
+      propertyPath: speed.min
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 3796319891285435641, guid: 8bcd5e4b0cbab0a40b62ee197080de26, type: 3}
       propertyPath: m_RootOrder
       value: 5
