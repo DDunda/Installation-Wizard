@@ -48,7 +48,8 @@ public class MegabyteEnemy : BaseEnemy
 	{
 		canAttack = false;
 		// Assuming fireRate is actually a rate, the seconds between shots is its inverse
-		burstSettings.Spawn(transform.position, rb.velocity, _team);
+		Vector3 offset = gameObject.GetComponent<BoxCollider2D>().offset; // get offset of casting object's box collider 2d
+		burstSettings.Spawn(transform.position + offset, rb.velocity, _team);
 		yield return new WaitWithPause(1f / fireRate);
 		canAttack = true;
 	}

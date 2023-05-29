@@ -32,6 +32,7 @@ public class ConcussiveBlastAbility : Ability
 		if (!OnCooldown && Input.GetKeyDown(button))
 		{
 			Transform entity = transform; // the transform of the player
+			Vector3 offset = gameObject.GetComponent<BoxCollider2D>().offset; // get offset of casting object's box collider 2d
 
 			Vector2 direction = Extensions.GetMouseWorldPosition(Camera.main) - (Vector2)entity.position;
 			if (direction.magnitude <= deadzone) return false;
@@ -49,7 +50,7 @@ public class ConcussiveBlastAbility : Ability
 			if (entity.TryGetComponent(out tt)) t = tt.team;
 
 			var projectiles = ProjectileManager.SpawnProjectileRandomArc(
-				entity.position,
+				entity.position + offset,
 				randomRotation,
 				v,
 				speed,

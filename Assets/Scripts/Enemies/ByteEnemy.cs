@@ -49,9 +49,10 @@ public class ByteEnemy : BaseEnemy
 
         // define initial velocity (don't factor in parent's movement)
         Vector2 v = Extensions.Deg2Vec(angle, projectileSpeed);
+        Vector3 offset = gameObject.GetComponent<BoxCollider2D>().offset; // get offset of casting object's box collider 2d
 
         ProjectileManager.SpawnProjectile(
-            entity.position,
+            entity.position + offset,
             0,
             v,
             0,

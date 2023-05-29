@@ -603,13 +603,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpawns:
   - enemy: {fileID: 4793477065093700143, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
-    count: 8
+    count: 10
     spawnDelay: 0.3
   - enemy: {fileID: 3607278727637472301, guid: e3a25c4c849cd5f4f8c3b2f6550dc6d7, type: 3}
     count: 1
     spawnDelay: 0
   - enemy: {fileID: 8705233199434721138, guid: faf0a60deda8c25468ec07720f651bc3, type: 3}
-    count: 3
+    count: 4
     spawnDelay: 0.3
   - enemy: {fileID: 8436448246741505362, guid: e49d805ce0dab334b9f443a4ec46066d, type: 3}
     count: 2
@@ -877,7 +877,7 @@ MonoBehaviour:
     count: 2
     spawnDelay: 0
   - enemy: {fileID: 8705233199434721138, guid: faf0a60deda8c25468ec07720f651bc3, type: 3}
-    count: 3
+    count: 4
     spawnDelay: 0.5
   - enemy: {fileID: 8436448246741505362, guid: e49d805ce0dab334b9f443a4ec46066d, type: 3}
     count: 1
@@ -1273,7 +1273,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1252239912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.17, y: 4.08, z: 0}
+  m_LocalPosition: {x: 10.47, y: 4.38, z: 0}
   m_LocalScale: {x: 3.5, y: 3.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1385,7 +1385,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1273326806}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.51, y: -3.79, z: 0}
+  m_LocalPosition: {x: -10.46, y: -4.33, z: 0}
   m_LocalScale: {x: 3.5, y: 3.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2014,6 +2014,14 @@ PrefabInstance:
       propertyPath: cooldownBar
       value: 
       objectReference: {fileID: 1124886701}
+    - target: {fileID: 3796319891285435632, guid: 8bcd5e4b0cbab0a40b62ee197080de26, type: 3}
+      propertyPath: m_Size.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796319891285435632, guid: 8bcd5e4b0cbab0a40b62ee197080de26, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.76
+      objectReference: {fileID: 0}
     - target: {fileID: 3796319891285435641, guid: 8bcd5e4b0cbab0a40b62ee197080de26, type: 3}
       propertyPath: m_RootOrder
       value: 5

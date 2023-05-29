@@ -32,7 +32,7 @@ public class ASCIIAbility : Ability
 		if (!OnCooldown && Input.GetKeyDown(button))
 		{
 			Vector2 direction = Extensions.GetMouseWorldPosition(Camera.main) - (Vector2)entity.position;
-			//if (direction.magnitude <= deadzone) return false;
+			Vector3 offset = gameObject.GetComponent<BoxCollider2D>().offset; // get offset of casting object's box collider 2d
 
 			direction.Normalize();
 			var angle = direction.Angle();
@@ -46,7 +46,7 @@ public class ASCIIAbility : Ability
 			if (entity.TryGetComponent(out tt)) t = tt.team;
 
 			ProjectileManager.SpawnProjectile(
-				entity.position, 
+				entity.position + offset, 
 				0,
 				v,
 				0,

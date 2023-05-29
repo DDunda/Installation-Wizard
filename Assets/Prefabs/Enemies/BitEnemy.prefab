@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 3063626098871591076}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.8000001, y: 0.82758623, z: 0.78160924}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4793477065093700149}
   m_RootOrder: 2
@@ -221,7 +221,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.98, y: 2.18}
+  m_Size: {x: 1.36, y: 1.48}
   m_EdgeRadius: 0.1
 --- !u!114 &4793477065093700145
 MonoBehaviour:
@@ -356,7 +356,7 @@ Transform:
   m_GameObject: {fileID: 6460904426670466947}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1.4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4793477065093700149}
@@ -439,7 +439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2409703397337706747, guid: 78ba9bfd6801bba4c975330e0c0c3cda, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.5
+      value: -1.2
       objectReference: {fileID: 0}
     - target: {fileID: 2409703397337706747, guid: 78ba9bfd6801bba4c975330e0c0c3cda, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
