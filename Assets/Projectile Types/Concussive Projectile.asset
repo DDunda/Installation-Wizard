@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Concussive Projectile
   m_EditorClassIdentifier: 
   damage:
-    min: 5
-    max: 5
+    min: 0.5
+    max: 0.5
   lifetime:
     min: 0.2
     max: 0.2

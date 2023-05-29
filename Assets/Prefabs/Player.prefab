@@ -132,8 +132,8 @@ MonoBehaviour:
   style: {fileID: 11400000, guid: dc9afb573d5895f4aa2961a150afbe3a, type: 2}
   deadzone: 0.1
   speed:
-    min: 10
-    max: 10
+    min: 12
+    max: 12
   projectilePrefab: {fileID: 5318035973014089012, guid: 6e58c76f7aa7b8e4899da41d45f4d6d4, type: 3}
   n:
     min: 5
@@ -164,16 +164,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38dad36e4daefbb478edd37c984ae9aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownMax: 1
+  cooldownMax: 5
   button: 325
   deadzone: 0.1
   speed:
-    min: 25
-    max: 25
+    min: 30
+    max: 30
   projectilePrefab: {fileID: 3607278727637472301, guid: 9cf5f27e4ee08a345a1f4bcfe957e325, type: 3}
   n:
-    min: 48
-    max: 48
+    min: 50
+    max: 50
   spreadAngle: 360
   directionRandomness: 0
   fireRadius: 0
@@ -422,9 +422,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6689612443647189914}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -0.1, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3796319891285435641}
   m_RootOrder: 1
