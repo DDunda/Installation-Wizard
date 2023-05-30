@@ -198,6 +198,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 3607278727637472301, guid: 8db965e1b228bf244a8eb0e520a53ea5, type: 3}
   projectileSpeed: 10
   entity: {fileID: 8705233199434721128}
+  soundName: EnemyShoot
 --- !u!114 &8705233199434721132
 MonoBehaviour:
   m_ObjectHideFlags: 0

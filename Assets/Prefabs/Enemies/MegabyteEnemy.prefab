@@ -252,6 +252,7 @@ MonoBehaviour:
       item: {x: -1, y: -0.5}
     - weight: 0
       item: {x: 1, y: -0.5}
+  soundName: EnemyShoot
 --- !u!114 &8436448246741505356
 MonoBehaviour:
   m_ObjectHideFlags: 0

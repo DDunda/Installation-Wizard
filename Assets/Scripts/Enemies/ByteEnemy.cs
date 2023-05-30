@@ -10,6 +10,8 @@ public class ByteEnemy : BaseEnemy
     private float projectileSpeed = 10.0f;
     [SerializeField]
     private Transform entity; // the reference to this enemy
+    [SerializeField] private string soundName;
+	private AudioSource abilitySound;
 
     private float oldMoveSpeed;
 
@@ -17,6 +19,7 @@ public class ByteEnemy : BaseEnemy
 	{
         oldMoveSpeed = moveSpeed;
         canMove = true;
+        abilitySound = GameObject.Find(soundName).GetComponent<AudioSource>();
 	}
 
 	protected override void Update()
@@ -47,6 +50,7 @@ public class ByteEnemy : BaseEnemy
 
     public override IEnumerator Attack()
 	{
+        abilitySound.Play();
         canAttack = false;
 
         // fire projectile at player

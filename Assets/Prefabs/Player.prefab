@@ -67,6 +67,7 @@ MonoBehaviour:
   dashingPower: 16
   dashingTime: 0.2
   dashingCooldown: 1
+  soundName: PlayerDash
 --- !u!114 &3796319891285435642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,6 +117,7 @@ MonoBehaviour:
   textTimerMax: 0.2
   trailCharNum: 10
   projectileSpeed: 8
+  soundName: PlayerShoot
 --- !u!114 &3796319891285435637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +153,7 @@ MonoBehaviour:
   randomAngularSpeed:
     min: 0
     max: 0
+  soundName: PlayerSpray
   inheritVelocity: 0
   projectileSortingLayer: Projectiles
 --- !u!114 &7283655153533489080
@@ -187,6 +190,7 @@ MonoBehaviour:
   randomAngularSpeed:
     min: 0
     max: 0
+  soundName: PlayerSpecial
 --- !u!114 &3796319891285435639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,6 +359,7 @@ MonoBehaviour:
   randomAngularSpeed:
     min: 0
     max: 0
+  soundName: PlayerSpecial
   projectileSortingLayer: Projectiles
 --- !u!114 &9148197529622358283
 MonoBehaviour:

@@ -19,9 +19,16 @@ public class MegabyteEnemy : BaseEnemy
 	[SerializeField] protected uint maximumBits = 6; // Set to 0 for unlimited bits
 	[SerializeField, Min(0)] protected float bitSpawnDelay = 5;
 	[SerializeField] protected WeightedArray<Vector2> spawnLocations = new();
+	[SerializeField] private string soundName;
+	private AudioSource abilitySound;
 
 	protected HashSet<GameObject> _spawnedBits = new();
 	protected int _nBits = 0;
+
+	private void Awake()
+	{
+        abilitySound = GameObject.Find(soundName).GetComponent<AudioSource>();
+	}
 
 	protected override void Update()
 	{
@@ -44,6 +51,7 @@ public class MegabyteEnemy : BaseEnemy
 
 	public override IEnumerator Attack()
 	{
+		abilitySound.Play();
 		canAttack = false;
 		// Assuming fireRate is actually a rate, the seconds between shots is its inverse
 		Vector3 offset = gameObject.GetComponent<BoxCollider2D>().offset; // get offset of casting object's box collider 2d

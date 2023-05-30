@@ -11,10 +11,15 @@ public class BitEnemy : BaseEnemy
     protected iFrameHealth plrHealth;
     public GameObject hurtBox;
 
+    [SerializeField] private string soundName;
+	private AudioSource abilitySound;
+
     private void Awake()
     {
         plrHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<iFrameHealth>();
+        //abilitySound = GameObject.Find(soundName).GetComponent<AudioSource>();
     }
+    
 
     // Update is called once per frame
     protected override void Update()
@@ -39,6 +44,7 @@ public class BitEnemy : BaseEnemy
 
     public override IEnumerator Attack()
     {
+        //abilitySound.Play();
         canMove = false;
         canAttack = false;
         rb.velocity = Vector3.zero;

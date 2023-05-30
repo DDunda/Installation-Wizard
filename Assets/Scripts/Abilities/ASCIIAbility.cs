@@ -19,10 +19,13 @@ public class ASCIIAbility : Ability
 	[SerializeField]
 	private float projectileSpeed = 5.0f;
 	private Transform entity;
+	private AudioSource abilitySound;
+	[SerializeField] private string soundName;
 
 	// Called at the start of the scene
 	private void Awake()
 	{
+		abilitySound = GameObject.Find(soundName).GetComponent<AudioSource>();
 		entity = transform;
 		textTimer = textTimerMax;
 	}
@@ -44,6 +47,8 @@ public class ASCIIAbility : Ability
 			ITeams tt;
 			Team t = 0;
 			if (entity.TryGetComponent(out tt)) t = tt.team;
+
+			abilitySound.Play();
 
 			ProjectileManager.SpawnProjectile(
 				entity.position + offset, 

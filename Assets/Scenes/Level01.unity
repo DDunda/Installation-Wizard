@@ -1749,6 +1749,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 866b953ce7e5fd64fac2638cdad33b0a, type: 3}
+--- !u!82 &1507696191 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5397248657459831202, guid: 866b953ce7e5fd64fac2638cdad33b0a, type: 3}
+  m_PrefabInstance: {fileID: 1507696190}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1507696192 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5435641053584988956, guid: 866b953ce7e5fd64fac2638cdad33b0a, type: 3}
+  m_PrefabInstance: {fileID: 1507696190}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1507696193 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8046356791560486849, guid: 866b953ce7e5fd64fac2638cdad33b0a, type: 3}
+  m_PrefabInstance: {fileID: 1507696190}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1581221991
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1756,10 +1771,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3580834833232316356, guid: 8bcd5e4b0cbab0a40b62ee197080de26, type: 3}
+      propertyPath: soundName
+      value: PlayerDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: -1482448419036691654, guid: 8bcd5e4b0cbab0a40b62ee197080de26, type: 3}
+      propertyPath: abilitySound
+      value: 
+      objectReference: {fileID: 1507696191}
     - target: {fileID: 2660838735682903017, guid: 8bcd5e4b0cbab0a40b62ee197080de26, type: 3}
       propertyPath: cooldownBar
       value: 
       objectReference: {fileID: 34814416}
+    - target: {fileID: 3796319891285435634, guid: 8bcd5e4b0cbab0a40b62ee197080de26, type: 3}
+      propertyPath: dashName
+      value: PlayerDash
+      objectReference: {fileID: 0}
+    - target: {fileID: 3796319891285435634, guid: 8bcd5e4b0cbab0a40b62ee197080de26, type: 3}
+      propertyPath: dashSound
+      value: 
+      objectReference: {fileID: 1507696193}
+    - target: {fileID: 3796319891285435637, guid: 8bcd5e4b0cbab0a40b62ee197080de26, type: 3}
+      propertyPath: abilitySound
+      value: 
+      objectReference: {fileID: 1507696192}
     - target: {fileID: 3796319891285435641, guid: 8bcd5e4b0cbab0a40b62ee197080de26, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1792,6 +1827,14 @@ PrefabInstance:
       propertyPath: trailText
       value: 
       objectReference: {fileID: 2076010440}
+    - target: {fileID: 5287433214710290560, guid: 8bcd5e4b0cbab0a40b62ee197080de26, type: 3}
+      propertyPath: abilitySound
+      value: 
+      objectReference: {fileID: 1507696192}
+    - target: {fileID: 7283655153533489080, guid: 8bcd5e4b0cbab0a40b62ee197080de26, type: 3}
+      propertyPath: abilitySound
+      value: 
+      objectReference: {fileID: 1507696191}
     - target: {fileID: 9148197529622358283, guid: 8bcd5e4b0cbab0a40b62ee197080de26, type: 3}
       propertyPath: cooldownBar
       value: 

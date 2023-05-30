@@ -22,6 +22,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float dashingTime = 0.2f;
     [SerializeField] private float dashingCooldown = 1f;
 
+    private AudioSource dashSound;
+    [SerializeField] private string soundName;
+
     //Sprites and animation
     private SpriteRenderer spriteRenderer;
 
@@ -30,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        dashSound = GameObject.Find(soundName).GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -73,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator Dash()
     {
+        dashSound.Play();
         canDash = false;
         isDashing = true;
         ManageDashDirection();

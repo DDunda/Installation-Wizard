@@ -17,6 +17,8 @@ public class ConcussiveBlastAbility : Ability
 	public Range<float> randomScale = 1;
 	public Range<float> randomRotation = 0;
 	public Range<float> randomAngularSpeed = 0;
+	[SerializeField] private string soundName;
+	private AudioSource abilitySound;
 
 	public SortingLayer projectileSortingLayer;
 
@@ -25,6 +27,7 @@ public class ConcussiveBlastAbility : Ability
 	public void Awake()
 	{
 		projectileArray = new(projectilePrefab);
+		abilitySound = GameObject.Find(soundName).GetComponent<AudioSource>();
 	}
 
 	public override bool Activate()
@@ -48,6 +51,8 @@ public class ConcussiveBlastAbility : Ability
 			ITeams tt;
 			Team t = 0;
 			if (entity.TryGetComponent(out tt)) t = tt.team;
+
+			abilitySound.Play();
 
 			var projectiles = ProjectileManager.SpawnProjectileRandomArc(
 				entity.position + offset,

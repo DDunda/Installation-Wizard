@@ -7,6 +7,8 @@ public class CustomEntityDamage : MonoBehaviour
 {
 	private GameObject gameManager;
 	private GlobalStatTransfer globalStat;
+	[SerializeField] private string soundName;
+	private AudioSource playerDamageSound;
 
 	void Start()
 	{
@@ -16,6 +18,7 @@ public class CustomEntityDamage : MonoBehaviour
 
     public void PlayerDamage()
 	{
+		GameObject.Find(soundName).GetComponent<AudioSource>().Play();
        globalStat.localDamageDealt = 3;
 	}
 
