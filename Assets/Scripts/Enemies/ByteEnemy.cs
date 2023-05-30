@@ -11,8 +11,11 @@ public class ByteEnemy : BaseEnemy
     [SerializeField]
     private Transform entity; // the reference to this enemy
 
+    private float oldMoveSpeed;
+
     private void Awake()
 	{
+        oldMoveSpeed = moveSpeed;
         canMove = true;
 	}
 
@@ -25,6 +28,7 @@ public class ByteEnemy : BaseEnemy
         // if the enemy can see the player, shoot at them
         if (playerInLOS)
         {
+            moveSpeed = oldMoveSpeed/10;
             if (canAttack)
             {
                 StartCoroutine(Attack());
@@ -33,10 +37,11 @@ public class ByteEnemy : BaseEnemy
         // if the enemy can't see the player, move towards them
         else
         {
-            if (canMove)
-            {
-                Move();
-            }
+            moveSpeed = oldMoveSpeed;
+        }
+        if (canMove)
+        {
+            Move();
         }
     }
 
