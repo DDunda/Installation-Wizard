@@ -13,11 +13,14 @@ public class BitEnemy : BaseEnemy
 
     [SerializeField] private string soundName;
 	private AudioSource abilitySound;
+    [SerializeField] private string deathName;
+	private AudioSource deathSound;
 
     private void Awake()
     {
         plrHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<iFrameHealth>();
         //abilitySound = GameObject.Find(soundName).GetComponent<AudioSource>();
+        //deathSound = GameObject.Find(deathName).GetComponent<AudioSource>();
     }
     
 
@@ -65,5 +68,10 @@ public class BitEnemy : BaseEnemy
     private float GetDistanceToPlayer()
     {
         return Vector3.Distance(lastSeenPosition, transform.position);
+    }
+
+    public void DeathSound()
+    {
+        deathSound.Play();
     }
 }

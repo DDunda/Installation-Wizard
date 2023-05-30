@@ -21,6 +21,8 @@ public class MegabyteEnemy : BaseEnemy
 	[SerializeField] protected WeightedArray<Vector2> spawnLocations = new();
 	[SerializeField] private string soundName;
 	private AudioSource abilitySound;
+	[SerializeField] private string deathName;
+	private AudioSource deathSound;
 
 	protected HashSet<GameObject> _spawnedBits = new();
 	protected int _nBits = 0;
@@ -28,6 +30,7 @@ public class MegabyteEnemy : BaseEnemy
 	private void Awake()
 	{
         abilitySound = GameObject.Find(soundName).GetComponent<AudioSource>();
+		deathSound = GameObject.Find(deathName).GetComponent<AudioSource>();
 	}
 
 	protected override void Update()
@@ -103,4 +106,9 @@ public class MegabyteEnemy : BaseEnemy
 			canSpawn = true;
 		}
 	}
+
+	public void DeathSound()
+    {
+        deathSound.Play();
+    }
 }

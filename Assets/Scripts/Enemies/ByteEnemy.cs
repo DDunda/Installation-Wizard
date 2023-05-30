@@ -12,6 +12,8 @@ public class ByteEnemy : BaseEnemy
     private Transform entity; // the reference to this enemy
     [SerializeField] private string soundName;
 	private AudioSource abilitySound;
+    [SerializeField] private string deathName;
+	private AudioSource deathSound;
 
     private float oldMoveSpeed;
 
@@ -20,6 +22,7 @@ public class ByteEnemy : BaseEnemy
         oldMoveSpeed = moveSpeed;
         canMove = true;
         abilitySound = GameObject.Find(soundName).GetComponent<AudioSource>();
+        deathSound = GameObject.Find(deathName).GetComponent<AudioSource>();
 	}
 
 	protected override void Update()
@@ -71,5 +74,10 @@ public class ByteEnemy : BaseEnemy
         // wait amount of seconds before firing again
         yield return new WaitWithPause(fireRate);
         canAttack = true;
+    }
+
+    public void DeathSound()
+    {
+        deathSound.Play();
     }
 }
