@@ -49,7 +49,7 @@ public class BaseEnemy : MonoBehaviour, IPausable, ITeams
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("PlayerHitBox").transform;
         seeker = GetComponent<Seeker>();
 
         lastSeenPosition = transform.position;
@@ -117,7 +117,7 @@ public class BaseEnemy : MonoBehaviour, IPausable, ITeams
     {
         if (canMove)
         {
-            seeker.StartPath(rb.position, lastSeenPosition, OnPathComplete);
+            seeker.StartPath(rb.position, playerPosition, OnPathComplete);
         }
     }
 

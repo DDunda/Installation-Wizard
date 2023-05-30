@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - AudioFolder
+  - PlayerHitBox
   layers:
   - Default
   - TransparentFX
@@ -54,6 +55,9 @@ TagManager:
     locked: 0
   - name: Projectiles
     uniqueID: 325782809
+    locked: 0
+  - name: Player
+    uniqueID: 1116824795
     locked: 0
   - name: UI
     uniqueID: 230377515

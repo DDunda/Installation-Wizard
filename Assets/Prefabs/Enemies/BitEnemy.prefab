@@ -335,13 +335,13 @@ MonoBehaviour:
   canAttack: 1
   canMove: 1
   fireRate: 1
-  moveSpeed: 1
+  moveSpeed: 2
   barrierLayer:
     serializedVersion: 2
     m_Bits: 0
   nextWaypointDistance: 3
   minDistToPlayer: 3
-  dmg: 3
+  dmg: 1
   pwr: 10
   hurtBox: {fileID: 3063626098871591076}
 --- !u!114 &3941861877286935138

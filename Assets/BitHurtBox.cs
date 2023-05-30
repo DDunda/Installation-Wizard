@@ -17,7 +17,7 @@ public class BitHurtBox : BitEnemy
     public void OnTriggerEnter2D(Collider2D col)
     {
         Debug.Log("Collision detected with " + col.name);
-        if (col.gameObject.CompareTag("Player") && healthScript.Health > 0)
+        if (col.gameObject.CompareTag("PlayerHitBox") && healthScript.Health > 0)
         {
             Debug.Log("DealDamage");
             plrHealth.ChangeHealth(-dmg);

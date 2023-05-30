@@ -42,8 +42,9 @@ public class BitEnemy : BaseEnemy
         canMove = false;
         canAttack = false;
         rb.velocity = Vector3.zero;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.7f);
         Vector2 dir = directionToPlayer;
+        yield return new WaitForSeconds(0.3f);
         hurtBox.GetComponent<BoxCollider2D>().enabled = true;
         dir.Normalize();
         var force = dir * pwr;
