@@ -28,8 +28,6 @@ public class MegabyteEnemy : BaseEnemy
 		GetPlayerLocation();
 		CanSeePlayer();
 
-		if (!seenPlayer) return;
-
 		if (_nBits > 0) _nBits -= _spawnedBits.RemoveWhere(x => x == null);
 
 		if (canSpawn && bitsToSpawn > 0 && (maximumBits == 0 || _nBits < maximumBits)) StartCoroutine(SpawnBits());
