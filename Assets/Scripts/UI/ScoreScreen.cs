@@ -15,10 +15,10 @@ public class ScoreScreen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        damageTakenText.text = GameObject.Find("GameManager").GetComponent<GlobalStatTransfer>().GetDamageTaken().ToString();
-        damageDealtText.text = GameObject.Find("GameManager").GetComponent<GlobalStatTransfer>().GetDamageDealt().ToString();
-        ememiesKilledText.text = GameObject.Find("GameManager").GetComponent<GlobalStatTransfer>().GetEmemiesKilled().ToString();
-        timesDiedText.text = GameObject.Find("GameManager").GetComponent<GlobalStatTransfer>().GetTimesDied().ToString();
+        damageTakenText.text = "Damage Taken: " + GameObject.Find("GameManager").GetComponent<GlobalStatTransfer>().GetDamageTaken().ToString();
+        damageDealtText.text = "Damage Dealt: " + GameObject.Find("GameManager").GetComponent<GlobalStatTransfer>().GetDamageDealt().ToString();
+        ememiesKilledText.text = "Enemies Killed: " + GameObject.Find("GameManager").GetComponent<GlobalStatTransfer>().GetEmemiesKilled().ToString();
+        timesDiedText.text = "Times Died: " + GameObject.Find("GameManager").GetComponent<GlobalStatTransfer>().GetTimesDied().ToString();
         DisplayTime(GameObject.Find("GameManager").GetComponent<GlobalStatTransfer>().GetTimerTime());
     }
 
@@ -32,7 +32,7 @@ public class ScoreScreen : MonoBehaviour
     {
         float minutes = Mathf.FloorToInt(displayTime / 60);
         float seconds = Mathf.FloorToInt(displayTime % 60);
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        timerText.text = "Time: " + string.Format("{0:00}:{1:00}", minutes, seconds);
         //timerText.text = "Time: " + (timerTime >= 60 ? Mathf.FloorToInt(timerTime / 60).ToString() + "m " : "") + $"{timerTime % 60:0.000}s";
     }
 }
