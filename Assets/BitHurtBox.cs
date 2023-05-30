@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BitHurtBox : BitEnemy
 {
+    [SerializeField] private iFrameHealth healthScript; // to track current health
+
     protected void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -15,7 +17,7 @@ public class BitHurtBox : BitEnemy
     public void OnTriggerEnter2D(Collider2D col)
     {
         Debug.Log("Collision detected with " + col.name);
-        if (col.gameObject.CompareTag("Player"))
+        if (col.gameObject.CompareTag("Player") && healthScript.Health > 0)
         {
             Debug.Log("DealDamage");
             plrHealth.ChangeHealth(-dmg);

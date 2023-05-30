@@ -60,6 +60,7 @@ MonoBehaviour:
   dmg: 3
   pwr: 5
   hurtBox: {fileID: 0}
+  healthScript: {fileID: 6158388956877356527}
 --- !u!50 &1064219634228805584
 Rigidbody2D:
   serializedVersion: 4
@@ -151,6 +152,7 @@ GameObject:
   - component: {fileID: 6158388956877356527}
   - component: {fileID: -7896215481037633317}
   - component: {fileID: -253586735448184698}
+  - component: {fileID: 3941861877286935138}
   m_Layer: 9
   m_Name: BitEnemy
   m_TagString: Enemy
@@ -282,14 +284,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 30
   healthMax: 30
-  destroyOnDeath: 1
+  destroyOnDeath: 0
   destroyDelay: 0
   onDamage:
     m_PersistentCalls:
       m_Calls: []
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3941861877286935138}
+        m_TargetAssemblyTypeName: PopupClose, Assembly-CSharp
+        m_MethodName: Activate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   iDamageTime: 0
   invincible: 0
   absorbWhenInvincible: 1
@@ -330,6 +344,23 @@ MonoBehaviour:
   dmg: 3
   pwr: 10
   hurtBox: {fileID: 3063626098871591076}
+--- !u!114 &3941861877286935138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4793477065093700143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35cfa94d4022e2a4ebd9815ebdcbcee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _unitsDown: -5
+  _animationLength: 0.2
+  _animationTime: 0
+  _sprite: {fileID: 1434071556621883959}
+  _enemyScript: {fileID: -253586735448184698}
 --- !u!1 &6460904426670466947
 GameObject:
   m_ObjectHideFlags: 0
