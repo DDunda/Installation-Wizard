@@ -1780,6 +1780,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1507696191}
     - target: {fileID: 2660838735682903017, guid: 8bcd5e4b0cbab0a40b62ee197080de26, type: 3}
+      propertyPath: ability
+      value: 
+      objectReference: {fileID: 1581221992}
+    - target: {fileID: 2660838735682903017, guid: 8bcd5e4b0cbab0a40b62ee197080de26, type: 3}
       propertyPath: cooldownBar
       value: 
       objectReference: {fileID: 34814416}
@@ -1836,11 +1840,37 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1507696191}
     - target: {fileID: 9148197529622358283, guid: 8bcd5e4b0cbab0a40b62ee197080de26, type: 3}
+      propertyPath: ability
+      value: 
+      objectReference: {fileID: 1581221993}
+    - target: {fileID: 9148197529622358283, guid: 8bcd5e4b0cbab0a40b62ee197080de26, type: 3}
       propertyPath: cooldownBar
       value: 
       objectReference: {fileID: 34814419}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bcd5e4b0cbab0a40b62ee197080de26, type: 3}
+--- !u!114 &1581221992 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7283655153533489080, guid: 8bcd5e4b0cbab0a40b62ee197080de26, type: 3}
+  m_PrefabInstance: {fileID: 1581221991}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38dad36e4daefbb478edd37c984ae9aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1581221993 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5287433214710290560, guid: 8bcd5e4b0cbab0a40b62ee197080de26, type: 3}
+  m_PrefabInstance: {fileID: 1581221991}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f140f1f1ec2380546b9485980cfa32ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1721028975
 GameObject:
   m_ObjectHideFlags: 0

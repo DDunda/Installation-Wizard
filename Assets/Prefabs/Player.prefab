@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bcd2af89f1e11149865abbf0ec5b102, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownMax: 1.5
+  cooldownMax: 1.75
   button: 324
   style: {fileID: 11400000, guid: dc9afb573d5895f4aa2961a150afbe3a, type: 2}
   deadzone: 0.1
@@ -277,6 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70e65731ea27e3740ad9173f72571f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundName: PlayerDamage
 --- !u!61 &3796319891285435632
 BoxCollider2D:
   m_ObjectHideFlags: 0

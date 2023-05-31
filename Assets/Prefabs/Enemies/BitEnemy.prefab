@@ -57,7 +57,7 @@ MonoBehaviour:
     m_Bits: 0
   nextWaypointDistance: 0
   minDistToPlayer: 0
-  dmg: 3
+  dmg: 2
   pwr: 5
   hurtBox: {fileID: 0}
   soundName: 

@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: HealPack projectile
   m_EditorClassIdentifier: 
   damage:
-    min: -15
-    max: -15
+    min: -20
+    max: -20
   lifetime:
-    min: 999
-    max: 999
+    min: 20
+    max: 20
   maxCollisions: 1
   destroyProjectiles: 0
   entityRelationship: {fileID: 11400000, guid: 019e9bc0a67972b40b00d640f2f6c118, type: 2}

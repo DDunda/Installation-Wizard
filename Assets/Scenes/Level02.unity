@@ -1157,12 +1157,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpawns:
-  - enemy: {fileID: 3607278727637472301, guid: e3a25c4c849cd5f4f8c3b2f6550dc6d7, type: 3}
-    count: 1
-    spawnDelay: 0
   - enemy: {fileID: 4793477065093700143, guid: 40364ca3a5a1be44db3ae03c37cd64e0, type: 3}
     count: 8
     spawnDelay: 0.5
+  - enemy: {fileID: 3607278727637472301, guid: e3a25c4c849cd5f4f8c3b2f6550dc6d7, type: 3}
+    count: 1
+    spawnDelay: 0
   - enemy: {fileID: 8705233199434721138, guid: faf0a60deda8c25468ec07720f651bc3, type: 3}
     count: 5
     spawnDelay: 0.5
@@ -1735,7 +1735,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4109694556175383745, guid: 866b953ce7e5fd64fac2638cdad33b0a, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4109694556175383745, guid: 866b953ce7e5fd64fac2638cdad33b0a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2520,7 +2520,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1164858727698494897
 PrefabInstance:
