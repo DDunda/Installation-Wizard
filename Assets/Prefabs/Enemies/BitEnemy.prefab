@@ -60,7 +60,7 @@ MonoBehaviour:
   dmg: 2
   pwr: 5
   hurtBox: {fileID: 0}
-  soundName: EnemyShoot
+  soundName: EnemyMelee
   deathName: EnemyDeath
   healthScript: {fileID: 6158388956877356527}
 --- !u!50 &1064219634228805584
@@ -358,7 +358,7 @@ MonoBehaviour:
   dmg: 1
   pwr: 10
   hurtBox: {fileID: 3063626098871591076}
-  soundName: EnemyShoot
+  soundName: EnemyMelee
   deathName: EnemyDeath
 --- !u!114 &3941861877286935138
 MonoBehaviour:
