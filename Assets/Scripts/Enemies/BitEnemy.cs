@@ -19,8 +19,8 @@ public class BitEnemy : BaseEnemy
     private void Awake()
     {
         plrHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<iFrameHealth>();
-        //abilitySound = GameObject.Find(soundName).GetComponent<AudioSource>();
-        //deathSound = GameObject.Find(deathName).GetComponent<AudioSource>();
+        abilitySound = GameObject.Find(soundName).GetComponent<AudioSource>();
+        deathSound = GameObject.Find(deathName).GetComponent<AudioSource>();
     }
     
 
@@ -47,7 +47,6 @@ public class BitEnemy : BaseEnemy
 
     public override IEnumerator Attack()
     {
-        //abilitySound.Play();
         canMove = false;
         canAttack = false;
         rb.velocity = Vector3.zero;
@@ -58,6 +57,7 @@ public class BitEnemy : BaseEnemy
         dir.Normalize();
         var force = dir * pwr;
         rb.AddForce(force, ForceMode2D.Impulse);
+        abilitySound.Play();
         yield return new WaitForSeconds(fireRate / 2);
         canMove = true;
         yield return new WaitForSeconds(fireRate / 2);

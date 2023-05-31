@@ -60,8 +60,8 @@ MonoBehaviour:
   dmg: 2
   pwr: 5
   hurtBox: {fileID: 0}
-  soundName: 
-  deathName: 
+  soundName: EnemyShoot
+  deathName: EnemyDeath
   healthScript: {fileID: 6158388956877356527}
 --- !u!50 &1064219634228805584
 Rigidbody2D:
@@ -352,13 +352,13 @@ MonoBehaviour:
   moveSpeed: 2
   barrierLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   nextWaypointDistance: 3
   minDistToPlayer: 3
   dmg: 1
   pwr: 10
   hurtBox: {fileID: 3063626098871591076}
-  soundName: EnemyDash
+  soundName: EnemyShoot
   deathName: EnemyDeath
 --- !u!114 &3941861877286935138
 MonoBehaviour:
