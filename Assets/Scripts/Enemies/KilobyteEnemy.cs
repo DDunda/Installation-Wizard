@@ -64,21 +64,14 @@ public class KilobyteEnemy : BaseEnemy
         Vector2 v = Extensions.Deg2Vec(angle, projectileSpeed);
 
         Vector2 direction = playerPosition2D - (Vector2)entity.position;
+        Vector3 offset = gameObject.GetComponent<BoxCollider2D>().offset; // get offset of casting object's box collider 2d
 
 		direction.Normalize();
 
 		float directionAngle = direction.Angle();
 
-        //ProjectileManager.SpawnProjectile(
-        //    entity.position,
-        //    0,
-        //    v,
-        //    0,
-        //    _team,
-        //    projectilePrefab);
-
         ProjectileManager.SpawnProjectileRandomArc(
-			entity.position,
+			entity.position + offset,
 			randomRotation,
 			v,
 			speed,

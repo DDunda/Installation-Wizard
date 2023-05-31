@@ -157,10 +157,10 @@ MonoBehaviour:
   projectilePrefab: {fileID: 3607278727637472301, guid: dd447c4e7d06a6b41907ac17014144d6, type: 3}
   projectileSpeed: 10
   entity: {fileID: 4793477065093700149}
-  maxAttackRange: 2.5
+  maxAttackRange: 3.5
   speed:
-    min: 5
-    max: 5
+    min: 4
+    max: 4
   n:
     min: 5
     max: 5
